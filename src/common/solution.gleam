@@ -3,9 +3,9 @@ import gleam/int
 import gleam/io
 
 pub type Value {
-  Int(Int)
-  Float(Float)
-  Str(String)
+  OfInt(Int)
+  OfFloat(Float)
+  OfStr(String)
 }
 
 pub type Solution {
@@ -19,9 +19,9 @@ pub type SolutionError {
 
 fn value_to_string(value: Value) -> String {
   case value {
-    Int(value) -> int.to_string(value)
-    Float(value) -> float.to_string(value)
-    Str(value) -> value
+    OfInt(value) -> int.to_string(value)
+    OfFloat(value) -> float.to_string(value)
+    OfStr(value) -> value
   }
 }
 
