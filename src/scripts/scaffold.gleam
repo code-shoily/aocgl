@@ -1,20 +1,27 @@
 import common/cli
 import common/reader.{InputParams}
+import envoy
 import filepath
+import gleam/http.{Get}
+import gleam/http/request
+import gleam/httpc
 import gleam/int
 import gleam/io
 import gleam/list
+import gleam/result
 import gleam/string
 import simplifile
 
 pub fn main() -> Nil {
   case cli.input_from_cli() {
-    Ok(InputParams(year, day)) -> run_scaffold(year, day)
+    Ok(InputParams(year, day)) ->
+      fetch_input(year, day)
+      |> run_scaffold(year, day, _)
     Error(_) -> io.println("")
   }
 }
 
-fn run_scaffold(year: Int, day: Int) {
+fn run_scaffold(year: Int, day: Int, input: String) {
   let year_str = int.to_string(year)
   let day_padded = int.to_string(day) |> string.pad_start(2, "0")
 
@@ -37,7 +44,7 @@ fn run_scaffold(year: Int, day: Int) {
 
   write_if_missing(src_path, generate_solution_module(year, day))
   write_if_missing(test_path, generate_test_module(year, day))
-  write_if_missing(input_path, "")
+  write_if_missing(input_path, input)
 
   io.println("✨ Scaffolding complete for " <> year_str <> " Day " <> day_padded)
 }
@@ -60,6 +67,7 @@ fn generate_solution_module(year: Int, day: Int) -> String {
 import common/reader
 import common/solution.{type Solution, Solution, OfInt}
 import common/utils
+import gleam/list
 import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
@@ -122,4 +130,39 @@ pub fn solve_test() {
   |> string.replace("{{year}}", year_str)
   |> string.replace("{{day}}", int.to_string(day))
   |> string.replace("{{day_padded}}", day_str)
+}
+
+fn fetch_input(year: Int, day: Int) -> String {
+  let session_key = envoy.get("AOC_SESSION_KEY") |> result.unwrap("")
+
+  case session_key {
+    "" -> {
+      io.println("⚠️  AOC_SESSION_KEY not found. Creating empty input file.")
+      ""
+    }
+    _ -> {
+      let url =
+        "https://adventofcode.com/"
+        <> int.to_string(year)
+        <> "/day/"
+        <> int.to_string(day)
+        <> "/input"
+
+      let assert Ok(base_req) = request.to(url)
+      let req =
+        base_req
+        |> request.set_method(Get)
+        |> request.prepend_header("cookie", "session=" <> session_key)
+
+      case httpc.send(req) {
+        Ok(resp) if resp.status == 200 -> resp.body
+        _ -> {
+          io.print_error(
+            "❌ Failed to fetch input from AOC. Check your session key.",
+          )
+          ""
+        }
+      }
+    }
+  }
 }
