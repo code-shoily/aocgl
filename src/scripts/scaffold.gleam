@@ -18,7 +18,6 @@ fn run_scaffold(year: Int, day: Int) {
   let year_str = int.to_string(year)
   let day_padded = int.to_string(day) |> string.pad_start(2, "0")
 
-  // Using 'filepath' for robust path joining
   let src_path =
     filepath.join("src", "year_" <> year_str)
     |> filepath.join("day_" <> day_padded <> ".gleam")
