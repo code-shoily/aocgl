@@ -1,7 +1,5 @@
-import argv
-import clip.{type Command}
-import clip/help
-import clip/opt.{type Opt}
+import common/cli
+import common/reader.{InputParams}
 import filepath
 import gleam/int
 import gleam/io
@@ -9,32 +7,9 @@ import gleam/list
 import gleam/string
 import simplifile
 
-fn year_opt() -> Opt(Int) {
-  "year" |> opt.new() |> opt.int |> opt.help("Year")
-}
-
-fn day_opt() -> Opt(Int) {
-  "day" |> opt.new() |> opt.int |> opt.help("Day")
-}
-
-pub fn command() -> Command(#(Int, Int)) {
-  clip.command({ fn(year) { fn(day) { #(year, day) } } })
-  |> clip.opt(year_opt())
-  |> clip.opt(day_opt())
-}
-
-pub fn input_from_cli() -> Result(#(Int, Int), String) {
-  command()
-  |> clip.help(help.simple(
-    "input",
-    "[Usage] `gleam run -- --year <year> --day <day>",
-  ))
-  |> clip.run(argv.load().arguments)
-}
-
 pub fn main() -> Nil {
-  case input_from_cli() {
-    Ok(#(year, day)) -> run_scaffold(year, day)
+  case cli.input_from_cli() {
+    Ok(InputParams(year, day)) -> run_scaffold(year, day)
     Error(_) -> io.println("")
   }
 }
@@ -55,14 +30,12 @@ fn run_scaffold(year: Int, day: Int) {
   let input_path =
     filepath.join("inputs", year_str <> "_" <> day_padded <> ".txt")
 
-  // 1. Ensure parent directories exist
   [src_path, test_path, input_path]
   |> list.each(fn(path) {
     let dir = filepath.directory_name(path)
     let _ = simplifile.create_directory_all(dir)
   })
 
-  // 2. Process Artifacts with no-op logic
   write_if_missing(src_path, generate_solution_module(year, day))
   write_if_missing(test_path, generate_test_module(year, day))
   write_if_missing(input_path, "")
@@ -86,33 +59,39 @@ fn generate_solution_module(year: Int, day: Int) -> String {
 /// Difficulty: 
 /// Tags: 
 import common/reader
-import common/solution.{type Solution}
+import common/solution.{type Solution, Solution, OfInt}
+import common/utils
 import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
-  let part_1 = solve_part_1(input)
-  let part_2 = solve_part_2(input)
+  let part_1 = solve_part_1(input) |> OfInt
+  let part_2 = solve_part_2(input) |> OfInt
 
-  todo
+  Solution(part_1, part_2)
 }
 
-fn solve_part_1(input: List(Int)) {
-  todo
+fn solve_part_1(input: List(Int)) -> Int {
+  input |> list.length()
 }
 
-fn solve_part_2(input: List(Int)) {
-  todo
+fn solve_part_2(input: List(Int)) -> Int {
+  input |> list.length()
 }
 
-fn parse(raw_input: String) {
-  todo
+fn parse(raw_input: String) -> List(Int) {
+  let assert Ok(nums) =
+    raw_input 
+    |> utils.to_lines() 
+    |> utils.to_ints()
+
+  nums
 }
 
 pub fn main() -> Nil {
   let param = reader.InputParams({{year}}, {{day}})
   let input = reader.read_input(param) |> result.unwrap(or: \"\")
-  solve(input) |> solution.print_solution
+  solve(input) |> echo
 
   Nil
 }"
@@ -126,18 +105,18 @@ fn generate_test_module(year: Int, day: Int) -> String {
   let year_str = year |> int.to_string
 
   let template =
-    "import common/reader
-import common/solution.{Solution}
-import gleam/result
+    "import common/reader.{InputParams, read_input}
+import common/solution.{Solution, OfInt}
 import year_{{year}}/day_{{day_padded}}
 
 pub fn solve_test() {
-  let param = reader.InputParams({{year}}, {{day}})
-  let input = reader.read_input(param) |> result.unwrap(or: \"\")
-  let result = day_{{day_padded}}.solve(input)
+  let param = InputParams({{year}}, {{day}})
+  let assert Ok(input) = read_input(param)
 
-  // Example: let assert Solution(OfInt(5), OfInt(10)) = result
-  todo
+  let got = day_{{day_padded}}.solve(input)
+  let expected = Solution(OfInt(5), OfInt(10))
+
+  assert expected == got
 }"
 
   template
