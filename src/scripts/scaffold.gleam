@@ -1,3 +1,4 @@
+/// Scaffolding functions that create boilerplate codes.
 import common/cli
 import common/reader.{InputParams}
 import envoy
@@ -113,17 +114,22 @@ fn generate_test_module(year: Int, day: Int) -> String {
 
   let template =
     "import common/reader.{InputParams, read_input}
-import common/solution.{Solution, OfInt}
+import common/solution.{OfInt, Solution}
+import gleeunit/should
 import year_{{year}}/day_{{day_padded}}
 
+const year = {{year}}
+
+const day = {{day}}
+
 pub fn solve_test() {
-  let param = InputParams({{year}}, {{day}})
-  let assert Ok(input) = read_input(param)
+  let expected = Solution(OfInt({{day}}), OfInt({{day}}))
 
-  let got = day_{{day_padded}}.solve(input)
-  let expected = Solution(OfInt(5), OfInt(10))
-
-  assert expected == got
+  InputParams(year, day)
+  |> read_input
+  |> should.be_ok
+  |> day_{{day_padded}}.solve
+  |> should.equal(expected)
 }"
 
   template
