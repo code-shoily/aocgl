@@ -57,7 +57,8 @@ fn is_valid_params(params: InputParams) -> Result(InputParams, ReaderError) {
 fn is_valid_day(params: InputParams) -> Result(InputParams, ReaderError) {
   case params {
     InputParams(year: 2025, day: day) if day >= 1 && day <= 12 -> Ok(params)
-    InputParams(year: _, day: day) if day >= 1 && day <= 25 -> Ok(params)
+    InputParams(year: year, day: day) if day >= 1 && day <= 25 && year != 2025 ->
+      Ok(params)
     _ -> Error(ParameterError(InvalidDayParam))
   }
 }
