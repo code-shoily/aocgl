@@ -1,4 +1,4 @@
-/// Title: Not Quite Lisp (2015/1)
+/// Title: Not Quite Lisp
 /// Link: https://adventofcode.com/2015/day/1
 /// Difficulty: xs
 /// Tags: navigation linear-scan reduction

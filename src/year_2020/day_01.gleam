@@ -1,7 +1,7 @@
 /// Title: Report Repair (2020/1)
 /// Link: https://adventofcode.com/2020/day/1
 /// Difficulty: xs
-/// Tags: two-sum three-sum
+/// Tags: n-sum
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
