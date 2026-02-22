@@ -26,6 +26,14 @@ pub fn to_paragraphs(input: String) -> List(String) {
   |> string.split(on: "\n\n")
 }
 
+/// Checks if a character is digit (0-9)
+pub fn is_digit(char: String) -> Bool {
+  case <<char:utf8>> {
+    <<byte:size(8)>> -> byte >= 48 && byte <= 57
+    _ -> False
+  }
+}
+
 /// Halts a process immediately.
 @external(erlang, "erlang", "halt")
 @external(javascript, "node:process", "exit")

@@ -1,4 +1,5 @@
 import common/utils
+import gleam/list
 import gleeunit
 import gleeunit/should
 
@@ -155,4 +156,26 @@ pub fn to_paragraphs_empty_string_test() {
   ""
   |> utils.to_paragraphs()
   |> should.equal([""])
+}
+
+pub fn is_digit_test() {
+  let test_cases = [
+    #("0", True),
+    #("9", True),
+    #("5", True),
+    #("/", False),
+    #(":", False),
+    #("a", False),
+    #(" ", False),
+    #("!", False),
+    #("12", False),
+    #("", False),
+  ]
+
+  test_cases
+  |> list.each(fn(case_data) {
+    let #(input, expected) = case_data
+    utils.is_digit(input)
+    |> should.equal(expected)
+  })
 }
