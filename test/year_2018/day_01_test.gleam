@@ -1,13 +1,18 @@
 import common/reader.{InputParams, read_input}
 import common/solution.{OfInt, Solution}
+import gleeunit/should
 import year_2018/day_01
 
-pub fn solve_test() {
-  let param = InputParams(2018, 1)
-  let assert Ok(input) = read_input(param)
+const year = 2018
 
-  let got = day_01.solve(input)
+const day = 1
+
+pub fn solve_test() {
   let expected = Solution(OfInt(590), OfInt(83_445))
 
-  assert expected == got
+  InputParams(year, day)
+  |> read_input
+  |> should.be_ok
+  |> day_01.solve
+  |> should.equal(expected)
 }

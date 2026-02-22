@@ -1,12 +1,18 @@
-import common/reader
+import common/reader.{InputParams, read_input}
 import common/solution.{OfInt, Solution}
-import gleam/result
+import gleeunit/should
 import year_2017/day_01
 
-pub fn solve_test() {
-  let param = reader.InputParams(2017, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  let result = day_01.solve(input)
+const year = 2017
 
-  assert result == Solution(OfInt(1089), OfInt(1156))
+const day = 1
+
+pub fn solve_test() {
+  let expected = Solution(OfInt(1089), OfInt(1156))
+
+  InputParams(year, day)
+  |> read_input
+  |> should.be_ok
+  |> day_01.solve
+  |> should.equal(expected)
 }
