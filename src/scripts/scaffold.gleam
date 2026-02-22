@@ -101,7 +101,7 @@ pub fn main() -> Nil {
   let input = reader.read_input(param) |> result.unwrap(or: \"\")
   solve(input) |> echo
 
-  Nil
+  utils.exit(0)
 }"
   |> string.replace("{{year}}", int.to_string(year))
   |> string.replace("{{day}}", int.to_string(day))

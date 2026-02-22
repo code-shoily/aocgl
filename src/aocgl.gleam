@@ -1,6 +1,7 @@
 import common/cli
 import common/reader.{type InputParams, InputParams}
 import common/solution.{InvalidYear, NotDone}
+import common/utils
 import gleam/int
 import gleam/io
 import gleam/result
@@ -62,4 +63,6 @@ fn print_solution_for(params: InputParams, input: String) {
         "Not implemented: " <> int.to_string(year) <> "/" <> int.to_string(day),
       )
   }
+
+  utils.exit(0)
 }

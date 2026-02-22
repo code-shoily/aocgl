@@ -25,3 +25,8 @@ pub fn to_paragraphs(input: String) -> List(String) {
   |> string.trim()
   |> string.split(on: "\n\n")
 }
+
+/// Halts a process immediately.
+@external(erlang, "erlang", "halt")
+@external(javascript, "node:process", "exit")
+pub fn exit(status: Int) -> Nil
