@@ -41,6 +41,7 @@ fn parse(raw_input: String) -> List(Int) {
   })
 }
 
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2022, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")

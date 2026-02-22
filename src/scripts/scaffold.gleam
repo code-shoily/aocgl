@@ -96,6 +96,7 @@ fn parse(raw_input: String) -> List(Int) {
   nums
 }
 
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams({{year}}, {{day}})
   let input = reader.read_input(param) |> result.unwrap(or: \"\")

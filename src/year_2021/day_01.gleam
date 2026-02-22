@@ -25,6 +25,12 @@ fn solve_part_2(input: List(Int)) -> Int {
   count_depth_increases(input, 3)
 }
 
+fn parse(raw_input: String) -> List(Int) {
+  let assert Ok(nums) = raw_input |> utils.to_lines() |> utils.to_ints()
+
+  nums
+}
+
 fn count_depth_increases(depths: List(Int), by: Int) {
   depths
   |> list.window(by)
@@ -33,12 +39,7 @@ fn count_depth_increases(depths: List(Int), by: Int) {
   |> list.count(fn(pair) { pair.1 > pair.0 })
 }
 
-fn parse(raw_input: String) -> List(Int) {
-  let assert Ok(nums) = raw_input |> utils.to_lines() |> utils.to_ints()
-
-  nums
-}
-
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2021, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")

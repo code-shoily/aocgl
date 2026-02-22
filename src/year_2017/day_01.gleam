@@ -33,6 +33,15 @@ fn solve_part_2(input: List(Int)) -> Int {
   |> int.multiply(2)
 }
 
+fn parse(raw_input: String) -> List(Int) {
+  let assert Ok(digits) =
+    raw_input
+    |> string.to_graphemes()
+    |> utils.to_ints()
+
+  digits
+}
+
 fn add_around(digits: List(Int)) -> List(Int) {
   case digits {
     [] -> []
@@ -54,15 +63,7 @@ fn do_matches_next(digits: List(Int), result: List(Int)) -> List(Int) {
   }
 }
 
-fn parse(raw_input: String) -> List(Int) {
-  let assert Ok(digits) =
-    raw_input
-    |> string.to_graphemes()
-    |> utils.to_ints()
-
-  digits
-}
-
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2017, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")

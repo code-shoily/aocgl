@@ -85,6 +85,7 @@ fn three_sum(nums: List(Int), target: Int) -> #(Int, Int, Int) {
   triplet
 }
 
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2020, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")

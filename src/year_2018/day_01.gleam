@@ -25,6 +25,15 @@ fn solve_part_2(input: List(Int)) -> Int {
   traverse_frequencies(input, input, 0, set.from_list([]))
 }
 
+fn parse(raw_input: String) -> List(Int) {
+  let assert Ok(nums) =
+    raw_input
+    |> utils.to_lines()
+    |> utils.to_ints()
+
+  nums
+}
+
 fn traverse_frequencies(
   xs: List(Int),
   ys: List(Int),
@@ -43,15 +52,7 @@ fn traverse_frequencies(
   }
 }
 
-fn parse(raw_input: String) -> List(Int) {
-  let assert Ok(nums) =
-    raw_input
-    |> utils.to_lines()
-    |> utils.to_ints()
-
-  nums
-}
-
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2018, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")

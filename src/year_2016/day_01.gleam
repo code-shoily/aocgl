@@ -180,7 +180,7 @@ fn new_instruction(s: String) -> Result(Instruction, Nil) {
   }
 }
 
-// ------------------------------------------ Runner
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2016, 1)
   let assert Ok(input) = reader.read_input(param)

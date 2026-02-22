@@ -47,6 +47,7 @@ fn list_fuels(mass: Int, total_fuel: List(Int)) -> List(Int) {
   }
 }
 
+// ------------------------------ Exploration
 pub fn main() -> Nil {
   let param = reader.InputParams(2019, 1)
   let input = reader.read_input(param) |> result.unwrap(or: "")
