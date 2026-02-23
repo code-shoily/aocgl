@@ -1,7 +1,7 @@
-/// Title: 
+/// Title: Trebuchet?!
 /// Link: https://adventofcode.com/2023/day/1
-/// Difficulty: 
-/// Tags: 
+/// Difficulty: s
+/// Tags: regex
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
