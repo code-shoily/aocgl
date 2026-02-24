@@ -7,7 +7,6 @@ import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
 
 pub fn solve(raw_input: String) -> Solution {
@@ -17,6 +16,7 @@ pub fn solve(raw_input: String) -> Solution {
     |> list.fold(#(50, 0, 0), fn(acc, move) {
       let #(current, password_1, password_2) = acc
       let #(next, zeroes) = rotate(move, current)
+
       let password_1 = case next == 0 {
         True -> password_1 + 1
         False -> password_1
@@ -36,11 +36,11 @@ fn parse(raw_input: String) -> List(Rotation) {
 }
 
 type Rotation {
-  Rotation(towards: fn(Int, Int) -> Int, reps: Int)
+  Rotation(towards: fn(Int, Int) -> Int, times: Int)
 }
 
-fn new_rotation(dir: String, reps: String) -> Rotation {
-  case dir, int.parse(reps) {
+fn new_rotation(dir: String, times: String) -> Rotation {
+  case dir, int.parse(times) {
     "L", Ok(x) -> Rotation(int.subtract, x)
     "R", Ok(x) -> Rotation(int.add, x)
     _, _ -> panic as "Impossible State"
@@ -52,23 +52,23 @@ fn parse_rotation(line: String) -> Rotation {
   new_rotation(x, xs)
 }
 
-fn rotate(rotation: Rotation, by: Int) -> #(Int, Int) {
-  let diff = rotation.towards(by, rotation.reps % 100)
-  let zeroes = rotation.reps / 100
+fn rotate(rotation: Rotation, current: Int) -> #(Int, Int) {
+  let diff = current |> rotation.towards(rotation.times % 100)
+  let zeroes = rotation.times / 100
 
-  case diff, by {
-    diff, 0 if diff < 0 -> #(diff + 100, zeroes)
-    diff, _ if diff < 0 -> #(diff + 100, zeroes + 1)
-    diff, _ if diff >= 100 -> #(diff - 100, zeroes + 1)
-    diff, _ if diff == 0 -> #(0, zeroes + 1)
-    _, _ -> #(diff, zeroes)
+  case diff {
+    diff if diff < 0 && current == 0 -> #(diff + 100, zeroes)
+    diff if diff < 0 -> #(diff + 100, zeroes + 1)
+    diff if diff >= 100 -> #(diff - 100, zeroes + 1)
+    diff if diff == 0 -> #(0, zeroes + 1)
+    _ -> #(diff, zeroes)
   }
 }
 
 // ------------------------------ Exploration
 pub fn main() {
   let param = reader.InputParams(2025, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+  let assert Ok(input) = reader.read_input(param)
 
   echo solve(input)
 
