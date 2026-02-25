@@ -21,13 +21,14 @@ pub fn solve(raw_input: String) -> Solution {
 }
 
 fn parse(raw_input: String) -> List(Policy) {
+  let assert Ok(re) = regexp.from_string("^(\\d+)-(\\d+) (.): (.+)$")
+
   raw_input
   |> utils.to_lines()
-  |> list.map(parse_line)
+  |> list.map(parse_line(_, re))
 }
 
-fn parse_line(line: String) -> Policy {
-  let assert Ok(re) = regexp.from_string("^(\\d+)-(\\d+) (.): (.+)$")
+fn parse_line(line: String, re: regexp.Regexp) -> Policy {
   let assert [Match(_, [Some(i), Some(f), Some(c), Some(pwd)])] =
     regexp.scan(re, line)
   Policy(definitely_int(i), definitely_int(f), c, pwd)
