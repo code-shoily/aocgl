@@ -1,3 +1,4 @@
+import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
 import gleam/result
@@ -32,6 +33,13 @@ pub fn is_digit(char: String) -> Bool {
     <<byte:size(8)>> -> byte >= 48 && byte <= 57
     _ -> False
   }
+}
+
+/// Converts a 2D list into a tuple map.
+pub fn to_dict_grid(raw_grid: List(List(a))) -> Dict(#(Int, Int), a) {
+  use acc, row, y <- list.index_fold(raw_grid, dict.new())
+  use acc, val, x <- list.index_fold(row, acc)
+  dict.insert(acc, #(x, y), val)
 }
 
 /// Halts a process immediately.

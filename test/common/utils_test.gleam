@@ -1,4 +1,5 @@
 import common/utils
+import gleam/dict
 import gleam/list
 import gleeunit
 import gleeunit/should
@@ -178,4 +179,32 @@ pub fn is_digit_test() {
     utils.is_digit(input)
     |> should.equal(expected)
   })
+}
+
+pub fn to_dict_grid_square_test() {
+  let input = [["1", "2"], ["3", "4"]]
+
+  let grid = utils.to_dict_grid(input)
+
+  grid |> dict.get(#(0, 0)) |> should.equal(Ok("1"))
+  grid |> dict.get(#(1, 0)) |> should.equal(Ok("2"))
+  grid |> dict.get(#(0, 1)) |> should.equal(Ok("3"))
+  grid |> dict.get(#(1, 1)) |> should.equal(Ok("4"))
+  grid |> dict.size() |> should.equal(4)
+}
+
+pub fn to_dict_grid_rectangular_test() {
+  let input = [["A", "B", "C"]]
+
+  let grid = utils.to_dict_grid(input)
+
+  grid |> dict.get(#(0, 0)) |> should.equal(Ok("A"))
+  grid |> dict.get(#(1, 0)) |> should.equal(Ok("B"))
+  grid |> dict.get(#(2, 0)) |> should.equal(Ok("C"))
+  grid |> dict.size() |> should.equal(3)
+}
+
+pub fn to_dict_grid_empty_test() {
+  let input = []
+  utils.to_dict_grid(input) |> dict.size() |> should.equal(0)
 }
