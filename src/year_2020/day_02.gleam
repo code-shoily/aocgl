@@ -50,16 +50,12 @@ fn is_valid_2(policy: Policy) -> Bool {
   let Policy(i, f, c, pwd) = policy
   let pwd = string.to_graphemes(pwd)
 
-  case at(pwd, i - 1), at(pwd, f - 1) {
+  case utils.at(pwd, i - 1), utils.at(pwd, f - 1) {
     Ok(x), Ok(y) -> {
       { x == c } != { y == c }
     }
     _, _ -> False
   }
-}
-
-fn at(xs: List(a), idx: Int) -> Result(a, Nil) {
-  xs |> list.drop(idx) |> list.first
 }
 
 type Policy {
