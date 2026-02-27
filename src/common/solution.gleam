@@ -6,6 +6,7 @@ pub type Value {
   OfInt(Int)
   OfFloat(Float)
   OfStr(String)
+  OfNil(Nil)
 }
 
 pub type Solution {
@@ -22,6 +23,7 @@ fn value_to_string(value: Value) -> String {
     OfInt(value) -> int.to_string(value)
     OfFloat(value) -> float.to_string(value)
     OfStr(value) -> value
+    OfNil(_) -> "<Nil>"
   }
 }
 

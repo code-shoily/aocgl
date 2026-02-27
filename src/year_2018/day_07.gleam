@@ -3,7 +3,7 @@
 /// Difficulty: m
 /// Tags: graph topological-sort
 import common/reader
-import common/solution.{type Solution, OfInt, OfStr, Solution}
+import common/solution.{type Solution, OfNil, OfStr, Solution}
 import common/utils
 import gleam/int
 import gleam/list
@@ -15,7 +15,7 @@ import yog/topological_sort
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
   let part_1 = solve_part_1(input) |> OfStr
-  let part_2 = solve_part_2(input) |> OfInt
+  let part_2 = solve_part_2(input) |> OfNil
 
   Solution(part_1, part_2)
 }
@@ -31,10 +31,8 @@ fn solve_part_1(input: Input) -> String {
   |> string.join("")
 }
 
-fn solve_part_2(input: Input) -> Int {
-  let Input(_) = input
-
-  0
+fn solve_part_2(_input: Input) -> Nil {
+  Nil
 }
 
 type Input {
