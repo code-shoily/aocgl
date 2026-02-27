@@ -49,7 +49,7 @@ pub fn at(xs: List(a), n: Int) -> Result(a, Nil) {
 
 /// Returns numbers ranging from i to f
 pub fn int_range(i: Int, f: Int) -> List(Int) {
-  int.range(from: i, to: f, with: [], run: list.prepend)
+  int.range(f, i, with: [], run: list.prepend)
 }
 
 /// Halts a process immediately.

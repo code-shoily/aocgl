@@ -274,61 +274,55 @@ pub fn at_strings_test() {
 }
 
 // Tests for int_range()
-// Note: int.range with prepend includes 'from', excludes 'to', returns descending
+// Note: int_range(i, f) returns numbers from i+1 to f (inclusive on f, exclusive on i)
 
-pub fn int_range_basic_test() {
-  // From 1 to 5: includes 1, excludes 5, returns [4, 3, 2, 1]
+pub fn int_range_ascending_test() {
   utils.int_range(1, 5)
+  |> should.equal([2, 3, 4, 5])
+}
+
+pub fn int_range_descending_test() {
+  utils.int_range(5, 1)
   |> should.equal([4, 3, 2, 1])
 }
 
-pub fn int_range_same_value_test() {
-  // When from == to, returns empty list
+pub fn int_range_single_element_difference_test() {
+  utils.int_range(2, 3)
+  |> should.equal([3])
+}
+
+pub fn int_range_same_numbers_test() {
   utils.int_range(3, 3)
   |> should.equal([])
 }
 
-pub fn int_range_adjacent_values_test() {
-  // When values are adjacent, returns single element [from]
-  utils.int_range(5, 6)
-  |> should.equal([5])
-}
-
-pub fn int_range_reverse_order_test() {
-  // from > to: returns ascending [to+1, to+2, ..., from]
-  utils.int_range(5, 1)
-  |> should.equal([2, 3, 4, 5])
-}
-
-pub fn int_range_zero_to_positive_test() {
-  // From 0 to 3: includes 0, excludes 3, returns [2, 1, 0]
-  utils.int_range(0, 3)
-  |> should.equal([2, 1, 0])
-}
-
 pub fn int_range_negative_to_positive_test() {
-  // From -2 to 2: includes -2, excludes 2, returns [1, 0, -1, -2]
   utils.int_range(-2, 2)
-  |> should.equal([1, 0, -1, -2])
+  |> should.equal([-1, 0, 1, 2])
 }
 
 pub fn int_range_negative_to_negative_test() {
-  // From -5 to -2: includes -5, excludes -2, returns [-3, -4, -5]
   utils.int_range(-5, -2)
-  |> should.equal([-3, -4, -5])
+  |> should.equal([-4, -3, -2])
+}
+
+pub fn int_range_with_zero_test() {
+  utils.int_range(0, 3)
+  |> should.equal([1, 2, 3])
+}
+
+pub fn int_range_to_zero_test() {
+  utils.int_range(-2, 0)
+  |> should.equal([-1, 0])
 }
 
 pub fn int_range_large_range_test() {
   let result = utils.int_range(1, 10)
-  // Should have 9 elements: [9, 8, 7, 6, 5, 4, 3, 2, 1]
+  result |> should.equal([2, 3, 4, 5, 6, 7, 8, 9, 10])
   result |> list.length() |> should.equal(9)
-  result |> list.first() |> should.equal(Ok(9))
-  result |> list.last() |> should.equal(Ok(1))
 }
 
-pub fn int_range_zero_span_test() {
-  // From 0 to 10: includes 0, excludes 10, returns [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-  let result = utils.int_range(0, 10)
-  result |> list.length() |> should.equal(10)
-  result |> should.equal([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
+pub fn int_range_from_zero_test() {
+  utils.int_range(0, 5)
+  |> should.equal([1, 2, 3, 4, 5])
 }
