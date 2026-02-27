@@ -42,6 +42,16 @@ pub fn to_dict_grid(raw_grid: List(List(a))) -> Dict(#(Int, Int), a) {
   dict.insert(acc, #(x, y), val)
 }
 
+/// Returns the n-th element of list xs
+pub fn at(xs: List(a), n: Int) -> Result(a, Nil) {
+  xs |> list.drop(n) |> list.first
+}
+
+/// Returns numbers ranging from i to f
+pub fn int_range(i: Int, f: Int) -> List(Int) {
+  int.range(from: i, to: f, with: [], run: list.prepend)
+}
+
 /// Halts a process immediately.
 @external(erlang, "erlang", "halt")
 @external(javascript, "node:process", "exit")

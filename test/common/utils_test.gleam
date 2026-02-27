@@ -208,3 +208,127 @@ pub fn to_dict_grid_empty_test() {
   let input = []
   utils.to_dict_grid(input) |> dict.size() |> should.equal(0)
 }
+
+// Tests for at()
+
+pub fn at_first_element_test() {
+  [1, 2, 3, 4, 5]
+  |> utils.at(0)
+  |> should.be_ok()
+  |> should.equal(1)
+}
+
+pub fn at_middle_element_test() {
+  [1, 2, 3, 4, 5]
+  |> utils.at(2)
+  |> should.be_ok()
+  |> should.equal(3)
+}
+
+pub fn at_last_element_test() {
+  [1, 2, 3, 4, 5]
+  |> utils.at(4)
+  |> should.be_ok()
+  |> should.equal(5)
+}
+
+pub fn at_index_out_of_bounds_test() {
+  [1, 2, 3]
+  |> utils.at(5)
+  |> should.be_error()
+}
+
+pub fn at_negative_index_test() {
+  // Note: list.drop with negative n doesn't drop anything,
+  // so negative index returns the first element
+  [1, 2, 3]
+  |> utils.at(-1)
+  |> should.be_ok()
+  |> should.equal(1)
+}
+
+pub fn at_empty_list_test() {
+  []
+  |> utils.at(0)
+  |> should.be_error()
+}
+
+pub fn at_single_element_list_test() {
+  [42]
+  |> utils.at(0)
+  |> should.be_ok()
+  |> should.equal(42)
+}
+
+pub fn at_single_element_list_out_of_bounds_test() {
+  [42]
+  |> utils.at(1)
+  |> should.be_error()
+}
+
+pub fn at_strings_test() {
+  ["apple", "banana", "cherry"]
+  |> utils.at(1)
+  |> should.be_ok()
+  |> should.equal("banana")
+}
+
+// Tests for int_range()
+// Note: int.range with prepend includes 'from', excludes 'to', returns descending
+
+pub fn int_range_basic_test() {
+  // From 1 to 5: includes 1, excludes 5, returns [4, 3, 2, 1]
+  utils.int_range(1, 5)
+  |> should.equal([4, 3, 2, 1])
+}
+
+pub fn int_range_same_value_test() {
+  // When from == to, returns empty list
+  utils.int_range(3, 3)
+  |> should.equal([])
+}
+
+pub fn int_range_adjacent_values_test() {
+  // When values are adjacent, returns single element [from]
+  utils.int_range(5, 6)
+  |> should.equal([5])
+}
+
+pub fn int_range_reverse_order_test() {
+  // from > to: returns ascending [to+1, to+2, ..., from]
+  utils.int_range(5, 1)
+  |> should.equal([2, 3, 4, 5])
+}
+
+pub fn int_range_zero_to_positive_test() {
+  // From 0 to 3: includes 0, excludes 3, returns [2, 1, 0]
+  utils.int_range(0, 3)
+  |> should.equal([2, 1, 0])
+}
+
+pub fn int_range_negative_to_positive_test() {
+  // From -2 to 2: includes -2, excludes 2, returns [1, 0, -1, -2]
+  utils.int_range(-2, 2)
+  |> should.equal([1, 0, -1, -2])
+}
+
+pub fn int_range_negative_to_negative_test() {
+  // From -5 to -2: includes -5, excludes -2, returns [-3, -4, -5]
+  utils.int_range(-5, -2)
+  |> should.equal([-3, -4, -5])
+}
+
+pub fn int_range_large_range_test() {
+  let result = utils.int_range(1, 10)
+  // Should have 9 elements: [9, 8, 7, 6, 5, 4, 3, 2, 1]
+  result |> list.length() |> should.equal(9)
+  result |> list.first() |> should.equal(Ok(9))
+  result |> list.last() |> should.equal(Ok(1))
+}
+
+pub fn int_range_zero_span_test() {
+  // From 0 to 10: includes 0, excludes 10, returns [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+  let result = utils.int_range(0, 10)
+  result |> list.length() |> should.equal(10)
+  result |> should.equal([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
+}
