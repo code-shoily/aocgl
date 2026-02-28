@@ -38,9 +38,9 @@ fn solve_part_1(coords: List(#(Int, Int))) -> Int {
   let corrupted = list.take(coords, take_count) |> set.from_list
 
   let grid_2d =
-    list.range(0, dim - 1)
+    utils.int_range(0, dim - 1)
     |> list.map(fn(y) {
-      list.range(0, dim - 1)
+      utils.int_range(0, dim - 1)
       |> list.map(fn(x) { set.contains(corrupted, #(x, y)) })
     })
 
@@ -67,7 +67,7 @@ fn solve_part_2(coords: List(#(Int, Int))) -> String {
   }
 
   let empty_grid_2d =
-    list.range(0, dim - 1)
+    utils.int_range(0, dim - 1)
     |> list.map(fn(_) { list.repeat(False, dim) })
 
   let grid_builder =

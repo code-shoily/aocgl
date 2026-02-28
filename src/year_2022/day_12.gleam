@@ -132,9 +132,9 @@ fn find_start_and_end(
   cols: Int,
 ) -> #(Int, Int, Int, Int) {
   let positions =
-    utils.int_range(-1, rows - 1)
+    utils.int_range(0, rows)
     |> list.flat_map(fn(row) {
-      utils.int_range(-1, cols - 1)
+      utils.int_range(0, cols)
       |> list.map(fn(col) { #(row, col) })
     })
 
