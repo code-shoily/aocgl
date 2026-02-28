@@ -1,3 +1,7 @@
+/// Title: LAN Party
+/// Link: https://adventofcode.com/2024/day/23
+/// Difficulty: m
+/// Tags: graph scc
 import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
