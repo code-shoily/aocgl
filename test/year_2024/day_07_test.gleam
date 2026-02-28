@@ -8,7 +8,7 @@ const year = 2024
 const day = 7
 
 pub fn solve_test() {
-  let expected = Solution(OfInt(7), OfInt(7))
+  let expected = Solution(OfInt(882_304_362_421), OfInt(145_149_066_755_184))
 
   InputParams(year, day)
   |> read_input
