@@ -273,56 +273,58 @@ pub fn at_strings_test() {
   |> should.equal("banana")
 }
 
-// Tests for int_range()
-// Note: int_range(i, f) returns numbers from i+1 to f (inclusive on f, exclusive on i)
-
-pub fn int_range_ascending_test() {
+// Basic range
+pub fn range_basic_test() {
   utils.int_range(1, 5)
-  |> should.equal([2, 3, 4, 5])
+  |> should.equal([1, 2, 3, 4, 5])
 }
 
-pub fn int_range_descending_test() {
-  utils.int_range(5, 1)
-  |> should.equal([4, 3, 2, 1])
+// Range starting from 0
+pub fn range_from_zero_test() {
+  utils.int_range(0, 3)
+  |> should.equal([0, 1, 2, 3])
 }
 
-pub fn int_range_single_element_difference_test() {
-  utils.int_range(2, 3)
-  |> should.equal([3])
+// Single element range
+pub fn range_single_element_test() {
+  utils.int_range(5, 5)
+  |> should.equal([5])
 }
 
-pub fn int_range_same_numbers_test() {
-  utils.int_range(3, 3)
+// Empty range (start > end)
+pub fn range_empty_test() {
+  utils.int_range(5, 3)
   |> should.equal([])
 }
 
-pub fn int_range_negative_to_positive_test() {
-  utils.int_range(-2, 2)
-  |> should.equal([-1, 0, 1, 2])
+// Large range
+pub fn range_large_test() {
+  let result = utils.int_range(1, 100)
+
+  // Check length
+  list.length(result)
+  |> should.equal(100)
+
+  // Check first and last elements
+  result
+  |> should.equal([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
+    60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78,
+    79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97,
+    98, 99, 100,
+  ])
 }
 
-pub fn int_range_negative_to_negative_test() {
+// Negative numbers
+pub fn range_negative_test() {
+  utils.int_range(-3, 2)
+  |> should.equal([-3, -2, -1, 0, 1, 2])
+}
+
+// Range with negative start and end
+pub fn range_all_negative_test() {
   utils.int_range(-5, -2)
-  |> should.equal([-4, -3, -2])
-}
-
-pub fn int_range_with_zero_test() {
-  utils.int_range(0, 3)
-  |> should.equal([1, 2, 3])
-}
-
-pub fn int_range_to_zero_test() {
-  utils.int_range(-2, 0)
-  |> should.equal([-1, 0])
-}
-
-pub fn int_range_large_range_test() {
-  let result = utils.int_range(1, 10)
-  result |> should.equal([2, 3, 4, 5, 6, 7, 8, 9, 10])
-  result |> list.length() |> should.equal(9)
-}
-
-pub fn int_range_from_zero_test() {
-  utils.int_range(0, 5)
-  |> should.equal([1, 2, 3, 4, 5])
+  |> should.equal([-5, -4, -3, -2])
 }

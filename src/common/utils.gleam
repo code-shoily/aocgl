@@ -47,9 +47,28 @@ pub fn at(xs: List(a), n: Int) -> Result(a, Nil) {
   xs |> list.drop(n) |> list.first
 }
 
-/// Returns numbers ranging from i to f
-pub fn int_range(i: Int, f: Int) -> List(Int) {
-  int.range(f, i, with: [], run: list.prepend)
+/// Returns a list of integers from `start` to `end` (inclusive).
+/// This is a replacement for the deprecated `list.range`.
+///
+/// ## Examples
+///
+/// ```gleam
+/// int_range(1, 5)
+/// // => [1, 2, 3, 4, 5]
+///
+/// int_range(0, 3)
+/// // => [0, 1, 2, 3]
+/// ```
+pub fn int_range(start: Int, end: Int) -> List(Int) {
+  do_range(start, end, [])
+  |> list.reverse()
+}
+
+fn do_range(current: Int, end: Int, acc: List(Int)) -> List(Int) {
+  case current > end {
+    True -> acc
+    False -> do_range(current + 1, end, [current, ..acc])
+  }
 }
 
 /// Halts a process immediately.
