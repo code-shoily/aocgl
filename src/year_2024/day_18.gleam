@@ -24,7 +24,6 @@ pub fn solve(raw_input: String) -> Solution {
 }
 
 fn solve_part_1(coords: List(#(Int, Int))) -> Int {
-  let size = 71
   // For sample it would be 7, but let's assume real input is 71
   let is_sample = list.length(coords) < 100
   let dim = case is_sample {
@@ -72,7 +71,7 @@ fn solve_part_2(coords: List(#(Int, Int))) -> String {
     |> list.map(fn(_) { list.repeat(False, dim) })
 
   let grid_builder =
-    grid.from_2d_list(empty_grid_2d, model.Undirected, fn(from_corr, to_corr) {
+    grid.from_2d_list(empty_grid_2d, model.Undirected, fn(_from_corr, _to_corr) {
       True
     })
 
