@@ -1,6 +1,6 @@
 /// Title: Pipe Maze
 /// Link: https://adventofcode.com/2023/day/10
-/// Difficulty: h
+/// Difficulty: xl
 /// Tags: graph bfs grid
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}

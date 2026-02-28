@@ -1,6 +1,6 @@
 /// Title: Universal Orbit Map
 /// Link: https://adventofcode.com/2019/day/6
-/// Difficulty: 
+/// Difficulty: l
 /// Tags: graph shortest-path
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}

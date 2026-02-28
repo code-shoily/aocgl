@@ -1,6 +1,6 @@
 /// Title: Snowverload
 /// Link: https://adventofcode.com/2023/day/25
-/// Difficulty: h
+/// Difficulty: xl
 /// Tags: graph min-cut stoer-wagner
 import common/reader
 import common/solution.{type Solution, OfDay25, OfInt, Solution}
