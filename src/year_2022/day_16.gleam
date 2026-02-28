@@ -46,7 +46,7 @@ type Input {
   Input(
     valve_ids: List(Int),
     valve_flows: Dict(Int, Int),
-    distances: Dict(Int, Dict(Int, Int)),
+    distances: Dict(#(Int, Int), Int),
     start_id: Int,
   )
 }
@@ -74,9 +74,8 @@ fn do_walk(
     case is_open {
       True -> current_acc
       False -> {
-        let assert Ok(distances_from_current) =
-          dict.get(input.distances, current_id)
-        let assert Ok(dist) = dict.get(distances_from_current, next_valve_id)
+        let assert Ok(dist) =
+          dict.get(input.distances, #(current_id, next_valve_id))
         let time_left = time - dist - 1
 
         case time_left > 0 {

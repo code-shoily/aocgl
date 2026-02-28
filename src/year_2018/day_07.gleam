@@ -5,7 +5,6 @@
 import common/reader
 import common/solution.{type Solution, OfNil, OfStr, Solution}
 import common/utils
-import gleam/int
 import gleam/list
 import gleam/result
 import gleam/string
@@ -24,7 +23,7 @@ fn solve_part_1(input: Input) -> String {
   let Input(graph) = input
 
   let assert Ok(order) =
-    topological_sort.lexicographical_topological_sort(graph, int.compare)
+    topological_sort.lexicographical_topological_sort(graph, string.compare)
 
   order
   |> list.map(ascii_to_char)
@@ -36,7 +35,7 @@ fn solve_part_2(_input: Input) -> Nil {
 }
 
 type Input {
-  Input(graph: model.Graph(Nil, Nil))
+  Input(graph: model.Graph(String, Nil))
 }
 
 fn parse(raw_input: String) -> Input {
@@ -53,8 +52,8 @@ fn parse(raw_input: String) -> Input {
       let step_id = char_to_ascii(step)
 
       g
-      |> model.add_node(prereq_id, Nil)
-      |> model.add_node(step_id, Nil)
+      |> model.add_node(prereq_id, prereq)
+      |> model.add_node(step_id, step)
       |> model.add_edge(from: prereq_id, to: step_id, with: Nil)
     })
 
