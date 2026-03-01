@@ -1,7 +1,7 @@
 /// Title: Bathroom Security
 /// Link: https://adventofcode.com/2016/day/2
 /// Difficulty: s
-/// Tags: grid 
+/// Tags: grid
 import common/reader
 import common/solution.{type Solution, OfStr, Solution}
 import common/utils
