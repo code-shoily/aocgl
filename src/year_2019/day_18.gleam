@@ -1,4 +1,4 @@
-// Title: Many-Worlds Interpretation
+/// Title: Many-Worlds Interpretation
 /// Link: https://adventofcode.com/2019/day/18
 /// Difficulty: xl
 /// Tags: graph, bfs, shortest-path, state-space-search

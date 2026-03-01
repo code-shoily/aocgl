@@ -1,6 +1,6 @@
 # aocgl
 
-Advent of Code solutions written in Gleam.
+Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/Home.md)** for a full index by year, tag, and difficulty.
 
 ## Getting Started
 

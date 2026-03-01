@@ -1,0 +1,7 @@
+# Tag: `topological-sort`
+
+[← Tags Index](index.md)
+
+| Year | Day | Title | Difficulty | Other Tags | Source |
+|------|:---:|-------|:----------:|------------|--------|
+| 2018 | [7](https://adventofcode.com/2018/day/7) | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | 🟠 M | [graph](graph.md) | [source](../../src/year_2018/day_07.gleam) |
