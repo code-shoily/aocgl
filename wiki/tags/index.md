@@ -19,7 +19,7 @@
 | [fold](fold.md) | 1 |
 | [frequency](frequency.md) | 1 |
 | [geometry](geometry.md) | 1 |
-| [graph](graph.md) | 16 |
+| [graph](graph.md) | 15 |
 | [grid](grid.md) | 6 |
 | [implicit-graph](implicit-graph.md) | 1 |
 | [linear-scan](linear-scan.md) | 1 |
@@ -45,5 +45,6 @@
 | [top-k](top-k.md) | 1 |
 | [topological-sort](topological-sort.md) | 1 |
 | [transpose](transpose.md) | 1 |
+| [tree](tree.md) | 1 |
 | [tsp](tsp.md) | 1 |
 | [window](window.md) | 1 |

@@ -17,6 +17,5 @@
 | 2022 | [16](https://adventofcode.com/2022/day/16) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16) | 💀 | [floyd-warshall](floyd-warshall.md), [dfs](dfs.md), [bitmask](bitmask.md) | [day_16.gleam](../../src/year_2022/day_16.gleam) |
 | 2023 | [10](https://adventofcode.com/2023/day/10) | [Pipe Maze](https://adventofcode.com/2023/day/10) | 💀 | [bfs](bfs.md), [grid](grid.md) | [day_10.gleam](../../src/year_2023/day_10.gleam) |
 | 2023 | [25](https://adventofcode.com/2023/day/25) | [Snowverload](https://adventofcode.com/2023/day/25) | 💀 | [min-cut](min-cut.md), [stoer-wagner](stoer-wagner.md) | [day_25.gleam](../../src/year_2023/day_25.gleam) |
-| 2024 | [7](https://adventofcode.com/2024/day/7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | 🟠 | [equation](equation.md) | [day_07.gleam](../../src/year_2024/day_07.gleam) |
 | 2024 | [18](https://adventofcode.com/2024/day/18) | [RAM Run](https://adventofcode.com/2024/day/18) | 🟠 | [shortest-path](shortest-path.md), [grid](grid.md) | [day_18.gleam](../../src/year_2024/day_18.gleam) |
 | 2024 | [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | 🟠 | [scc](scc.md) | [day_23.gleam](../../src/year_2024/day_23.gleam) |
