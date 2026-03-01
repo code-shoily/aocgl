@@ -54,7 +54,7 @@
 
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
-| 2019 | [18](https://adventofcode.com/2019/day/18) | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18) | [graph](tags/graph.md), [bfs](tags/bfs.md), [shortest-path](tags/shortest-path.md), [state-space-search](tags/state-space-search.md) | [day_18.gleam](../src/year_2019/day_18.gleam) |
+| 2019 | [18](https://adventofcode.com/2019/day/18) | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18) | [graph](tags/graph.md), [dijkstra](tags/dijkstra.md), [bfs](tags/bfs.md), [state-space-search](tags/state-space-search.md), [bitmask](tags/bitmask.md), [implicit-graph](tags/implicit-graph.md) | [day_18.gleam](../src/year_2019/day_18.gleam) |
 | 2022 | [16](https://adventofcode.com/2022/day/16) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16) | [graph](tags/graph.md), [floyd-warshall](tags/floyd-warshall.md), [dfs](tags/dfs.md), [bitmask](tags/bitmask.md) | [day_16.gleam](../src/year_2022/day_16.gleam) |
 | 2023 | [10](https://adventofcode.com/2023/day/10) | [Pipe Maze](https://adventofcode.com/2023/day/10) | [graph](tags/graph.md), [bfs](tags/bfs.md), [grid](tags/grid.md) | [day_10.gleam](../src/year_2023/day_10.gleam) |
 | 2023 | [25](https://adventofcode.com/2023/day/25) | [Snowverload](https://adventofcode.com/2023/day/25) | [graph](tags/graph.md), [min-cut](tags/min-cut.md), [stoer-wagner](tags/stoer-wagner.md) | [day_25.gleam](../src/year_2023/day_25.gleam) |

@@ -6,14 +6,14 @@
 |-----|--------:|
 | [backtracking](backtracking.md) | 1 |
 | [bfs](bfs.md) | 6 |
-| [bitmask](bitmask.md) | 1 |
+| [bitmask](bitmask.md) | 2 |
 | [brute-force](brute-force.md) | 1 |
 | [calculation](calculation.md) | 1 |
 | [captcha](captcha.md) | 1 |
 | [checksum](checksum.md) | 1 |
 | [circular-list](circular-list.md) | 1 |
 | [dfs](dfs.md) | 2 |
-| [dijkstra](dijkstra.md) | 1 |
+| [dijkstra](dijkstra.md) | 2 |
 | [equation](equation.md) | 1 |
 | [floyd-warshall](floyd-warshall.md) | 1 |
 | [fold](fold.md) | 1 |
@@ -21,7 +21,7 @@
 | [geometry](geometry.md) | 1 |
 | [graph](graph.md) | 15 |
 | [grid](grid.md) | 6 |
-| [implicit-graph](implicit-graph.md) | 1 |
+| [implicit-graph](implicit-graph.md) | 2 |
 | [linear-scan](linear-scan.md) | 1 |
 | [linked-list](linked-list.md) | 1 |
 | [measurement](measurement.md) | 1 |
@@ -37,7 +37,7 @@
 | [scc](scc.md) | 2 |
 | [security](security.md) | 2 |
 | [set](set.md) | 1 |
-| [shortest-path](shortest-path.md) | 5 |
+| [shortest-path](shortest-path.md) | 4 |
 | [sort](sort.md) | 2 |
 | [state-space-search](state-space-search.md) | 1 |
 | [stoer-wagner](stoer-wagner.md) | 1 |

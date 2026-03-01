@@ -4,4 +4,5 @@
 
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
+| 2019 | [18](https://adventofcode.com/2019/day/18) | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18) | 💀 | [graph](graph.md), [dijkstra](dijkstra.md), [bfs](bfs.md), [state-space-search](state-space-search.md), [implicit-graph](implicit-graph.md) | [day_18.gleam](../../src/year_2019/day_18.gleam) |
 | 2022 | [16](https://adventofcode.com/2022/day/16) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16) | 💀 | [graph](graph.md), [floyd-warshall](floyd-warshall.md), [dfs](dfs.md) | [day_16.gleam](../../src/year_2022/day_16.gleam) |

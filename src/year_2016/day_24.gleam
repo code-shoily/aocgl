@@ -1,7 +1,7 @@
 /// Title: Air Duct Spelunking
 /// Link: https://adventofcode.com/2016/day/24
 /// Difficulty: l
-/// Tags: graph, bfs, tsp
+/// Tags: graph bfs tsp
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
