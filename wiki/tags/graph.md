@@ -4,6 +4,7 @@
 
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
+| 2016 | [13](https://adventofcode.com/2016/day/13) | [A Maze of Twisty Little Cubicles](https://adventofcode.com/2016/day/13) | 🟠 | [bfs](bfs.md), [virtual-graph](virtual-graph.md) | [day_13.gleam](../../src/year_2016/day_13.gleam) |
 | 2016 | [24](https://adventofcode.com/2016/day/24) | [Air Duct Spelunking](https://adventofcode.com/2016/day/24) | 🔴 | [bfs](bfs.md), [tsp](tsp.md) | [day_24.gleam](../../src/year_2016/day_24.gleam) |
 | 2017 | [12](https://adventofcode.com/2017/day/12) | [Digital Plumber](https://adventofcode.com/2017/day/12) | 🟡 | [scc](scc.md) | [day_12.gleam](../../src/year_2017/day_12.gleam) |
 | 2018 | [7](https://adventofcode.com/2018/day/7) | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | 🟠 | [topological-sort](topological-sort.md) | [day_07.gleam](../../src/year_2018/day_07.gleam) |

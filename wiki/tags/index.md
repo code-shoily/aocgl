@@ -5,7 +5,7 @@
 | Tag | Problems |
 |-----|--------:|
 | [backtracking](backtracking.md) | 1 |
-| [bfs](bfs.md) | 5 |
+| [bfs](bfs.md) | 6 |
 | [bitmask](bitmask.md) | 1 |
 | [brute-force](brute-force.md) | 1 |
 | [calculation](calculation.md) | 1 |
@@ -19,7 +19,7 @@
 | [fold](fold.md) | 1 |
 | [frequency](frequency.md) | 1 |
 | [geometry](geometry.md) | 1 |
-| [graph](graph.md) | 15 |
+| [graph](graph.md) | 16 |
 | [grid](grid.md) | 6 |
 | [linear-scan](linear-scan.md) | 1 |
 | [linked-list](linked-list.md) | 1 |
@@ -45,4 +45,5 @@
 | [topological-sort](topological-sort.md) | 1 |
 | [transpose](transpose.md) | 1 |
 | [tsp](tsp.md) | 1 |
+| [virtual-graph](virtual-graph.md) | 1 |
 | [window](window.md) | 1 |
