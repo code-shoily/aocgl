@@ -133,6 +133,24 @@ gleam build    # Build the project
 
 Every solution has its own `main` so that we can echo parts of it as we develop and run it with `gleam run -m year_<year>/day_dd` for quicker feedbacks.
 
+## Updating the Wiki
+
+After solving a new puzzle, regenerate the wiki with:
+
+```sh
+python3 scripts/gen_wiki.py
+```
+
+This will rebuild `wiki/Home.md`, `wiki/tags/`, `wiki/difficulty.md`, and each `src/year_XXXX/README.md` from the `/// Title/Link/Difficulty/Tags` doc comments at the top of every solved day file. Then just commit the results.
+
+> Make sure your solution file starts with the standard header:
+> ```gleam
+> /// Title: Your Puzzle Title
+> /// Link: https://adventofcode.com/YYYY/day/DD
+> /// Difficulty: xs | s | m | l | xl
+> /// Tags: tag1 tag2 tag3
+> ```
+
 ## Contributing
 
 Feel free to explore different approaches and optimizations for the solutions!
