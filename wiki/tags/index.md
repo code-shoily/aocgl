@@ -2,10 +2,8 @@
 
 [← Home](../Home.md)
 
-Each tag links to a dedicated page with all matching solutions.
-
-| Tag | Count |
-|-----|------:|
+| Tag | Problems |
+|-----|--------:|
 | [backtracking](backtracking.md) | 1 |
 | [bfs](bfs.md) | 5 |
 | [bitmask](bitmask.md) | 1 |

@@ -6,32 +6,39 @@ Headers are doc comments at the top of each day_XX.gleam file:
   /// Link: ...
   /// Difficulty: ...
   /// Tags: tag1 tag2 ...
+
+Output layout:
+  wiki/Home.md          — progress grid + tag cloud
+  wiki/difficulty.md    — solutions by difficulty tier
+  wiki/tags/index.md    — tag directory
+  wiki/tags/{tag}.md    — one page per tag
+  src/year_XXXX/README.md  — per-year solution table
 """
 
-import os
 import re
 import shutil
 from pathlib import Path
 from collections import defaultdict
 
-SRC_DIR = Path("/home/mafinar/repos/gleam/aocgl/src")
-WIKI_DIR = Path("/home/mafinar/repos/gleam/aocgl/wiki")
-README_PATH = Path("/home/mafinar/repos/gleam/aocgl/README.md")
+REPO_DIR  = Path("/home/mafinar/repos/gleam/aocgl")
+SRC_DIR   = REPO_DIR / "src"
+WIKI_DIR  = REPO_DIR / "wiki"
 
-ALL_YEARS = list(range(2015, 2026))
 ALL_DAYS = list(range(1, 26))
 
-DIFFICULTY_ICON = {
-    "xs": "🟢 XS",
-    "s":  "🟡 S",
-    "m":  "🟠 M",
-    "l":  "🔴 L",
-    "xl": "💀 XL",
+# Emoji only — no text label
+DIFF_ICON = {
+    "xs": "🟢",
+    "s":  "🟡",
+    "m":  "🟠",
+    "l":  "🔴",
+    "xl": "💀",
 }
 
 
+# ─── Parsing ───────────────────────────────────────────────────────────────────
+
 def parse_day_file(path: Path) -> dict | None:
-    """Extract header metadata from a day_XX.gleam file."""
     meta = {}
     with open(path) as f:
         for line in f:
@@ -40,17 +47,14 @@ def parse_day_file(path: Path) -> dict | None:
                 break
             m = re.match(r'///\s+(\w+):\s+(.*)', line)
             if m:
-                key = m.group(1).lower()
-                val = m.group(2).strip()
-                meta[key] = val
+                meta[m.group(1).lower()] = m.group(2).strip()
 
     if not all(k in meta for k in ("title", "link", "difficulty", "tags")):
         return None
 
     day_num = int(re.search(r'day_(\d+)', path.stem).group(1))
     meta["day"] = day_num
-    # Support both "tag1 tag2" and "tag1, tag2" formats
-    meta["tags"] = [t.strip(",").strip() for t in re.split(r'[,\s]+', meta["tags"]) if t.strip(",").strip()]
+    meta["tags"] = [t.strip(",") for t in re.split(r'[,\s]+', meta["tags"]) if t.strip(",")]
     meta["difficulty"] = meta["difficulty"].lower()
     return meta
 
@@ -63,38 +67,45 @@ def collect_all_solutions() -> list[dict]:
             meta = parse_day_file(day_file)
             if meta:
                 meta["year"] = year
-                meta["src_path"] = f"src/{year_dir.name}/{day_file.name}"
+                meta["year_dir"] = year_dir.name        # e.g. "year_2024"
+                meta["day_file"] = day_file.name        # e.g. "day_01.gleam"
                 solutions.append(meta)
     return solutions
 
 
 def diff_icon(d: str) -> str:
-    return DIFFICULTY_ICON.get(d, d.upper())
+    return DIFF_ICON.get(d, d.upper())
 
 
-# ─── Home: grid-style progress table ──────────────────────────────────────────
+# ─── Home ─────────────────────────────────────────────────────────────────────
 
-def gen_home(solutions: list[dict]) -> str:
-    solved: dict[tuple[int,int], dict] = {}
-    for s in solutions:
-        solved[(s["year"], s["day"])] = s
+def gen_tag_cloud(tag_map: dict[str, list[dict]]) -> str:
+    """Inline tag cloud sorted by frequency (descending), with count hint."""
+    # Sort by count desc, then alpha
+    tags_by_freq = sorted(tag_map.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+    parts = [f"[{tag}](tags/{tag}.md)&nbsp;`{len(sols)}`" for tag, sols in tags_by_freq]
+    return "  ".join(parts)
 
+
+def gen_home(solutions: list[dict], tag_map: dict[str, list[dict]]) -> str:
+    solved: dict[tuple[int, int], dict] = {(s["year"], s["day"]): s for s in solutions}
     years = sorted({s["year"] for s in solutions})
     total = len(solutions)
-    stars = total * 2  # assume both parts done
 
-    year_links = " | ".join(f"[{y}]({y}.md)" for y in years)
+    # Year nav links → point to src/year_XXXX/README.md (relative from wiki/)
+    year_links = " | ".join(f"[{y}](../src/year_{y}/README.md)" for y in years)
 
     lines = [
         "# aocgl — Advent of Code in Gleam\n\n",
         "[Advent of Code](https://adventofcode.com) puzzle solutions written in [Gleam](https://gleam.run).\n\n",
-        f"> **{total} problems solved** across **{len(years)} years** — see [Tags](tags/index.md) or [Difficulty](difficulty.md) for more views.\n\n",
+        f"> **{total} problems solved** across **{len(years)} years**"
+        f" — [Tags](tags/index.md) · [Difficulty](difficulty.md)\n\n",
         f"**Years:** {year_links}\n\n",
         "---\n\n",
     ]
 
-    # Build grid header
-    year_header = " | ".join(f"[{y}]({y}.md)" for y in years)
+    # Progress grid
+    year_header = " | ".join(f"[{y}](../src/year_{y}/README.md)" for y in years)
     lines.append(f"| Day | {year_header} |\n")
     lines.append("|:---:|" + ":-:|" * len(years) + "\n")
 
@@ -102,30 +113,33 @@ def gen_home(solutions: list[dict]) -> str:
         cells = []
         for year in years:
             s = solved.get((year, day))
-            if s:
-                cells.append(f"[⭐]({s['link']})")
-            else:
-                cells.append(" ")
+            cells.append(f"[⭐]({s['link']})" if s else " ")
         lines.append(f"| {day} | " + " | ".join(cells) + " |\n")
+
+    # Tag cloud
+    lines.append("\n---\n\n")
+    lines.append("## 🏷️ Tags\n\n")
+    lines.append(gen_tag_cloud(tag_map) + "\n")
 
     return "".join(lines)
 
 
-# ─── Per-year page ─────────────────────────────────────────────────────────────
+# ─── Per-year README ───────────────────────────────────────────────────────────
 
 def gen_year(year: int, solutions: list[dict], all_years: list[int]) -> str:
+    """Written to src/year_XXXX/README.md — paths are relative to that location."""
     sols = sorted(solutions, key=lambda s: s["day"])
 
-    nav_parts = ["[Home](Home.md)"]
+    # Nav: home + all years; other years link to their own README
+    nav_parts = ["[Home](../../wiki/Home.md)"]
     for y in all_years:
         if y == year:
             nav_parts.append(str(y))
         else:
-            nav_parts.append(f"[{y}]({y}.md)")
+            nav_parts.append(f"[{y}](../year_{y}/README.md)")
     nav = " | ".join(nav_parts)
 
-    solved_count = len(sols)
-    stars = solved_count * 2
+    stars = len(sols) * 2
 
     lines = [
         f"# Advent of Code {year}\n\n",
@@ -136,8 +150,9 @@ def gen_year(year: int, solutions: list[dict], all_years: list[int]) -> str:
     ]
 
     for s in sols:
-        tags = ", ".join(f"[{t}](tags/{t}.md)" for t in s["tags"])
-        src = f"[source](../{s['src_path']})"
+        # tag links relative to src/year_XXXX/ → ../../wiki/tags/
+        tags = ", ".join(f"[{t}](../../wiki/tags/{t}.md)" for t in s["tags"])
+        src  = f"[{s['day_file']}]({s['day_file']})"   # same directory
         lines.append(
             f"| [{s['day']}]({s['link']}) "
             f"| [{s['title']}]({s['link']}) "
@@ -149,23 +164,22 @@ def gen_year(year: int, solutions: list[dict], all_years: list[int]) -> str:
     return "".join(lines)
 
 
-# ─── Tags: index + individual pages ───────────────────────────────────────────
+# ─── Tags ─────────────────────────────────────────────────────────────────────
 
 def gen_tag_index(tag_map: dict[str, list[dict]]) -> str:
     lines = [
         "# 🏷️ Tags Index\n\n",
         "[← Home](../Home.md)\n\n",
-        "Each tag links to a dedicated page with all matching solutions.\n\n",
-        "| Tag | Count |\n",
-        "|-----|------:|\n",
+        "| Tag | Problems |\n",
+        "|-----|--------:|\n",
     ]
     for tag in sorted(tag_map.keys()):
-        count = len(tag_map[tag])
-        lines.append(f"| [{tag}]({tag}.md) | {count} |\n")
+        lines.append(f"| [{tag}]({tag}.md) | {len(tag_map[tag])} |\n")
     return "".join(lines)
 
 
 def gen_tag_page(tag: str, solutions: list[dict]) -> str:
+    """Lives at wiki/tags/{tag}.md; source relative to repo root."""
     sols = sorted(solutions, key=lambda s: (s["year"], s["day"]))
     lines = [
         f"# Tag: `{tag}`\n\n",
@@ -175,7 +189,8 @@ def gen_tag_page(tag: str, solutions: list[dict]) -> str:
     ]
     for s in sols:
         other_tags = ", ".join(f"[{t}]({t}.md)" for t in s["tags"] if t != tag)
-        src = f"[source](../../{s['src_path']})"
+        # source relative from wiki/tags/ → ../../src/year_XXXX/day_XX.gleam
+        src = f"[{s['day_file']}](../../src/{s['year_dir']}/{s['day_file']})"
         lines.append(
             f"| {s['year']} "
             f"| [{s['day']}]({s['link']}) "
@@ -187,7 +202,7 @@ def gen_tag_page(tag: str, solutions: list[dict]) -> str:
     return "".join(lines)
 
 
-# ─── Difficulty page ───────────────────────────────────────────────────────────
+# ─── Difficulty ───────────────────────────────────────────────────────────────
 
 def gen_difficulty(solutions: list[dict]) -> str:
     diff_map: dict[str, list[dict]] = defaultdict(list)
@@ -203,12 +218,12 @@ def gen_difficulty(solutions: list[dict]) -> str:
         if not sols:
             continue
         sols = sorted(sols, key=lambda s: (s["year"], s["day"]))
-        lines.append(f"## {diff_icon(diff)}\n\n")
+        lines.append(f"## {diff_icon(diff)} {diff.upper()}\n\n")
         lines.append("| Year | Day | Title | Tags | Source |\n")
         lines.append("|------|:---:|-------|------|--------|\n")
         for s in sols:
             tags = ", ".join(f"[{t}](tags/{t}.md)" for t in s["tags"])
-            src = f"[source]({s['src_path']})"
+            src  = f"[{s['day_file']}](../src/{s['year_dir']}/{s['day_file']})"
             lines.append(
                 f"| {s['year']} "
                 f"| [{s['day']}]({s['link']}) "
@@ -220,10 +235,10 @@ def gen_difficulty(solutions: list[dict]) -> str:
     return "".join(lines)
 
 
-# ─── Main ──────────────────────────────────────────────────────────────────────
+# ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
-    # Clean and recreate wiki dir
+    # Recreate wiki/ (keep tags/ subdir clean too)
     if WIKI_DIR.exists():
         shutil.rmtree(WIKI_DIR)
     WIKI_DIR.mkdir()
@@ -232,39 +247,40 @@ def main():
 
     solutions = collect_all_solutions()
     all_years = sorted({s["year"] for s in solutions})
-    print(f"Collected {len(solutions)} solutions.")
+    print(f"Collected {len(solutions)} solutions across {len(all_years)} years.")
 
-    # Home
-    (WIKI_DIR / "Home.md").write_text(gen_home(solutions))
-    print("  Wrote wiki/Home.md")
-
-    # Per-year
-    by_year: dict[int, list[dict]] = defaultdict(list)
-    for s in solutions:
-        by_year[s["year"]].append(s)
-
-    for year, sols in sorted(by_year.items()):
-        (WIKI_DIR / f"{year}.md").write_text(gen_year(year, sols, all_years))
-        print(f"  Wrote wiki/{year}.md")
-
-    # Tags
+    # Build tag map once
     tag_map: dict[str, list[dict]] = defaultdict(list)
     for s in solutions:
         for t in s["tags"]:
             tag_map[t].append(s)
 
-    (tags_dir / "index.md").write_text(gen_tag_index(tag_map))
-    print("  Wrote wiki/tags/index.md")
+    # wiki/Home.md
+    (WIKI_DIR / "Home.md").write_text(gen_home(solutions, tag_map))
+    print("  Wrote wiki/Home.md")
 
-    for tag, sols in sorted(tag_map.items()):
-        (tags_dir / f"{tag}.md").write_text(gen_tag_page(tag, sols))
-        print(f"  Wrote wiki/tags/{tag}.md")
-
-    # Difficulty
+    # wiki/difficulty.md
     (WIKI_DIR / "difficulty.md").write_text(gen_difficulty(solutions))
     print("  Wrote wiki/difficulty.md")
 
-    print(f"\nDone! {len(tag_map)} tag files + index, {len(all_years)} year files.")
+    # wiki/tags/
+    (tags_dir / "index.md").write_text(gen_tag_index(tag_map))
+    print("  Wrote wiki/tags/index.md")
+    for tag, sols in sorted(tag_map.items()):
+        (tags_dir / f"{tag}.md").write_text(gen_tag_page(tag, sols))
+    print(f"  Wrote {len(tag_map)} tag pages under wiki/tags/")
+
+    # src/year_XXXX/README.md
+    by_year: dict[int, list[dict]] = defaultdict(list)
+    for s in solutions:
+        by_year[s["year"]].append(s)
+
+    for year, sols in sorted(by_year.items()):
+        dest = SRC_DIR / f"year_{year}" / "README.md"
+        dest.write_text(gen_year(year, sols, all_years))
+        print(f"  Wrote src/year_{year}/README.md")
+
+    print(f"\nDone!")
 
 
 if __name__ == "__main__":
