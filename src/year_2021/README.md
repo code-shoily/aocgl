@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[graph](../../wiki/tags/graph.md)&nbsp;`2`  [backtracking](../../wiki/tags/backtracking.md)&nbsp;`1`  [dfs](../../wiki/tags/dfs.md)&nbsp;`1`  [dijkstra](../../wiki/tags/dijkstra.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [measurements](../../wiki/tags/measurements.md)&nbsp;`1`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`1`  [window](../../wiki/tags/window.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2021/day/1) | [Sonar Sweep](https://adventofcode.com/2021/day/1) | 🟢 | [window](../../wiki/tags/window.md), [measurements](../../wiki/tags/measurements.md) | [day_01.gleam](day_01.gleam) |

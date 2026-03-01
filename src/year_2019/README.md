@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[graph](../../wiki/tags/graph.md)&nbsp;`2`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [calculation](../../wiki/tags/calculation.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`  [state-space-search](../../wiki/tags/state-space-search.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | 🟢 | [calculation](../../wiki/tags/calculation.md), [reduction](../../wiki/tags/reduction.md) | [day_01.gleam](day_01.gleam) |

@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[graph](../../wiki/tags/graph.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [min-cut](../../wiki/tags/min-cut.md)&nbsp;`1`  [regex](../../wiki/tags/regex.md)&nbsp;`1`  [stoer-wagner](../../wiki/tags/stoer-wagner.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2023/day/1) | [Trebuchet?!](https://adventofcode.com/2023/day/1) | 🟡 | [regex](../../wiki/tags/regex.md) | [day_01.gleam](day_01.gleam) |

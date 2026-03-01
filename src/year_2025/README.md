@@ -4,6 +4,8 @@
 
 ## ⭐ 2/50
 
+[modular-algebra](../../wiki/tags/modular-algebra.md)&nbsp;`1`  [rotation](../../wiki/tags/rotation.md)&nbsp;`1`  [security](../../wiki/tags/security.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | 🟠 | [modular-algebra](../../wiki/tags/modular-algebra.md), [rotation](../../wiki/tags/rotation.md), [security](../../wiki/tags/security.md) | [day_01.gleam](day_01.gleam) |

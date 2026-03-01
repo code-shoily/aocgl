@@ -141,10 +141,22 @@ def gen_year(year: int, solutions: list[dict], all_years: list[int]) -> str:
 
     stars = len(sols) * 2
 
+    # Build per-year tag cloud
+    year_tags: dict[str, int] = defaultdict(int)
+    for s in sols:
+        for t in s["tags"]:
+            year_tags[t] += 1
+    tag_cloud_parts = sorted(year_tags.items(), key=lambda kv: (-kv[1], kv[0]))
+    tag_cloud = "  ".join(
+        f"[{tag}](../../wiki/tags/{tag}.md)&nbsp;`{count}`"
+        for tag, count in tag_cloud_parts
+    )
+
     lines = [
         f"# Advent of Code {year}\n\n",
         f"{nav}\n\n",
         f"## ⭐ {stars}/50\n\n",
+        f"{tag_cloud}\n\n",
         "| Day | Title | Difficulty | Tags | Source |\n",
         "|:---:|-------|:----------:|------|--------|\n",
     ]

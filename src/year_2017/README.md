@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[captcha](../../wiki/tags/captcha.md)&nbsp;`1`  [checksum](../../wiki/tags/checksum.md)&nbsp;`1`  [graph](../../wiki/tags/graph.md)&nbsp;`1`  [linked-list](../../wiki/tags/linked-list.md)&nbsp;`1`  [scc](../../wiki/tags/scc.md)&nbsp;`1`  [transpose](../../wiki/tags/transpose.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2017/day/1) | [Inverse Captcha](https://adventofcode.com/2017/day/1) | 🟢 | [linked-list](../../wiki/tags/linked-list.md), [captcha](../../wiki/tags/captcha.md) | [day_01.gleam](day_01.gleam) |

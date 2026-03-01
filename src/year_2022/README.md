@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[graph](../../wiki/tags/graph.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [bitmask](../../wiki/tags/bitmask.md)&nbsp;`1`  [dfs](../../wiki/tags/dfs.md)&nbsp;`1`  [floyd-warshall](../../wiki/tags/floyd-warshall.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`  [top-k](../../wiki/tags/top-k.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | 🟢 | [sort](../../wiki/tags/sort.md), [top-k](../../wiki/tags/top-k.md) | [day_01.gleam](day_01.gleam) |

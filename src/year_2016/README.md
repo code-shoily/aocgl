@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[grid](../../wiki/tags/grid.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [fold](../../wiki/tags/fold.md)&nbsp;`1`  [graph](../../wiki/tags/graph.md)&nbsp;`1`  [navigation](../../wiki/tags/navigation.md)&nbsp;`1`  [tsp](../../wiki/tags/tsp.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2016/day/1) | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | 🟡 | [fold](../../wiki/tags/fold.md), [navigation](../../wiki/tags/navigation.md), [grid](../../wiki/tags/grid.md) | [day_01.gleam](day_01.gleam) |

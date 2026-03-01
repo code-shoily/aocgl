@@ -4,6 +4,8 @@
 
 ## ⭐ 8/50
 
+[graph](../../wiki/tags/graph.md)&nbsp;`3`  [equation](../../wiki/tags/equation.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [pair](../../wiki/tags/pair.md)&nbsp;`1`  [scc](../../wiki/tags/scc.md)&nbsp;`1`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | 🟢 | [sort](../../wiki/tags/sort.md), [pair](../../wiki/tags/pair.md) | [day_01.gleam](day_01.gleam) |

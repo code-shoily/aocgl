@@ -4,6 +4,8 @@
 
 ## ⭐ 4/50
 
+[geometry](../../wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](../../wiki/tags/linear-scan.md)&nbsp;`1`  [measurement](../../wiki/tags/measurement.md)&nbsp;`1`  [navigation](../../wiki/tags/navigation.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | 🟢 | [navigation](../../wiki/tags/navigation.md), [linear-scan](../../wiki/tags/linear-scan.md), [reduction](../../wiki/tags/reduction.md) | [day_01.gleam](day_01.gleam) |

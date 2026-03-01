@@ -4,6 +4,8 @@
 
 ## ⭐ 6/50
 
+[bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [graph](../../wiki/tags/graph.md)&nbsp;`1`  [n-sum](../../wiki/tags/n-sum.md)&nbsp;`1`  [security](../../wiki/tags/security.md)&nbsp;`1`  [text](../../wiki/tags/text.md)&nbsp;`1`
+
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | 🟢 | [n-sum](../../wiki/tags/n-sum.md) | [day_01.gleam](day_01.gleam) |
