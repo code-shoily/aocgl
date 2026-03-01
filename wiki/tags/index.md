@@ -21,6 +21,7 @@
 | [geometry](geometry.md) | 1 |
 | [graph](graph.md) | 16 |
 | [grid](grid.md) | 6 |
+| [implicit-graph](implicit-graph.md) | 1 |
 | [linear-scan](linear-scan.md) | 1 |
 | [linked-list](linked-list.md) | 1 |
 | [measurement](measurement.md) | 1 |
@@ -45,5 +46,4 @@
 | [topological-sort](topological-sort.md) | 1 |
 | [transpose](transpose.md) | 1 |
 | [tsp](tsp.md) | 1 |
-| [virtual-graph](virtual-graph.md) | 1 |
 | [window](window.md) | 1 |

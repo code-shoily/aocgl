@@ -1,7 +1,7 @@
 /// Title: A Maze of Twisty Little Cubicles
 /// Link: https://adventofcode.com/2016/day/13
 /// Difficulty: m
-/// Tags: graph bfs virtual-graph
+/// Tags: graph bfs implicit-graph
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
@@ -24,7 +24,7 @@ pub fn solve(raw_input: String) -> Solution {
 
 fn solve_part_1(fav: Int) -> Int {
   let target = #(31, 39)
-  traversal.virtual_fold(
+  traversal.implicit_fold(
     from: #(1, 1),
     using: BreadthFirst,
     initial: -1,
@@ -39,8 +39,7 @@ fn solve_part_1(fav: Int) -> Int {
 }
 
 fn solve_part_2(fav: Int) -> Int {
-  // Accumulate the visited set; Stop exploring beyond depth 50
-  traversal.virtual_fold(
+  traversal.implicit_fold(
     from: #(1, 1),
     using: BreadthFirst,
     initial: set.new(),

@@ -1,4 +1,4 @@
-# Tag: `virtual-graph`
+# Tag: `implicit-graph`
 
 [← Tags Index](index.md)  |  [← Home](../../README.md)
 

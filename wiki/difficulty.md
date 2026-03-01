@@ -33,7 +33,7 @@
 
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
-| 2016 | [13](https://adventofcode.com/2016/day/13) | [A Maze of Twisty Little Cubicles](https://adventofcode.com/2016/day/13) | [graph](tags/graph.md), [bfs](tags/bfs.md), [virtual-graph](tags/virtual-graph.md) | [day_13.gleam](../src/year_2016/day_13.gleam) |
+| 2016 | [13](https://adventofcode.com/2016/day/13) | [A Maze of Twisty Little Cubicles](https://adventofcode.com/2016/day/13) | [graph](tags/graph.md), [bfs](tags/bfs.md), [implicit-graph](tags/implicit-graph.md) | [day_13.gleam](../src/year_2016/day_13.gleam) |
 | 2018 | [7](https://adventofcode.com/2018/day/7) | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [graph](tags/graph.md), [topological-sort](tags/topological-sort.md) | [day_07.gleam](../src/year_2018/day_07.gleam) |
 | 2021 | [12](https://adventofcode.com/2021/day/12) | [Passage Pathing](https://adventofcode.com/2021/day/12) | [graph](tags/graph.md), [dfs](tags/dfs.md), [backtracking](tags/backtracking.md) | [day_12.gleam](../src/year_2021/day_12.gleam) |
 | 2021 | [15](https://adventofcode.com/2021/day/15) | [Chiton](https://adventofcode.com/2021/day/15) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md), [dijkstra](tags/dijkstra.md) | [day_15.gleam](../src/year_2021/day_15.gleam) |
