@@ -1,6 +1,48 @@
 # aocgl
 
-Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/Home.md)** for a full index by year, tag, and difficulty.
+Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/tags/index.md)** for tag/difficulty indexes, or see per-year pages in each `src/year_XXXX/` folder.
+
+## Stats
+
+<!-- STATS_START -->
+> **31 problems solved** across **11 years** — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md)
+
+**Years:** [2015](src/year_2015/README.md) | [2016](src/year_2016/README.md) | [2017](src/year_2017/README.md) | [2018](src/year_2018/README.md) | [2019](src/year_2019/README.md) | [2020](src/year_2020/README.md) | [2021](src/year_2021/README.md) | [2022](src/year_2022/README.md) | [2023](src/year_2023/README.md) | [2024](src/year_2024/README.md) | [2025](src/year_2025/README.md)
+
+| Day | [2015](src/year_2015/README.md) | [2016](src/year_2016/README.md) | [2017](src/year_2017/README.md) | [2018](src/year_2018/README.md) | [2019](src/year_2019/README.md) | [2020](src/year_2020/README.md) | [2021](src/year_2021/README.md) | [2022](src/year_2022/README.md) | [2023](src/year_2023/README.md) | [2024](src/year_2024/README.md) | [2025](src/year_2025/README.md) |
+|:---:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 1 | [⭐](https://adventofcode.com/2015/day/1) | [⭐](https://adventofcode.com/2016/day/1) | [⭐](https://adventofcode.com/2017/day/1) | [⭐](https://adventofcode.com/2018/day/1) | [⭐](https://adventofcode.com/2019/day/1) | [⭐](https://adventofcode.com/2020/day/1) | [⭐](https://adventofcode.com/2021/day/1) | [⭐](https://adventofcode.com/2022/day/1) | [⭐](https://adventofcode.com/2023/day/1) | [⭐](https://adventofcode.com/2024/day/1) | [⭐](https://adventofcode.com/2025/day/1) |
+| 2 | [⭐](https://adventofcode.com/2015/day/2) | [⭐](https://adventofcode.com/2016/day/2) | [⭐](https://adventofcode.com/2017/day/2) | [⭐](https://adventofcode.com/2018/day/2) |   | [⭐](https://adventofcode.com/2020/day/2) |   |   |   |   |   |
+| 3 |   |   |   |   |   |   |   |   |   |   |   |
+| 4 |   |   |   |   |   |   |   |   |   |   |   |
+| 5 |   |   |   |   |   |   |   |   |   |   |   |
+| 6 |   |   |   |   | [⭐](https://adventofcode.com/2019/day/6) |   |   |   |   |   |   |
+| 7 |   |   |   | [⭐](https://adventofcode.com/2018/day/7) |   | [⭐](https://adventofcode.com/2020/day/7) |   |   |   | [⭐](https://adventofcode.com/2024/day/7) |   |
+| 8 |   |   |   |   |   |   |   |   |   |   |   |
+| 9 |   |   |   |   |   |   |   |   |   |   |   |
+| 10 |   |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2023/day/10) |   |   |
+| 11 |   |   |   |   |   |   |   |   |   |   |   |
+| 12 |   |   | [⭐](https://adventofcode.com/2017/day/12) |   |   |   | [⭐](https://adventofcode.com/2021/day/12) | [⭐](https://adventofcode.com/2022/day/12) |   |   |   |
+| 13 |   |   |   |   |   |   |   |   |   |   |   |
+| 14 |   |   |   |   |   |   |   |   |   |   |   |
+| 15 |   |   |   |   |   |   | [⭐](https://adventofcode.com/2021/day/15) |   |   |   |   |
+| 16 |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2022/day/16) |   |   |   |
+| 17 |   |   |   |   |   |   |   |   |   |   |   |
+| 18 |   |   |   |   | [⭐](https://adventofcode.com/2019/day/18) |   |   |   |   | [⭐](https://adventofcode.com/2024/day/18) |   |
+| 19 |   |   |   |   |   |   |   |   |   |   |   |
+| 20 |   |   |   |   |   |   |   |   |   |   |   |
+| 21 |   |   |   |   |   |   |   |   |   |   |   |
+| 22 |   |   |   |   |   |   |   |   |   |   |   |
+| 23 |   |   |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2024/day/23) |   |
+| 24 |   | [⭐](https://adventofcode.com/2016/day/24) |   |   |   |   |   |   |   |   |   |
+| 25 |   |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2023/day/25) |   |   |
+
+### 🏷️ Tags
+
+[graph](wiki/tags/graph.md)&nbsp;`15`  [grid](wiki/tags/grid.md)&nbsp;`6`  [bfs](wiki/tags/bfs.md)&nbsp;`5`  [shortest-path](wiki/tags/shortest-path.md)&nbsp;`5`  [dfs](wiki/tags/dfs.md)&nbsp;`2`  [navigation](wiki/tags/navigation.md)&nbsp;`2`  [reduction](wiki/tags/reduction.md)&nbsp;`2`  [scc](wiki/tags/scc.md)&nbsp;`2`  [security](wiki/tags/security.md)&nbsp;`2`  [sort](wiki/tags/sort.md)&nbsp;`2`  [backtracking](wiki/tags/backtracking.md)&nbsp;`1`  [bitmask](wiki/tags/bitmask.md)&nbsp;`1`  [brute-force](wiki/tags/brute-force.md)&nbsp;`1`  [calculation](wiki/tags/calculation.md)&nbsp;`1`  [captcha](wiki/tags/captcha.md)&nbsp;`1`  [checksum](wiki/tags/checksum.md)&nbsp;`1`  [circular-list](wiki/tags/circular-list.md)&nbsp;`1`  [dijkstra](wiki/tags/dijkstra.md)&nbsp;`1`  [equation](wiki/tags/equation.md)&nbsp;`1`  [floyd-warshall](wiki/tags/floyd-warshall.md)&nbsp;`1`  [fold](wiki/tags/fold.md)&nbsp;`1`  [frequency](wiki/tags/frequency.md)&nbsp;`1`  [geometry](wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](wiki/tags/linear-scan.md)&nbsp;`1`  [linked-list](wiki/tags/linked-list.md)&nbsp;`1`  [measurement](wiki/tags/measurement.md)&nbsp;`1`  [measurements](wiki/tags/measurements.md)&nbsp;`1`  [min-cut](wiki/tags/min-cut.md)&nbsp;`1`  [modular-algebra](wiki/tags/modular-algebra.md)&nbsp;`1`  [n-sum](wiki/tags/n-sum.md)&nbsp;`1`  [pair](wiki/tags/pair.md)&nbsp;`1`  [regex](wiki/tags/regex.md)&nbsp;`1`  [rotation](wiki/tags/rotation.md)&nbsp;`1`  [set](wiki/tags/set.md)&nbsp;`1`  [state-space-search](wiki/tags/state-space-search.md)&nbsp;`1`  [stoer-wagner](wiki/tags/stoer-wagner.md)&nbsp;`1`  [text](wiki/tags/text.md)&nbsp;`1`  [top-k](wiki/tags/top-k.md)&nbsp;`1`  [topological-sort](wiki/tags/topological-sort.md)&nbsp;`1`  [transpose](wiki/tags/transpose.md)&nbsp;`1`  [tsp](wiki/tags/tsp.md)&nbsp;`1`  [window](wiki/tags/window.md)&nbsp;`1`
+<!-- STATS_END -->
+
+
 
 ## Getting Started
 

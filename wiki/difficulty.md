@@ -1,6 +1,6 @@
 # 🎯 Solutions by Difficulty
 
-[← Home](Home.md)
+[← Home](../README.md)
 
 ## 🟢 XS
 

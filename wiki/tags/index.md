@@ -1,6 +1,6 @@
 # 🏷️ Tags Index
 
-[← Home](../Home.md)
+[← Home](../../README.md)
 
 | Tag | Problems |
 |-----|--------:|

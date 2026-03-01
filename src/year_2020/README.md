@@ -1,6 +1,6 @@
 # Advent of Code 2020
 
-[Home](../../wiki/Home.md) | [2015](../year_2015/README.md) | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | 2020 | [2021](../year_2021/README.md) | [2022](../year_2022/README.md) | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | [2025](../year_2025/README.md)
+[Home](../../README.md) | [2015](../year_2015/README.md) | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | 2020 | [2021](../year_2021/README.md) | [2022](../year_2022/README.md) | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | [2025](../year_2025/README.md)
 
 ## ⭐ 6/50
 

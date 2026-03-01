@@ -1,6 +1,6 @@
 # Tag: `captcha`
 
-[← Tags Index](index.md)
+[← Tags Index](index.md)  |  [← Home](../../README.md)
 
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
