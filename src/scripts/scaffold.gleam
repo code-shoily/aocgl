@@ -64,7 +64,7 @@ fn generate_solution_module(year: Int, day: Int) -> String {
   "/// Title: 
 /// Link: https://adventofcode.com/{{year}}/day/{{day}}
 /// Difficulty: 
-/// Tags: 
+/// Tags:
 import common/reader
 import common/solution.{type Solution, Solution, OfInt}
 import common/utils

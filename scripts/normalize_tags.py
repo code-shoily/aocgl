@@ -62,7 +62,7 @@ def normalize_tags(file_path):
 def main():
     # Find active directory (project root)
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(script_dir))
+    project_root = os.path.dirname(script_dir)
     
     src_dir = os.path.join(project_root, 'src')
     
