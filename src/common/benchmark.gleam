@@ -5,6 +5,17 @@ import gleam/float
 import gleam/int
 import gleam/io
 import gleam/list
+import year_2015/runner as runner_2015
+import year_2016/runner as runner_2016
+import year_2017/runner as runner_2017
+import year_2018/runner as runner_2018
+import year_2019/runner as runner_2019
+import year_2020/runner as runner_2020
+import year_2021/runner as runner_2021
+import year_2022/runner as runner_2022
+import year_2023/runner as runner_2023
+import year_2024/runner as runner_2024
+import year_2025/runner as runner_2025
 
 @external(erlang, "os", "timestamp")
 fn timestamp() -> #(Int, Int, Int)
@@ -61,16 +72,3 @@ pub fn main() {
     })
   })
 }
-
-// We need to import the runners
-import year_2015/runner as runner_2015
-import year_2016/runner as runner_2016
-import year_2017/runner as runner_2017
-import year_2018/runner as runner_2018
-import year_2019/runner as runner_2019
-import year_2020/runner as runner_2020
-import year_2021/runner as runner_2021
-import year_2022/runner as runner_2022
-import year_2023/runner as runner_2023
-import year_2024/runner as runner_2024
-import year_2025/runner as runner_2025
