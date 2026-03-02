@@ -1,4 +1,4 @@
-import common/reader.{type InputParams, InputParams}
+import common/reader.{InputParams}
 import common/solution.{NotDone}
 import common/utils
 import gleam/float
