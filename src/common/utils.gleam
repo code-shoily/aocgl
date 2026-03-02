@@ -75,3 +75,23 @@ fn do_range(current: Int, end: Int, acc: List(Int)) -> List(Int) {
 @external(erlang, "erlang", "halt")
 @external(javascript, "node:process", "exit")
 pub fn exit(status: Int) -> Nil
+
+/// Computes the greatest common divisor of two integers.
+pub fn gcd(a: Int, b: Int) -> Int {
+  let a = int.absolute_value(a)
+  let b = int.absolute_value(b)
+  case b {
+    0 -> a
+    _ -> gcd(b, a % b)
+  }
+}
+
+/// Computes the least common multiple of two integers.
+pub fn lcm(a: Int, b: Int) -> Int {
+  let a_abs = int.absolute_value(a)
+  let b_abs = int.absolute_value(b)
+  case a_abs == 0 || b_abs == 0 {
+    True -> 0
+    False -> a_abs * b_abs / gcd(a_abs, b_abs)
+  }
+}

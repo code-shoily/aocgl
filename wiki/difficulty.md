@@ -50,6 +50,8 @@
 |------|:---:|-------|------|--------|
 | 2016 | [24](https://adventofcode.com/2016/day/24) | [Air Duct Spelunking](https://adventofcode.com/2016/day/24) | [graph](tags/graph.md), [bfs](tags/bfs.md), [tsp](tags/tsp.md) | [day_24.gleam](../src/year_2016/day_24.gleam) |
 | 2019 | [6](https://adventofcode.com/2019/day/6) | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md) | [day_06.gleam](../src/year_2019/day_06.gleam) |
+| 2022 | [24](https://adventofcode.com/2022/day/24) | [Blizzard Basin](https://adventofcode.com/2022/day/24) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [shortest-path](tags/shortest-path.md), [bfs](tags/bfs.md) | [day_24.gleam](../src/year_2022/day_24.gleam) |
+| 2023 | [23](https://adventofcode.com/2023/day/23) | [A Long Walk](https://adventofcode.com/2023/day/23) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [longest-path](tags/longest-path.md), [dfs](tags/dfs.md), [bitmask](tags/bitmask.md) | [day_23.gleam](../src/year_2023/day_23.gleam) |
 
 ## 💀 XL
 
@@ -58,5 +60,6 @@
 | 2019 | [18](https://adventofcode.com/2019/day/18) | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18) | [graph](tags/graph.md), [dijkstra](tags/dijkstra.md), [bfs](tags/bfs.md), [state-space-search](tags/state-space-search.md), [bitmask](tags/bitmask.md), [implicit-graph](tags/implicit-graph.md) | [day_18.gleam](../src/year_2019/day_18.gleam) |
 | 2022 | [16](https://adventofcode.com/2022/day/16) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16) | [graph](tags/graph.md), [floyd-warshall](tags/floyd-warshall.md), [dfs](tags/dfs.md), [bitmask](tags/bitmask.md) | [day_16.gleam](../src/year_2022/day_16.gleam) |
 | 2023 | [10](https://adventofcode.com/2023/day/10) | [Pipe Maze](https://adventofcode.com/2023/day/10) | [graph](tags/graph.md), [bfs](tags/bfs.md), [grid](tags/grid.md) | [day_10.gleam](../src/year_2023/day_10.gleam) |
+| 2023 | [17](https://adventofcode.com/2023/day/17) | [Clumsy Crucible](https://adventofcode.com/2023/day/17) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [shortest-path](tags/shortest-path.md) | [day_17.gleam](../src/year_2023/day_17.gleam) |
 | 2023 | [25](https://adventofcode.com/2023/day/25) | [Snowverload](https://adventofcode.com/2023/day/25) | [graph](tags/graph.md), [min-cut](tags/min-cut.md), [stoer-wagner](tags/stoer-wagner.md) | [day_25.gleam](../src/year_2023/day_25.gleam) |
 

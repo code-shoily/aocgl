@@ -328,3 +328,22 @@ pub fn range_all_negative_test() {
   utils.int_range(-5, -2)
   |> should.equal([-5, -4, -3, -2])
 }
+
+// Tests for gcd
+pub fn gcd_test() {
+  utils.gcd(48, 18) |> should.equal(6)
+  utils.gcd(54, 24) |> should.equal(6)
+  utils.gcd(48, 180) |> should.equal(12)
+  utils.gcd(0, 5) |> should.equal(5)
+  utils.gcd(5, 0) |> should.equal(5)
+  utils.gcd(-48, 18) |> should.equal(6)
+}
+
+// Tests for lcm
+pub fn lcm_test() {
+  utils.lcm(4, 6) |> should.equal(12)
+  utils.lcm(12, 15) |> should.equal(60)
+  utils.lcm(0, 5) |> should.equal(0)
+  utils.lcm(5, 0) |> should.equal(0)
+  utils.lcm(-4, 6) |> should.equal(12)
+}
