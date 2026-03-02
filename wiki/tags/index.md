@@ -7,11 +7,13 @@
 | [backtracking](backtracking.md) | 1 |
 | [bfs](bfs.md) | 6 |
 | [bitmask](bitmask.md) | 2 |
+| [bron-kerbosch](bron-kerbosch.md) | 1 |
 | [brute-force](brute-force.md) | 1 |
 | [calculation](calculation.md) | 1 |
 | [captcha](captcha.md) | 1 |
 | [checksum](checksum.md) | 1 |
 | [circular-list](circular-list.md) | 1 |
+| [clique](clique.md) | 1 |
 | [dfs](dfs.md) | 2 |
 | [dijkstra](dijkstra.md) | 2 |
 | [equation](equation.md) | 1 |
@@ -34,7 +36,7 @@
 | [reduction](reduction.md) | 2 |
 | [regex](regex.md) | 1 |
 | [rotation](rotation.md) | 1 |
-| [scc](scc.md) | 2 |
+| [scc](scc.md) | 1 |
 | [security](security.md) | 2 |
 | [set](set.md) | 1 |
 | [shortest-path](shortest-path.md) | 4 |

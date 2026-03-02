@@ -41,7 +41,7 @@
 | 2024 | [5](https://adventofcode.com/2024/day/5) | [Print Queue](https://adventofcode.com/2024/day/5) | [graph](tags/graph.md), [topological-sort](tags/topological-sort.md) | [day_05.gleam](../src/year_2024/day_05.gleam) |
 | 2024 | [7](https://adventofcode.com/2024/day/7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | [equation](tags/equation.md), [tree](tags/tree.md) | [day_07.gleam](../src/year_2024/day_07.gleam) |
 | 2024 | [18](https://adventofcode.com/2024/day/18) | [RAM Run](https://adventofcode.com/2024/day/18) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md) | [day_18.gleam](../src/year_2024/day_18.gleam) |
-| 2024 | [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | [graph](tags/graph.md), [scc](tags/scc.md) | [day_23.gleam](../src/year_2024/day_23.gleam) |
+| 2024 | [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | [graph](tags/graph.md), [clique](tags/clique.md), [bron-kerbosch](tags/bron-kerbosch.md) | [day_23.gleam](../src/year_2024/day_23.gleam) |
 | 2025 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | [modular-algebra](tags/modular-algebra.md), [rotation](tags/rotation.md), [security](tags/security.md) | [day_01.gleam](../src/year_2025/day_01.gleam) |
 
 ## 🔴 L

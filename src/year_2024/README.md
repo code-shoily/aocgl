@@ -4,7 +4,7 @@
 
 ## ⭐ 10/50
 
-[graph](../../wiki/tags/graph.md)&nbsp;`3`  [equation](../../wiki/tags/equation.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [pair](../../wiki/tags/pair.md)&nbsp;`1`  [scc](../../wiki/tags/scc.md)&nbsp;`1`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`  [topological-sort](../../wiki/tags/topological-sort.md)&nbsp;`1`  [tree](../../wiki/tags/tree.md)&nbsp;`1`
+[graph](../../wiki/tags/graph.md)&nbsp;`3`  [bron-kerbosch](../../wiki/tags/bron-kerbosch.md)&nbsp;`1`  [clique](../../wiki/tags/clique.md)&nbsp;`1`  [equation](../../wiki/tags/equation.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [pair](../../wiki/tags/pair.md)&nbsp;`1`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`  [topological-sort](../../wiki/tags/topological-sort.md)&nbsp;`1`  [tree](../../wiki/tags/tree.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
@@ -12,4 +12,4 @@
 | [5](https://adventofcode.com/2024/day/5) | [Print Queue](https://adventofcode.com/2024/day/5) | 🟠 | [graph](../../wiki/tags/graph.md), [topological-sort](../../wiki/tags/topological-sort.md) | [day_05.gleam](day_05.gleam) |
 | [7](https://adventofcode.com/2024/day/7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | 🟠 | [equation](../../wiki/tags/equation.md), [tree](../../wiki/tags/tree.md) | [day_07.gleam](day_07.gleam) |
 | [18](https://adventofcode.com/2024/day/18) | [RAM Run](https://adventofcode.com/2024/day/18) | 🟠 | [graph](../../wiki/tags/graph.md), [shortest-path](../../wiki/tags/shortest-path.md), [grid](../../wiki/tags/grid.md) | [day_18.gleam](day_18.gleam) |
-| [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | 🟠 | [graph](../../wiki/tags/graph.md), [scc](../../wiki/tags/scc.md) | [day_23.gleam](day_23.gleam) |
+| [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | 🟠 | [graph](../../wiki/tags/graph.md), [clique](../../wiki/tags/clique.md), [bron-kerbosch](../../wiki/tags/bron-kerbosch.md) | [day_23.gleam](day_23.gleam) |
