@@ -1,7 +1,7 @@
 /// Title: LAN Party
 /// Link: https://adventofcode.com/2024/day/23
 /// Difficulty: m
-/// Tags: graph scc
+/// Tags: graph clique bron-kerbosch
 import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
@@ -11,6 +11,7 @@ import gleam/result
 import gleam/set.{type Set}
 import gleam/string
 import yog/builder/labeled
+import yog/clique
 import yog/model
 
 pub type Input {
@@ -68,8 +69,7 @@ fn solve_part_1(input: Input) -> Int {
 }
 
 fn solve_part_2(input: Input) -> String {
-  let p = dict.keys(input.graph.nodes) |> set.from_list
-  let max_clique_ids = find_max_clique(input.graph, set.new(), p, set.new())
+  let max_clique_ids = clique.max_clique(input.graph)
 
   max_clique_ids
   |> set.to_list
@@ -95,56 +95,13 @@ fn parse(raw_input: String) -> Input {
   Input(labeled.to_graph(builder), builder)
 }
 
-// ------------------------------ Port to Yog
 fn get_neighbor_ids_set(graph: model.Graph(n, e), id: Int) -> Set(Int) {
   model.neighbors(graph, id)
   |> list.map(fn(neighbor) { neighbor.0 })
   |> set.from_list
 }
 
-fn find_max_clique(
-  graph: model.Graph(n, e),
-  r: Set(Int),
-  p: Set(Int),
-  x: Set(Int),
-) -> Set(Int) {
-  case set.is_empty(p) && set.is_empty(x) {
-    True -> r
-    False -> {
-      let pivot =
-        set.union(p, x)
-        |> set.to_list
-        |> list.first
-        |> result.unwrap(-1)
-
-      let pivot_neighbors = get_neighbor_ids_set(graph, pivot)
-      let candidates = set.drop(p, set.to_list(pivot_neighbors))
-
-      set.to_list(candidates)
-      |> list.fold(#(p, x, set.new()), fn(acc, v) {
-        let #(curr_p, curr_x, best_r) = acc
-        let v_neighbors = get_neighbor_ids_set(graph, v)
-
-        let recursive_r =
-          find_max_clique(
-            graph,
-            set.insert(r, v),
-            set.intersection(curr_p, v_neighbors),
-            set.intersection(curr_x, v_neighbors),
-          )
-
-        let new_best = case set.size(recursive_r) > set.size(best_r) {
-          True -> recursive_r
-          False -> best_r
-        }
-
-        #(set.delete(curr_p, v), set.insert(curr_x, v), new_best)
-      })
-      |> fn(res) { res.2 }
-    }
-  }
-}
-
+// ------------------------------ Explorations
 pub fn main() -> Nil {
   let param = reader.InputParams(2024, 23)
   let input = reader.read_input(param) |> result.unwrap(or: "")
