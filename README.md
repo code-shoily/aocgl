@@ -5,7 +5,7 @@ Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/tag
 ## Stats
 
 <!-- STATS_START -->
-> **33 problems solved** across **11 years** — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md)
+> **33 problems solved** across **11 years** — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md) · [Benchmarks](wiki/benchmarks.md)
 
 **Years:** [2015](src/year_2015/README.md) | [2016](src/year_2016/README.md) | [2017](src/year_2017/README.md) | [2018](src/year_2018/README.md) | [2019](src/year_2019/README.md) | [2020](src/year_2020/README.md) | [2021](src/year_2021/README.md) | [2022](src/year_2022/README.md) | [2023](src/year_2023/README.md) | [2024](src/year_2024/README.md) | [2025](src/year_2025/README.md)
 

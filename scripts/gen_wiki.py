@@ -101,7 +101,7 @@ def gen_stats_block(solutions, tag_map):
 
     lines = [
         f"> **{total} problems solved** across **{len(years)} years**"
-        f" — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md)\n\n",
+        f" — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md) · [Benchmarks](wiki/benchmarks.md)\n\n",
         f"**Years:** {year_links}\n\n",
     ]
 
@@ -245,12 +245,20 @@ def gen_difficulty(solutions):
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
-    # Recreate wiki/ (no Home.md)
+    # Recreate wiki/ (keep benchmarks.md)
     if WIKI_DIR.exists():
-        shutil.rmtree(WIKI_DIR)
-    WIKI_DIR.mkdir()
+        for path in WIKI_DIR.iterdir():
+            if path.name == "benchmarks.md":
+                continue
+            if path.is_file():
+                path.unlink()
+            elif path.is_dir():
+                shutil.rmtree(path)
+    else:
+        WIKI_DIR.mkdir()
+
     tags_dir = WIKI_DIR / "tags"
-    tags_dir.mkdir()
+    tags_dir.mkdir(exist_ok=True)
 
     solutions  = collect_all_solutions()
     all_years  = sorted({s["year"] for s in solutions})
