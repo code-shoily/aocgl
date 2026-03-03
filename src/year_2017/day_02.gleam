@@ -1,7 +1,7 @@
 /// Title: Corruption Checksum
 /// Link: https://adventofcode.com/2017/day/2
 /// Difficulty: s
-/// Tags: transpose checksum
+/// Tags:
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

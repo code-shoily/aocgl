@@ -4,9 +4,9 @@
 
 ## ⭐ 4/50
 
-[geometry](../../wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](../../wiki/tags/linear-scan.md)&nbsp;`1`  [measurement](../../wiki/tags/measurement.md)&nbsp;`1`  [navigation](../../wiki/tags/navigation.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`
+[geometry](../../wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](../../wiki/tags/linear-scan.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
-| [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | 🟢 | [navigation](../../wiki/tags/navigation.md), [linear-scan](../../wiki/tags/linear-scan.md), [reduction](../../wiki/tags/reduction.md) | [day_01.gleam](day_01.gleam) |
-| [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | 🟢 | [geometry](../../wiki/tags/geometry.md), [measurement](../../wiki/tags/measurement.md) | [day_02.gleam](day_02.gleam) |
+| [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | 🟢 | [linear-scan](../../wiki/tags/linear-scan.md), [reduction](../../wiki/tags/reduction.md) | [day_01.gleam](day_01.gleam) |
+| [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | 🟢 | [geometry](../../wiki/tags/geometry.md) | [day_02.gleam](day_02.gleam) |

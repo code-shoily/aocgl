@@ -1,7 +1,7 @@
 /// Title: Bridge Repair
 /// Link: https://adventofcode.com/2024/day/7
 /// Difficulty: m
-/// Tags: equation tree
+/// Tags: tree
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

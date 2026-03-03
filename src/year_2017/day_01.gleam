@@ -1,7 +1,7 @@
 /// Title: Inverse Captcha
 /// Link: https://adventofcode.com/2017/day/1
 /// Difficulty: xs
-/// Tags: linked-list captcha
+/// Tags: linked-list
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

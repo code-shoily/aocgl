@@ -6,26 +6,23 @@
 
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
-| 2015 | [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [navigation](tags/navigation.md), [linear-scan](tags/linear-scan.md), [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2015/day_01.gleam) |
-| 2015 | [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [geometry](tags/geometry.md), [measurement](tags/measurement.md) | [day_02.gleam](../src/year_2015/day_02.gleam) |
-| 2017 | [1](https://adventofcode.com/2017/day/1) | [Inverse Captcha](https://adventofcode.com/2017/day/1) | [linked-list](tags/linked-list.md), [captcha](tags/captcha.md) | [day_01.gleam](../src/year_2017/day_01.gleam) |
+| 2015 | [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [linear-scan](tags/linear-scan.md), [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2015/day_01.gleam) |
+| 2015 | [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [geometry](tags/geometry.md) | [day_02.gleam](../src/year_2015/day_02.gleam) |
+| 2017 | [1](https://adventofcode.com/2017/day/1) | [Inverse Captcha](https://adventofcode.com/2017/day/1) | [linked-list](tags/linked-list.md) | [day_01.gleam](../src/year_2017/day_01.gleam) |
 | 2018 | [1](https://adventofcode.com/2018/day/1) | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [set](tags/set.md), [circular-list](tags/circular-list.md) | [day_01.gleam](../src/year_2018/day_01.gleam) |
-| 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [calculation](tags/calculation.md), [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |
+| 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |
 | 2020 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | [n-sum](tags/n-sum.md) | [day_01.gleam](../src/year_2020/day_01.gleam) |
-| 2020 | [2](https://adventofcode.com/2020/day/2) | [Password Philosophy](https://adventofcode.com/2020/day/2) | [text](tags/text.md), [security](tags/security.md) | [day_02.gleam](../src/year_2020/day_02.gleam) |
-| 2021 | [1](https://adventofcode.com/2021/day/1) | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [window](tags/window.md), [measurements](tags/measurements.md) | [day_01.gleam](../src/year_2021/day_01.gleam) |
 | 2022 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | [sort](tags/sort.md), [top-k](tags/top-k.md) | [day_01.gleam](../src/year_2022/day_01.gleam) |
-| 2024 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [sort](tags/sort.md), [pair](tags/pair.md) | [day_01.gleam](../src/year_2024/day_01.gleam) |
+| 2024 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [sort](tags/sort.md) | [day_01.gleam](../src/year_2024/day_01.gleam) |
 
 ## 🟡 S
 
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
-| 2016 | [1](https://adventofcode.com/2016/day/1) | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [fold](tags/fold.md), [navigation](tags/navigation.md), [grid](tags/grid.md) | [day_01.gleam](../src/year_2016/day_01.gleam) |
+| 2016 | [1](https://adventofcode.com/2016/day/1) | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [grid](tags/grid.md) | [day_01.gleam](../src/year_2016/day_01.gleam) |
 | 2016 | [2](https://adventofcode.com/2016/day/2) | [Bathroom Security](https://adventofcode.com/2016/day/2) | [grid](tags/grid.md) | [day_02.gleam](../src/year_2016/day_02.gleam) |
-| 2017 | [2](https://adventofcode.com/2017/day/2) | [Corruption Checksum](https://adventofcode.com/2017/day/2) | [transpose](tags/transpose.md), [checksum](tags/checksum.md) | [day_02.gleam](../src/year_2017/day_02.gleam) |
 | 2017 | [12](https://adventofcode.com/2017/day/12) | [Digital Plumber](https://adventofcode.com/2017/day/12) | [graph](tags/graph.md), [scc](tags/scc.md) | [day_12.gleam](../src/year_2017/day_12.gleam) |
-| 2018 | [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | [brute-force](tags/brute-force.md), [frequency](tags/frequency.md) | [day_02.gleam](../src/year_2018/day_02.gleam) |
+| 2018 | [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | [brute-force](tags/brute-force.md) | [day_02.gleam](../src/year_2018/day_02.gleam) |
 | 2020 | [7](https://adventofcode.com/2020/day/7) | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [graph](tags/graph.md), [bfs](tags/bfs.md) | [day_07.gleam](../src/year_2020/day_07.gleam) |
 | 2023 | [1](https://adventofcode.com/2023/day/1) | [Trebuchet?!](https://adventofcode.com/2023/day/1) | [regex](tags/regex.md) | [day_01.gleam](../src/year_2023/day_01.gleam) |
 
@@ -39,10 +36,10 @@
 | 2021 | [15](https://adventofcode.com/2021/day/15) | [Chiton](https://adventofcode.com/2021/day/15) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md), [dijkstra](tags/dijkstra.md) | [day_15.gleam](../src/year_2021/day_15.gleam) |
 | 2022 | [12](https://adventofcode.com/2022/day/12) | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [graph](tags/graph.md), [bfs](tags/bfs.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md) | [day_12.gleam](../src/year_2022/day_12.gleam) |
 | 2024 | [5](https://adventofcode.com/2024/day/5) | [Print Queue](https://adventofcode.com/2024/day/5) | [graph](tags/graph.md), [topological-sort](tags/topological-sort.md) | [day_05.gleam](../src/year_2024/day_05.gleam) |
-| 2024 | [7](https://adventofcode.com/2024/day/7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | [equation](tags/equation.md), [tree](tags/tree.md) | [day_07.gleam](../src/year_2024/day_07.gleam) |
+| 2024 | [7](https://adventofcode.com/2024/day/7) | [Bridge Repair](https://adventofcode.com/2024/day/7) | [tree](tags/tree.md) | [day_07.gleam](../src/year_2024/day_07.gleam) |
 | 2024 | [18](https://adventofcode.com/2024/day/18) | [RAM Run](https://adventofcode.com/2024/day/18) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md) | [day_18.gleam](../src/year_2024/day_18.gleam) |
 | 2024 | [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | [graph](tags/graph.md), [clique](tags/clique.md), [bron-kerbosch](tags/bron-kerbosch.md) | [day_23.gleam](../src/year_2024/day_23.gleam) |
-| 2025 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | [modular-algebra](tags/modular-algebra.md), [rotation](tags/rotation.md), [security](tags/security.md) | [day_01.gleam](../src/year_2025/day_01.gleam) |
+| 2025 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | [modular-algebra](tags/modular-algebra.md) | [day_01.gleam](../src/year_2025/day_01.gleam) |
 
 ## 🔴 L
 

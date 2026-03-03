@@ -1,7 +1,7 @@
 /// Title: Secret Entrance
 /// Link: https://adventofcode.com/2025/day/1
 /// Difficulty: m
-/// Tags: modular-algebra rotation security
+/// Tags: modular-algebra
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

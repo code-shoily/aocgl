@@ -1,7 +1,7 @@
 /// Title: I Was Told There Would Be No Math
 /// Link: https://adventofcode.com/2015/day/2
 /// Difficulty: xs
-/// Tags: geometry measurement
+/// Tags: geometry
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

@@ -1,7 +1,7 @@
 /// Title: Sonar Sweep
 /// Link: https://adventofcode.com/2021/day/1
 /// Difficulty: xs
-/// Tags: window measurements
+/// Tags:
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

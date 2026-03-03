@@ -4,10 +4,10 @@
 
 ## ⭐ 6/50
 
-[brute-force](../../wiki/tags/brute-force.md)&nbsp;`1`  [circular-list](../../wiki/tags/circular-list.md)&nbsp;`1`  [frequency](../../wiki/tags/frequency.md)&nbsp;`1`  [graph](../../wiki/tags/graph.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`  [topological-sort](../../wiki/tags/topological-sort.md)&nbsp;`1`
+[brute-force](../../wiki/tags/brute-force.md)&nbsp;`1`  [circular-list](../../wiki/tags/circular-list.md)&nbsp;`1`  [graph](../../wiki/tags/graph.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`  [topological-sort](../../wiki/tags/topological-sort.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2018/day/1) | [Chronal Calibration](https://adventofcode.com/2018/day/1) | 🟢 | [set](../../wiki/tags/set.md), [circular-list](../../wiki/tags/circular-list.md) | [day_01.gleam](day_01.gleam) |
-| [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | 🟡 | [brute-force](../../wiki/tags/brute-force.md), [frequency](../../wiki/tags/frequency.md) | [day_02.gleam](day_02.gleam) |
+| [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | 🟡 | [brute-force](../../wiki/tags/brute-force.md) | [day_02.gleam](day_02.gleam) |
 | [7](https://adventofcode.com/2018/day/7) | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | 🟠 | [graph](../../wiki/tags/graph.md), [topological-sort](../../wiki/tags/topological-sort.md) | [day_07.gleam](day_07.gleam) |

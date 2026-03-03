@@ -1,7 +1,7 @@
 /// Title: Password Philosophy
 /// Link: https://adventofcode.com/2020/day/2
 /// Difficulty: xs
-/// Tags: text security
+/// Tags:
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

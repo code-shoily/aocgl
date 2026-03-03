@@ -1,7 +1,7 @@
 /// Title: Historian Hysteria
 /// Link: https://adventofcode.com/2024/day/1
 /// Difficulty: xs
-/// Tags: sort pair
+/// Tags: sort
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

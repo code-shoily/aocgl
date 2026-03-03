@@ -1,7 +1,7 @@
 /// Title: The Tyranny of the Rocket Equation
 /// Link: https://adventofcode.com/2019/day/1
 /// Difficulty: xs
-/// Tags: calculation reduction
+/// Tags: reduction
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils

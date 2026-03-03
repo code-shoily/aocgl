@@ -1,7 +1,7 @@
 /// Title: Not Quite Lisp
 /// Link: https://adventofcode.com/2015/day/1
 /// Difficulty: xs
-/// Tags: navigation linear-scan reduction
+/// Tags: linear-scan reduction
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import gleam/int

@@ -1,7 +1,7 @@
 /// Title: No Time for a Taxicab
 /// Link: https://adventofcode.com/2016/day/1
 /// Difficulty: s
-/// Tags: fold navigation grid
+/// Tags: grid
 import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import gleam/int

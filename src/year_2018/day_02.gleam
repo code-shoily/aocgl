@@ -1,7 +1,7 @@
 /// Title: Inventory Management System
 /// Link: https://adventofcode.com/2018/day/2
 /// Difficulty: s
-/// Tags: brute-force frequency
+/// Tags: brute-force
 import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
