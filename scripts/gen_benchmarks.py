@@ -2,6 +2,13 @@
 import subprocess
 import platform
 import os
+import re
+from datetime import datetime
+from collections import defaultdict
+from pathlib import Path
+import subprocess
+import platform
+import os
 from datetime import datetime
 from pathlib import Path
 
@@ -36,6 +43,32 @@ def run_benchmarks():
         return None
     return result.stdout
 
+def parse_day_file(path: Path):
+    meta = {}
+    if not path.exists():
+        return meta
+    
+    with open(path) as f:
+        for line in f:
+            line = line.strip()
+            if not line.startswith("///"):
+                break
+            m = re.match(r'///\s+(\w+):\s+(.*)', line)
+            if m:
+                meta[m.group(1).lower()] = m.group(2).strip()
+    return meta
+
+def get_difficulty_icon(diff_code: str) -> str:
+    icons = {
+        "xs": "🟢",
+        "s":  "🟡",
+        "m":  "🟠",
+        "l":  "🔴",
+        "xl": "💀",
+    }
+    code = diff_code.lower()
+    return f"{icons.get(code, code.upper())} {code.upper()}"
+
 def parse_benchmarks(output):
     lines = output.strip().splitlines()
     if not lines or "year,day,time_ms" not in lines[0]:
@@ -45,12 +78,26 @@ def parse_benchmarks(output):
     for line in lines[1:]:
         parts = line.split(",")
         if len(parts) == 3:
+            year, day, time_ms = parts[0], parts[1], float(parts[2])
+            
+            # Extract metadata from source code
+            src_file = SRC_DIR / f"year_{year}" / f"day_{day.zfill(2)}.gleam"
+            meta = parse_day_file(src_file)
+            
+            # Default fallbacks
+            title = meta.get("title", f"Day {day}")
+            link = meta.get("link", f"https://adventofcode.com/{year}/day/{day}")
+            difficulty = meta.get("difficulty", "M")
+            
             results.append({
-                "year": parts[0],
-                "day": parts[1],
-                "time_ms": float(parts[2])
+                "year": year,
+                "day": int(day),
+                "time_ms": time_ms,
+                "title": title,
+                "link": link,
+                "difficulty_icon": get_difficulty_icon(difficulty)
             })
-    return sorted(results, key=lambda x: (x["year"], int(x["day"])))
+    return sorted(results, key=lambda x: (x["year"], x["day"]))
 
 def generate_markdown(results, system_info):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -63,13 +110,20 @@ def generate_markdown(results, system_info):
         f"- **OS:** {system_info['os']} {system_info['release']}\n",
         f"- **CPU:** {system_info['cpu']}\n\n",
         "## Performance Results\n\n",
-        "| Year | Day | Time (ms) |\n",
-        "|------|:---:|----------:|\n"
     ]
     
+    by_year = defaultdict(list)
     for res in results:
-        lines.append(f"| {res['year']} | {res['day']} | {res['time_ms']:.3f} |\n")
-    
+        by_year[res['year']].append(res)
+        
+    for year in sorted(by_year.keys()):
+        lines.append(f"### {year}\n\n")
+        lines.append("| Day | Title | Difficulty | Time (ms) |\n")
+        lines.append("|:---:|-------|:----------:|----------:|\n")
+        for res in by_year[year]:
+            lines.append(f"| {res['day']} | [{res['title']}]({res['link']}) | {res['difficulty_icon']} | {res['time_ms']:.3f} |\n")
+        lines.append("\n")
+        
     return "".join(lines)
 
 def update_readme():
