@@ -67,7 +67,7 @@ def get_difficulty_icon(diff_code: str) -> str:
         "xl": "💀",
     }
     code = diff_code.lower()
-    return f"{icons.get(code, code.upper())} {code.upper()}"
+    return f"{icons.get(code, code.upper())}"
 
 def parse_benchmarks(output):
     lines = output.strip().splitlines()
