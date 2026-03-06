@@ -2,13 +2,14 @@
 /// Link: https://adventofcode.com/2018/day/7
 /// Difficulty: m
 /// Tags: graph topological-sort
-import common/reader
 import common/solution.{type Solution, OfNil, OfStr, Solution}
 import common/utils
+import gleam/dict
 import gleam/list
 import gleam/result
 import gleam/string
-import yog/model
+import yog.{type Graph}
+import yog/builder/labeled
 import yog/topological_sort
 
 pub fn solve(raw_input: String) -> Solution {
@@ -19,45 +20,29 @@ pub fn solve(raw_input: String) -> Solution {
   Solution(part_1, part_2)
 }
 
-fn solve_part_1(input: Input) -> String {
-  let Input(graph) = input
-
+fn solve_part_1(input: Graph(String, Nil)) -> String {
   let assert Ok(order) =
-    topological_sort.lexicographical_topological_sort(graph, string.compare)
+    topological_sort.lexicographical_topological_sort(input, string.compare)
 
   order
-  |> list.map(ascii_to_char)
+  |> list.map(dict.get(input.nodes, _))
+  |> list.map(result.unwrap(_, ""))
   |> string.join("")
 }
 
-fn solve_part_2(_input: Input) -> Nil {
+fn solve_part_2(_input: Graph(String, Nil)) -> Nil {
   Nil
 }
 
-type Input {
-  Input(graph: model.Graph(String, Nil))
-}
-
-fn parse(raw_input: String) -> Input {
-  let dependencies =
-    raw_input
-    |> utils.to_lines()
-    |> list.map(parse_line)
-
-  let graph =
-    dependencies
-    |> list.fold(model.new(model.Directed), fn(g, dep) {
-      let #(prereq, step) = dep
-      let prereq_id = char_to_ascii(prereq)
-      let step_id = char_to_ascii(step)
-
-      g
-      |> model.add_node(prereq_id, prereq)
-      |> model.add_node(step_id, step)
-      |> model.add_edge(from: prereq_id, to: step_id, with: Nil)
-    })
-
-  Input(graph)
+fn parse(raw_input: String) -> Graph(String, Nil) {
+  raw_input
+  |> utils.to_lines()
+  |> list.map(parse_line)
+  |> list.fold(labeled.directed(), fn(labeled_graph, dep) {
+    let #(prereq, step) = dep
+    labeled.add_unweighted_edge(labeled_graph, prereq, step)
+  })
+  |> labeled.to_graph()
 }
 
 fn parse_line(line: String) -> #(String, String) {
@@ -68,22 +53,12 @@ fn parse_line(line: String) -> #(String, String) {
 
   #(prereq, step)
 }
-
-fn char_to_ascii(s: String) -> Int {
-  let assert Ok(codepoint) = string.to_utf_codepoints(s) |> list.first
-  string.utf_codepoint_to_int(codepoint)
-}
-
-fn ascii_to_char(code: Int) -> String {
-  let assert Ok(codepoint) = string.utf_codepoint(code)
-  string.from_utf_codepoints([codepoint])
-}
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2018, 7)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2018, 7) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
