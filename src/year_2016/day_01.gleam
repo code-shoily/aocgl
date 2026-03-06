@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2016/day/1
 /// Difficulty: s
 /// Tags: grid
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import gleam/int
 import gleam/list.{Continue, Stop}
@@ -179,12 +178,13 @@ fn new_instruction(s: String) -> Result(Instruction, Nil) {
     _, _ -> Error(Nil)
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2016, 1)
-  let assert Ok(input) = reader.read_input(param)
-  solve(input) |> echo
+// import common/reader.{InputParams}
+// import common/utils
 
-  Nil
-}
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2016, 1) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

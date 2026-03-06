@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2016/day/2
 /// Difficulty: s
 /// Tags: grid
-import common/reader
 import common/solution.{type Solution, OfStr, Solution}
 import common/utils
 import gleam/dict.{type Dict}
@@ -124,13 +123,12 @@ fn key_position(
     next_position(dir, pos, numpad)
   })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2016, 2)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+// import common/reader.{InputParams}
 
-  solve(input) |> echo
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2016, 2) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
 
-  utils.exit(0)
-}
+//   utils.exit(0)
+// }

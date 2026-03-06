@@ -2,18 +2,13 @@
 /// Link: https://adventofcode.com/2016/day/13
 /// Difficulty: m
 /// Tags: graph bfs implicit-graph
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
-import common/utils
 import gleam/int
 import gleam/list
 import gleam/result
 import gleam/set
 import gleam/string
 import yog/traversal.{BreadthFirst, Continue, Halt, Stop}
-
-pub type Pos =
-  #(Int, Int)
 
 pub fn solve(raw_input: String) -> Solution {
   let fav = parse(raw_input)
@@ -56,6 +51,8 @@ fn solve_part_2(fav: Int) -> Int {
 }
 
 // ── Maze helpers ─────────────────────────────────────────────────────────────
+type Pos =
+  #(Int, Int)
 
 fn is_wall(x: Int, y: Int, fav: Int) -> Bool {
   case x < 0 || y < 0 {
@@ -91,11 +88,13 @@ fn parse(raw_input: String) -> Int {
   |> int.parse()
   |> result.unwrap(1350)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2016, 13)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
-  utils.exit(0)
-}
+// import common/reader.{InputParams}
+// import common/utils
+
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2016, 13) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

@@ -1,16 +1,15 @@
 /// Title: Air Duct Spelunking
 /// Link: https://adventofcode.com/2016/day/24
 /// Difficulty: l
-/// Tags: graph bfs tsp
-import common/reader
+/// Tags: graph grid shortest-path tsp
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
-import yog/builder/labeled
+import yog/builder/grid
+import yog/model
 import yog/pathfinding
 
 pub type Pos =
@@ -63,77 +62,48 @@ fn calculate_path_dist(
 
 fn parse(raw_input: String) -> Input {
   let lines = utils.to_lines(raw_input)
-  let grid = parse_grid(lines)
-  let pois = find_pois(grid)
+  let grid_data = list.map(lines, string.to_graphemes)
 
-  let builder =
-    dict.fold(grid, labeled.undirected(), fn(b, pos, char) {
-      case char {
-        "#" -> b
-        _ -> {
-          let #(x, y) = pos
-          let pos_label = string.inspect(pos)
+  let grid_obj =
+    grid.from_2d_list(grid_data, model.Undirected, can_move: fn(from, to) {
+      from != "#" && to != "#"
+    })
 
-          [#(x + 1, y), #(x, y + 1)]
-          |> list.fold(b, fn(acc_b, neighbor) {
-            case dict.get(grid, neighbor) {
-              Ok(c) if c != "#" ->
-                labeled.add_edge(acc_b, pos_label, string.inspect(neighbor), 1)
-              _ -> acc_b
-            }
-          })
-        }
+  let graph = grid.to_graph(grid_obj)
+
+  let pois =
+    dict.fold(graph.nodes, dict.new(), fn(acc, id, char) {
+      case int.parse(char) {
+        Ok(n) -> dict.insert(acc, n, id)
+        _ -> acc
       }
     })
 
-  let graph = labeled.to_graph(builder)
-
   let poi_dist =
-    dict.fold(pois, dict.new(), fn(acc, label_a, pos_a) {
-      let assert Ok(start_id) =
-        dict.get(builder.label_to_id, string.inspect(pos_a))
-
+    dict.fold(pois, dict.new(), fn(acc, label_a, id_a) {
       let distances =
         pathfinding.single_source_distances(
           in: graph,
-          from: start_id,
+          from: id_a,
           with_zero: 0,
           with_add: int.add,
           with_compare: int.compare,
         )
 
-      dict.fold(pois, acc, fn(acc2, label_b, pos_b) {
-        let assert Ok(end_id) =
-          dict.get(builder.label_to_id, string.inspect(pos_b))
-        let assert Ok(dist) = dict.get(distances, end_id)
+      dict.fold(pois, acc, fn(acc2, label_b, id_b) {
+        let assert Ok(dist) = dict.get(distances, id_b)
         dict.insert(acc2, #(label_a, label_b), dist)
       })
     })
 
   Input(poi_dist, dict.size(pois))
 }
-
-fn parse_grid(lines: List(String)) -> Dict(Pos, String) {
-  list.index_fold(lines, dict.new(), fn(acc, line, y) {
-    list.index_fold(string.to_graphemes(line), acc, fn(acc2, char, x) {
-      dict.insert(acc2, #(x, y), char)
-    })
-  })
-}
-
-fn find_pois(grid: Dict(Pos, String)) -> Dict(Int, Pos) {
-  dict.fold(grid, dict.new(), fn(acc, pos, char) {
-    case int.parse(char) {
-      Ok(n) -> dict.insert(acc, n, pos)
-      _ -> acc
-    }
-  })
-}
-
 // -------------------------------- Explore
-pub fn main() -> Nil {
-  let param = reader.InputParams(2016, 24)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> solution.print_solution
-  utils.exit(0)
-}
+// import common/reader.{InputParams}
+
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2016, 24) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
