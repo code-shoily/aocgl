@@ -33,25 +33,25 @@ fn solve_part_2(groups: List(List(Int))) -> Int {
 }
 
 fn parse(raw_input: String) -> yog.Graph(Nil, Nil) {
-  raw_input
-  |> utils.to_lines()
-  |> list.fold(yog.undirected(), fn(graph, line) {
-    let assert [source_str, targets_str] = string.split(line, " <-> ")
-    let assert Ok(source) = int.parse(source_str)
+  let lines = utils.to_lines(raw_input)
 
-    targets_str
-    |> string.split(", ")
-    |> list.fold(graph, fn(g, target_str) {
-      let assert Ok(target) = int.parse(target_str)
-      g
-      |> yog.add_node(source, Nil)
-      |> yog.add_edge(from: target, to: source, with: Nil)
-    })
-  })
+  use core_graph, line <- list.fold(lines, yog.undirected())
+
+  let assert [source_str, targets_str] = string.split(line, " <-> ")
+  let assert Ok(source) = int.parse(source_str)
+  let tokens = string.split(targets_str, ", ")
+
+  use acc_graph, target_str <- list.fold(tokens, core_graph)
+
+  let assert Ok(target) = int.parse(target_str)
+
+  acc_graph
+  |> yog.add_node(source, Nil)
+  |> yog.add_edge(from: target, to: source, with: Nil)
 }
 // ------------------------------ Exploration
 // import common/reader.{InputParams}
-
+//
 // pub fn main() -> Nil {
 //   let assert Ok(input) = InputParams(2017, 12) |> reader.read_input
 //   input |> utils.timed(solve) |> echo
