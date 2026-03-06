@@ -65,11 +65,8 @@ fn generate_solution_module(year: Int, day: Int) -> String {
 /// Link: https://adventofcode.com/{{year}}/day/{{day}}
 /// Difficulty: 
 /// Tags:
-import common/reader
 import common/solution.{type Solution, Solution, OfInt}
-import common/utils
 import gleam/list
-import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -97,10 +94,12 @@ fn parse(raw_input: String) -> List(Int) {
 }
 
 // ------------------------------ Exploration
+import common/reader.{InputParams}
+import common/utils
+
 pub fn main() -> Nil {
-  let param = reader.InputParams({{year}}, {{day}})
-  let input = reader.read_input(param) |> result.unwrap(or: \"\")
-  solve(input) |> echo
+  let assert Ok(input) = InputParams({{year}}, {{day}}) |> reader.read_input
+  input |> utils.timed(solve) |> echo
 
   utils.exit(0)
 }"
