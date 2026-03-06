@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2015/day/1
 /// Difficulty: xs
 /// Tags: linear-scan reduction
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import gleam/int
 import gleam/list
@@ -44,12 +43,17 @@ fn get_to_basement(movements: List(Int), current, steps) -> Int {
     _, [] -> panic as "Santa never reached the basement!"
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2015, 1)
-  let assert Ok(input) = reader.read_input(param)
-  solve(input) |> echo
+// import common/reader
+// import common/utils
 
-  Nil
-}
+// pub fn main() -> Nil {
+//   let param = reader.InputParams(2015, 1)
+//   let assert Ok(input) = reader.read_input(param)
+
+//   input
+//   |> utils.timed(solve)
+//   |> echo
+
+//   utils.exit(0)
+// }

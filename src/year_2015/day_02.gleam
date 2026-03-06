@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2015/day/2
 /// Difficulty: xs
 /// Tags: geometry
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
@@ -83,12 +82,16 @@ fn volume(present: Present) -> Int {
   let Present(l, w, h) = present
   l * w * h
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2015, 2)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader
 
-  utils.exit(0)
-}
+// pub fn main() -> Nil {
+//   let param = reader.InputParams(2015, 2)
+//   let assert Ok(input) = reader.read_input(param)
+
+//   input
+//   |> utils.timed(solve)
+//   |> echo
+
+//   utils.exit(0)
+// }
