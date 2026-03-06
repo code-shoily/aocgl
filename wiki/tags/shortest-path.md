@@ -4,6 +4,7 @@
 
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
+| 2016 | [24](https://adventofcode.com/2016/day/24) | [Air Duct Spelunking](https://adventofcode.com/2016/day/24) | 🔴 | [graph](graph.md), [grid](grid.md), [tsp](tsp.md) | [day_24.gleam](../../src/year_2016/day_24.gleam) |
 | 2019 | [6](https://adventofcode.com/2019/day/6) | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | 🔴 | [graph](graph.md) | [day_06.gleam](../../src/year_2019/day_06.gleam) |
 | 2021 | [15](https://adventofcode.com/2021/day/15) | [Chiton](https://adventofcode.com/2021/day/15) | 🟠 | [graph](graph.md), [grid](grid.md), [dijkstra](dijkstra.md) | [day_15.gleam](../../src/year_2021/day_15.gleam) |
 | 2022 | [12](https://adventofcode.com/2022/day/12) | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | 🟠 | [graph](graph.md), [bfs](bfs.md), [grid](grid.md) | [day_12.gleam](../../src/year_2022/day_12.gleam) |

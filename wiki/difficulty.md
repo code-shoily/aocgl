@@ -45,7 +45,7 @@
 
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
-| 2016 | [24](https://adventofcode.com/2016/day/24) | [Air Duct Spelunking](https://adventofcode.com/2016/day/24) | [graph](tags/graph.md), [bfs](tags/bfs.md), [tsp](tags/tsp.md) | [day_24.gleam](../src/year_2016/day_24.gleam) |
+| 2016 | [24](https://adventofcode.com/2016/day/24) | [Air Duct Spelunking](https://adventofcode.com/2016/day/24) | [graph](tags/graph.md), [grid](tags/grid.md), [shortest-path](tags/shortest-path.md), [tsp](tags/tsp.md) | [day_24.gleam](../src/year_2016/day_24.gleam) |
 | 2019 | [6](https://adventofcode.com/2019/day/6) | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md) | [day_06.gleam](../src/year_2019/day_06.gleam) |
 | 2022 | [24](https://adventofcode.com/2022/day/24) | [Blizzard Basin](https://adventofcode.com/2022/day/24) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [shortest-path](tags/shortest-path.md), [bfs](tags/bfs.md) | [day_24.gleam](../src/year_2022/day_24.gleam) |
 | 2023 | [23](https://adventofcode.com/2023/day/23) | [A Long Walk](https://adventofcode.com/2023/day/23) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [longest-path](tags/longest-path.md), [dfs](tags/dfs.md), [bitmask](tags/bitmask.md) | [day_23.gleam](../src/year_2023/day_23.gleam) |
