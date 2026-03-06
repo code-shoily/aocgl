@@ -12,13 +12,6 @@ import yog/builder/grid
 import yog/model
 import yog/pathfinding
 
-pub type Pos =
-  #(Int, Int)
-
-pub type Input {
-  Input(distances: Dict(#(Int, Int), Int), poi_count: Int)
-}
-
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
   let part_1 = solve_part_1(input) |> OfInt
@@ -29,21 +22,24 @@ pub fn solve(raw_input: String) -> Solution {
 
 const infinity = 999_999_999
 
-fn solve_part_1(input: Input) -> Int {
-  let targets = utils.int_range(1, input.poi_count - 1)
+fn solve_part_1(input: #(Dict(#(Int, Int), Int), Int)) -> Int {
+  let #(distances, poi_count) = input
+  let targets = utils.int_range(1, poi_count - 1)
 
   list.permutations(targets)
-  |> list.map(fn(p) { calculate_path_dist(input.distances, [0, ..p]) })
+  |> list.map(fn(p) { calculate_path_dist(distances, [0, ..p]) })
   |> list.fold(infinity, int.min)
 }
 
-fn solve_part_2(input: Input) -> Int {
-  let targets = utils.int_range(1, input.poi_count - 1)
+fn solve_part_2(input: #(Dict(#(Int, Int), Int), Int)) -> Int {
+  let #(distances, poi_count) = input
+
+  let targets = utils.int_range(1, poi_count - 1)
 
   list.permutations(targets)
   |> list.map(fn(p) {
     let path = list.flatten([[0], p, [0]])
-    calculate_path_dist(input.distances, path)
+    calculate_path_dist(distances, path)
   })
   |> list.fold(infinity, int.min)
 }
@@ -60,16 +56,13 @@ fn calculate_path_dist(
   })
 }
 
-fn parse(raw_input: String) -> Input {
-  let lines = utils.to_lines(raw_input)
-  let grid_data = list.map(lines, string.to_graphemes)
-
-  let grid_obj =
-    grid.from_2d_list(grid_data, model.Undirected, can_move: fn(from, to) {
-      from != "#" && to != "#"
-    })
-
-  let graph = grid.to_graph(grid_obj)
+fn parse(raw_input: String) {
+  let graph =
+    raw_input
+    |> utils.to_lines()
+    |> list.map(string.to_graphemes)
+    |> grid.from_2d_list(model.Undirected, can_move: grid.avoiding("#"))
+    |> grid.to_graph()
 
   let pois =
     dict.fold(graph.nodes, dict.new(), fn(acc, id, char) {
@@ -96,7 +89,7 @@ fn parse(raw_input: String) -> Input {
       })
     })
 
-  Input(poi_dist, dict.size(pois))
+  #(poi_dist, dict.size(pois))
 }
 // -------------------------------- Explore
 // import common/reader.{InputParams}
