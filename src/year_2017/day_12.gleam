@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2017/day/12
 /// Difficulty: s
 /// Tags: graph scc
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
@@ -23,7 +22,6 @@ pub fn solve(raw_input: String) -> Solution {
 }
 
 fn solve_part_1(groups: List(List(Int))) -> Int {
-  // Find the group that contains node 0 and return its size
   groups
   |> list.find(fn(group) { list.contains(group, 0) })
   |> result.map(list.length)
@@ -51,12 +49,12 @@ fn parse(raw_input: String) -> yog.Graph(Nil, Nil) {
     })
   })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2017, 12)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2017, 12) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

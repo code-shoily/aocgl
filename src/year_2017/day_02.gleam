@@ -1,14 +1,12 @@
 /// Title: Corruption Checksum
 /// Link: https://adventofcode.com/2017/day/2
 /// Difficulty: s
-/// Tags:
-import common/reader
+/// Tags: arithmetic
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
 import gleam/option.{type Option, None, Some}
-import gleam/result
 import gleam/string
 
 pub fn solve(raw_input: String) -> Solution {
@@ -76,15 +74,12 @@ fn divides_any(xs: List(Int)) -> Option(Int) {
     [] | [_] -> None
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2017, 2)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+// import common/reader.{InputParams}
 
-  input
-  |> solve
-  |> echo
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2017, 2) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
 
-  utils.exit(0)
-}
+//   utils.exit(0)
+// }

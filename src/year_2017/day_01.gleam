@@ -2,12 +2,10 @@
 /// Link: https://adventofcode.com/2017/day/1
 /// Difficulty: xs
 /// Tags: linked-list
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
 
 pub fn solve(raw_input: String) -> Solution {
@@ -62,12 +60,12 @@ fn do_matches_next(digits: List(Int), result: List(Int)) -> List(Int) {
     [_, ..rest] -> do_matches_next(rest, result)
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2017, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  echo solve(input)
+// import common/reader.{InputParams}
 
-  Nil
-}
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2017, 1) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
