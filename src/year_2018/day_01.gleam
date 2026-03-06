@@ -2,11 +2,9 @@
 /// Link: https://adventofcode.com/2018/day/1
 /// Difficulty: xs
 /// Tags: set circular-list
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
-import gleam/result
 import gleam/set.{type Set}
 
 pub fn solve(raw_input: String) -> Solution {
@@ -51,12 +49,10 @@ fn traverse_frequencies(
     [] -> traverse_frequencies(ys, ys, freq, visited)
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2018, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  Nil
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2018, 1) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }

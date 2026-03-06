@@ -2,14 +2,12 @@
 /// Link: https://adventofcode.com/2018/day/2
 /// Difficulty: s
 /// Tags: brute-force
-import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
 import gleam/dict.{type Dict}
 import gleam/list
 import gleam/option.{Some}
 import gleam/pair
-import gleam/result
 import gleam/string
 
 pub fn solve(raw_input: String) -> Solution {
@@ -85,12 +83,10 @@ fn get_frequency(letter: List(String)) -> Dict(String, Int) {
     })
   })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2018, 2)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2018, 2) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }
