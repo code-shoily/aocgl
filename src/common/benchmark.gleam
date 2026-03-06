@@ -17,14 +17,6 @@ import year_2023/runner as runner_2023
 import year_2024/runner as runner_2024
 import year_2025/runner as runner_2025
 
-@external(erlang, "os", "timestamp")
-fn timestamp() -> #(Int, Int, Int)
-
-fn to_micros(t: #(Int, Int, Int)) -> Int {
-  let #(mega, sec, micro) = t
-  mega * 1_000_000_000_000 + sec * 1_000_000 + micro
-}
-
 pub fn main() {
   io.println("year,day,time_ms")
 
@@ -36,7 +28,7 @@ pub fn main() {
       let params = InputParams(year, day)
       case reader.read_input(params) {
         Ok(input) -> {
-          let start = timestamp() |> to_micros
+          let start = utils.timestamp() |> utils.to_micros
           let res = case year {
             2015 -> runner_2015.solve_for(input, day)
             2016 -> runner_2016.solve_for(input, day)
@@ -54,7 +46,7 @@ pub fn main() {
 
           case res {
             Ok(_) -> {
-              let end = timestamp() |> to_micros
+              let end = utils.timestamp() |> utils.to_micros
               let elapsed = int.to_float(end - start) /. 1000.0
               io.println(
                 int.to_string(year)

@@ -71,6 +71,23 @@ fn do_range(current: Int, end: Int, acc: List(Int)) -> List(Int) {
   }
 }
 
+/// Runs a function and returns the result along with the time taken in microseconds.
+/// Designed to be used with pipelines: `input |> utils.timed(solve)`
+pub fn timed(input: a, solve: fn(a) -> b) -> #(b, Int) {
+  let start = timestamp() |> to_micros
+  let res = solve(input)
+  let end = timestamp() |> to_micros
+  #(res, end - start)
+}
+
+@external(erlang, "os", "timestamp")
+pub fn timestamp() -> #(Int, Int, Int)
+
+pub fn to_micros(t: #(Int, Int, Int)) -> Int {
+  let #(mega, sec, micro) = t
+  mega * 1_000_000_000_000 + sec * 1_000_000 + micro
+}
+
 /// Halts a process immediately.
 @external(erlang, "erlang", "halt")
 @external(javascript, "node:process", "exit")
