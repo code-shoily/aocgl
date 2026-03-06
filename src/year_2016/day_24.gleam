@@ -9,7 +9,7 @@ import gleam/int
 import gleam/list
 import gleam/string
 import yog/builder/grid
-import yog/model
+import yog/model.{Graph}
 import yog/pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
@@ -48,46 +48,52 @@ fn calculate_path_dist(
   distances: Dict(#(Int, Int), Int),
   path: List(Int),
 ) -> Int {
-  path
-  |> list.window_by_2
-  |> list.fold(0, fn(acc, pair) {
-    let assert Ok(d) = dict.get(distances, pair)
-    acc + d
-  })
+  let pairs = list.window_by_2(path)
+
+  use dist, #(a, b) <- list.fold(pairs, 0)
+
+  let pair = case a < b {
+    True -> #(a, b)
+    False -> #(b, a)
+  }
+
+  let assert Ok(cur) = dict.get(distances, pair)
+  dist + cur
 }
 
 fn parse(raw_input: String) {
-  let graph =
+  let Graph(_, nodes, _, _) as graph =
     raw_input
     |> utils.to_lines()
     |> list.map(string.to_graphemes)
     |> grid.from_2d_list(model.Undirected, can_move: grid.avoiding("#"))
     |> grid.to_graph()
 
-  let pois =
-    dict.fold(graph.nodes, dict.new(), fn(acc, id, char) {
-      case int.parse(char) {
-        Ok(n) -> dict.insert(acc, n, id)
-        _ -> acc
-      }
-    })
+  let pois = {
+    use acc, id, char <- dict.fold(nodes, dict.new())
+    case int.parse(char) {
+      Ok(label) -> dict.insert(acc, label, id)
+      _ -> acc
+    }
+  }
 
-  let poi_dist =
-    dict.fold(pois, dict.new(), fn(acc, label_a, id_a) {
-      let distances =
-        pathfinding.single_source_distances(
-          in: graph,
-          from: id_a,
-          with_zero: 0,
-          with_add: int.add,
-          with_compare: int.compare,
-        )
+  let poi_dist = {
+    use acc_1, label_1, id_1 <- dict.fold(pois, dict.new())
 
-      dict.fold(pois, acc, fn(acc2, label_b, id_b) {
-        let assert Ok(dist) = dict.get(distances, id_b)
-        dict.insert(acc2, #(label_a, label_b), dist)
-      })
-    })
+    let distances =
+      pathfinding.single_source_distances(
+        in: graph,
+        from: id_1,
+        with_zero: 0,
+        with_add: int.add,
+        with_compare: int.compare,
+      )
+
+    use acc_2, label_2, id_2 <- dict.fold(pois, acc_1)
+
+    let assert Ok(dist) = dict.get(distances, id_2)
+    dict.insert(acc_2, #(label_1, label_2), dist)
+  }
 
   #(poi_dist, dict.size(pois))
 }
