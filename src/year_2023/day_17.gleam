@@ -2,25 +2,32 @@
 /// Link: https://adventofcode.com/2023/day/17
 /// Difficulty: xl
 /// Tags: graph implicit-graph shortest-path
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
 import gleam/option.{None, Some}
-import gleam/result
 import gleam/string
 import yog/pathfinding
 
-pub type Direction {
+pub fn solve(raw_input: String) -> Solution {
+  let #(grid, width, height) = parse(raw_input)
+
+  let part1 = solve_with_rules(grid, width, height, 1, 3) |> OfInt
+  let part2 = solve_with_rules(grid, width, height, 4, 10) |> OfInt
+
+  Solution(part1, part2)
+}
+
+type Direction {
   Up
   Down
   Left
   Right
 }
 
-pub type State {
+type State {
   State(x: Int, y: Int, dir: Direction, count: Int)
 }
 
@@ -60,15 +67,6 @@ fn move(x: Int, y: Int, dir: Direction) -> #(Int, Int) {
   }
 }
 
-pub fn solve(raw_input: String) -> Solution {
-  let #(grid, width, height) = parse(raw_input)
-
-  let part1 = solve_with_rules(grid, width, height, 1, 3) |> OfInt
-  let part2 = solve_with_rules(grid, width, height, 4, 10) |> OfInt
-
-  Solution(part1, part2)
-}
-
 fn get_neighbors(
   state: State,
   grid: Dict(Int, Int),
@@ -78,10 +76,8 @@ fn get_neighbors(
   max_s: Int,
 ) -> List(#(State, Int)) {
   let mut_neighbors = []
-
   let is_valid = fn(nx, ny) { nx >= 0 && nx < width && ny >= 0 && ny < height }
 
-  // 1. Straight
   let mut_neighbors = case state.count < max_s {
     True -> {
       let #(nx, ny) = move(state.x, state.y, state.dir)
@@ -129,8 +125,6 @@ fn solve_with_rules(
   min_s: Int,
   max_s: Int,
 ) -> Int {
-  let start = State(0, 0, Right, 0)
-
   let successors = fn(state) {
     get_neighbors(state, grid, width, height, min_s, max_s)
   }
@@ -138,25 +132,22 @@ fn solve_with_rules(
     state.x == width - 1 && state.y == height - 1 && state.count >= min_s
   }
 
-  // Use implicit_dijkstra_by to pack the state into an integer key for faster map lookups
-  // Key packing: ((x * height + y) * 4 + dir_int) * 11 + count
   let get_key = fn(state: State) {
     let dir_int = dir_to_int(state.dir)
     { { state.x * height + state.y } * 4 + dir_int } * 11 + state.count
   }
 
-  let result =
+  case
     pathfinding.implicit_dijkstra_by(
-      from: start,
-      visited_by: get_key,
+      from: State(0, 0, Right, 0),
       successors_with_cost: successors,
+      visited_by: get_key,
       is_goal: is_goal,
       with_zero: 0,
       with_add: int.add,
       with_compare: int.compare,
     )
-
-  case result {
+  {
     Some(dist) -> dist
     None -> -1
   }
@@ -185,12 +176,13 @@ fn parse(raw_input: String) -> #(Dict(Int, Int), Int, Int) {
 
   #(grid, width, height)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2023, 17)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2023, 17) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

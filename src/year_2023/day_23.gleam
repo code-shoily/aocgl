@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2023/day/23
 /// Difficulty: l
 /// Tags: graph implicit-graph longest-path dfs bitmask
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
@@ -10,6 +9,15 @@ import gleam/int
 import gleam/list
 import gleam/result
 import gleam/string
+
+pub fn solve(raw_input: String) -> Solution {
+  let #(grid, width, height) = parse(raw_input)
+
+  let part_1 = solve_part(grid, width, height, 1) |> OfInt
+  let part_2 = solve_part(grid, width, height, 2) |> OfInt
+
+  Solution(part_1, part_2)
+}
 
 type Grid =
   Dict(Int, String)
@@ -62,10 +70,6 @@ fn find_intersections(
   })
 }
 
-// Graph of { intersection_id -> List(#(neighbor_id, distance)) }
-type Graph =
-  Dict(Int, List(#(Int, Int)))
-
 fn walk_corridor(
   curr: Int,
   prev: Int,
@@ -94,22 +98,18 @@ fn walk_corridor(
             is_intersection,
           )
         [] -> Error(Nil)
-        // Dead end
         _ -> Error(Nil)
-        // Too many nexts, should only happen at intersections.
       }
     }
   }
 }
 
-// Build the implicit graph into an explicit one showing weights
-fn build_graph(
-  intersections: List(Int),
-  grid: Grid,
-  width: Int,
-  part: Int,
-) -> Graph {
-  // Map index for bitmasks
+fn solve_part(grid_dict: Grid, width: Int, height: Int, part: Int) -> Int {
+  let start = 1
+  let goal = { height - 1 } * width + { width - 2 }
+
+  let intersections = find_intersections(grid_dict, width, start, goal)
+
   let node_to_id =
     intersections
     |> list.index_map(fn(node, idx) { #(node, idx) })
@@ -117,39 +117,80 @@ fn build_graph(
 
   let is_intersection = fn(p: Int) { dict.has_key(node_to_id, p) }
 
-  intersections
-  |> list.fold(dict.new(), fn(graph, start_node) {
-    let start_id = dict.get(node_to_id, start_node) |> result.unwrap(-1)
+  let compressed_graph =
+    intersections
+    |> list.fold(dict.new(), fn(graph, start_node) {
+      let start_id = dict.get(node_to_id, start_node) |> result.unwrap(-1)
 
-    // For a given start_node, what other intersections can it reach natively?
-    let edges =
-      get_neighbors(start_node, grid, width, part)
-      |> list.filter_map(fn(first_step) {
-        let res =
-          walk_corridor(
-            first_step,
-            start_node,
-            1,
-            grid,
-            width,
-            part,
-            is_intersection,
-          )
+      let edges =
+        get_neighbors(start_node, grid_dict, width, part)
+        |> list.filter_map(fn(first_step) {
+          let res =
+            walk_corridor(
+              first_step,
+              start_node,
+              1,
+              grid_dict,
+              width,
+              part,
+              is_intersection,
+            )
 
-        case res {
-          Ok(#(end_node, dist)) -> {
-            let end_id = dict.get(node_to_id, end_node) |> result.unwrap(-1)
-            Ok(#(end_id, dist))
+          case res {
+            Ok(#(end_node, dist)) -> {
+              let end_id = dict.get(node_to_id, end_node) |> result.unwrap(-1)
+              Ok(#(end_id, dist))
+            }
+            Error(_) -> Error(Nil)
           }
-          Error(_) -> Error(Nil)
-        }
-      })
+        })
 
-    dict.insert(graph, start_id, edges)
-  })
+      dict.insert(graph, start_id, edges)
+    })
+
+  let start_id = dict.get(node_to_id, start) |> result.unwrap(-1)
+  let goal_id = dict.get(node_to_id, goal) |> result.unwrap(-1)
+
+  let outgoing_from_start =
+    dict.get(compressed_graph, start_id) |> result.unwrap([])
+  let #(first_junction_id, dist_from_start) = case outgoing_from_start {
+    [#(next_id, dist)] -> #(next_id, dist)
+    _ -> #(start_id, 0)
+  }
+
+  let incoming_to_goal =
+    dict.fold(compressed_graph, [], fn(acc, u, edges) {
+      case list.find(edges, fn(e) { e.0 == goal_id }) {
+        Ok(#(_, dist)) -> [#(u, dist), ..acc]
+        Error(_) -> acc
+      }
+    })
+  let #(final_junction_id, dist_to_goal) = case incoming_to_goal {
+    [#(prev_id, dist)] -> #(prev_id, dist)
+    _ -> #(goal_id, 0)
+  }
+
+  let initial_visited = int.bitwise_shift_left(1, first_junction_id)
+
+  let max_path_to_junction =
+    dfs(
+      first_junction_id,
+      final_junction_id,
+      initial_visited,
+      0,
+      compressed_graph,
+    )
+
+  max_path_to_junction + dist_from_start + dist_to_goal
 }
 
-fn dfs(curr: Int, goal: Int, visited: Int, cost: Int, graph: Graph) -> Int {
+fn dfs(
+  curr: Int,
+  goal: Int,
+  visited: Int,
+  cost: Int,
+  graph: Dict(Int, List(#(Int, Int))),
+) -> Int {
   case curr == goal {
     True -> cost
     False -> {
@@ -158,7 +199,6 @@ fn dfs(curr: Int, goal: Int, visited: Int, cost: Int, graph: Graph) -> Int {
       neighbors
       |> list.fold(-1, fn(max_cost, edge) {
         let #(next_id, edge_cost) = edge
-        // Is next_id in visited bitmask?
         let is_visited =
           int.bitwise_and(visited, int.bitwise_shift_left(1, next_id)) != 0
         case is_visited {
@@ -174,63 +214,6 @@ fn dfs(curr: Int, goal: Int, visited: Int, cost: Int, graph: Graph) -> Int {
       })
     }
   }
-}
-
-fn solve_part(grid: Grid, width: Int, height: Int, part: Int) -> Int {
-  let start = 1
-  // Assuming top row is #.# with . at index 1
-  let goal = { height - 1 } * width + { width - 2 }
-  // bottom row
-
-  let intersections = find_intersections(grid, width, start, goal)
-  let graph = build_graph(intersections, grid, width, part)
-
-  let node_to_id =
-    intersections
-    |> list.index_map(fn(node, idx) { #(node, idx) })
-    |> dict.from_list()
-
-  let start_id = dict.get(node_to_id, start) |> result.unwrap(-1)
-  let goal_id = dict.get(node_to_id, goal) |> result.unwrap(-1)
-
-  // --- THE PRUNING TRICK ---
-  // The start only has one neighbor.
-  let outgoing_from_start = dict.get(graph, start_id) |> result.unwrap([])
-  let #(first_junction_id, dist_from_start) = case outgoing_from_start {
-    [#(next_id, dist)] -> #(next_id, dist)
-    _ -> #(start_id, 0)
-  }
-
-  // The goal only has one incoming neighbor. We find it safely for both directed/undirected.
-  let incoming_to_goal =
-    dict.fold(graph, [], fn(acc, u, edges) {
-      case list.find(edges, fn(e) { e.0 == goal_id }) {
-        Ok(#(_, dist)) -> [#(u, dist), ..acc]
-        Error(_) -> acc
-      }
-    })
-  let #(final_junction_id, dist_to_goal) = case incoming_to_goal {
-    [#(prev_id, dist)] -> #(prev_id, dist)
-    _ -> #(goal_id, 0)
-  }
-
-  let initial_visited = int.bitwise_shift_left(1, first_junction_id)
-
-  // We set the DFS target to the final junction, NOT the goal.
-  let max_path_to_junction =
-    dfs(first_junction_id, final_junction_id, initial_visited, 0, graph)
-
-  // Add the initial and final stretch to the result
-  max_path_to_junction + dist_from_start + dist_to_goal
-}
-
-pub fn solve(raw_input: String) -> Solution {
-  let #(grid, width, height) = parse(raw_input)
-
-  let part_1 = solve_part(grid, width, height, 1) |> OfInt
-  let part_2 = solve_part(grid, width, height, 2) |> OfInt
-
-  Solution(part_1, part_2)
 }
 
 fn parse(raw_input: String) -> #(Grid, Int, Int) {
@@ -253,12 +236,13 @@ fn parse(raw_input: String) -> #(Grid, Int, Int) {
 
   #(grid, width, height)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2023, 23)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2023, 23) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

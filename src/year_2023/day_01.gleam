@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2023/day/1
 /// Difficulty: s
 /// Tags: regex
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
@@ -118,13 +117,13 @@ fn regex_store_to_entry(document: String, store: RegexpStore) -> DigitPair {
     _, _ -> #(None, None)
   }
 }
+// ------------------------------ Explorations
+// import common/reader.{InputParams}
 
-pub fn main() -> Nil {
-  let assert Ok(input) =
-    reader.InputParams(2023, 1)
-    |> reader.read_input()
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2023, 1) |> reader.read_input
 
-  solve(input) |> echo
+//   input |> utils.timed(solve) |> echo
 
-  utils.exit(0)
-}
+//   utils.exit(0)
+// }
