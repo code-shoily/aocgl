@@ -2,14 +2,12 @@
 /// Link: https://adventofcode.com/2020/day/2
 /// Difficulty: xs
 /// Tags:
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
 import gleam/option.{Some}
 import gleam/regexp.{Match}
-import gleam/result
 import gleam/string
 
 pub fn solve(raw_input: String) -> Solution {
@@ -61,12 +59,12 @@ fn is_valid_2(policy: Policy) -> Bool {
 type Policy {
   Policy(i: Int, f: Int, c: String, pwd: String)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2020, 2)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2020, 2) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
