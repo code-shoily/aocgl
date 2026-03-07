@@ -60,14 +60,13 @@ fn parse(raw_input: String) -> List(Point) {
     #(a, b, c, d)
   })
 }
-
 // ------------------------------ Exploration
-import common/reader.{InputParams}
-import common/utils
+// import common/reader.{InputParams}
+// import common/utils
 
-pub fn main() -> Nil {
-  let assert Ok(input) = InputParams(2018, 25) |> reader.read_input
-  input |> utils.timed(solve) |> echo
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2018, 25) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
 
-  utils.exit(0)
-}
+//   utils.exit(0)
+// }

@@ -5,7 +5,7 @@ Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/tag
 ## Stats
 
 <!-- STATS_START -->
-> **35 problems solved** across **11 years** — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md) · [Benchmarks](wiki/benchmarks.md)
+> **36 problems solved** across **11 years** — [Tags](wiki/tags/index.md) · [Difficulty](wiki/difficulty.md) · [Benchmarks](wiki/benchmarks.md)
 
 **Years:** [2015](src/year_2015/README.md) | [2016](src/year_2016/README.md) | [2017](src/year_2017/README.md) | [2018](src/year_2018/README.md) | [2019](src/year_2019/README.md) | [2020](src/year_2020/README.md) | [2021](src/year_2021/README.md) | [2022](src/year_2022/README.md) | [2023](src/year_2023/README.md) | [2024](src/year_2024/README.md) | [2025](src/year_2025/README.md)
 
@@ -35,11 +35,11 @@ Advent of Code solutions written in Gleam. Browse the **[solution wiki](wiki/tag
 | 22 |   |   |   |   |   |   |   |   |   |   |   |
 | 23 |   |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2023/day/23) | [⭐](https://adventofcode.com/2024/day/23) |   |
 | 24 |   | [⭐](https://adventofcode.com/2016/day/24) |   |   |   |   |   | [⭐](https://adventofcode.com/2022/day/24) |   |   |   |
-| 25 |   |   |   |   |   |   |   |   | [⭐](https://adventofcode.com/2023/day/25) |   |   |
+| 25 |   |   |   | [⭐](https://adventofcode.com/2018/day/25) |   |   |   |   | [⭐](https://adventofcode.com/2023/day/25) |   |   |
 
 ### 🏷️ Tags
 
-[graph](wiki/tags/graph.md)&nbsp;`19`  [grid](wiki/tags/grid.md)&nbsp;`7`  [shortest-path](wiki/tags/shortest-path.md)&nbsp;`7`  [bfs](wiki/tags/bfs.md)&nbsp;`6`  [implicit-graph](wiki/tags/implicit-graph.md)&nbsp;`5`  [bitmask](wiki/tags/bitmask.md)&nbsp;`3`  [dfs](wiki/tags/dfs.md)&nbsp;`3`  [dijkstra](wiki/tags/dijkstra.md)&nbsp;`2`  [reduction](wiki/tags/reduction.md)&nbsp;`2`  [sort](wiki/tags/sort.md)&nbsp;`2`  [topological-sort](wiki/tags/topological-sort.md)&nbsp;`2`  [arithmetic](wiki/tags/arithmetic.md)&nbsp;`1`  [backtracking](wiki/tags/backtracking.md)&nbsp;`1`  [bron-kerbosch](wiki/tags/bron-kerbosch.md)&nbsp;`1`  [brute-force](wiki/tags/brute-force.md)&nbsp;`1`  [circular-list](wiki/tags/circular-list.md)&nbsp;`1`  [clique](wiki/tags/clique.md)&nbsp;`1`  [floyd-warshall](wiki/tags/floyd-warshall.md)&nbsp;`1`  [geometry](wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](wiki/tags/linear-scan.md)&nbsp;`1`  [linked-list](wiki/tags/linked-list.md)&nbsp;`1`  [longest-path](wiki/tags/longest-path.md)&nbsp;`1`  [min-cut](wiki/tags/min-cut.md)&nbsp;`1`  [modular-algebra](wiki/tags/modular-algebra.md)&nbsp;`1`  [n-sum](wiki/tags/n-sum.md)&nbsp;`1`  [regex](wiki/tags/regex.md)&nbsp;`1`  [scc](wiki/tags/scc.md)&nbsp;`1`  [set](wiki/tags/set.md)&nbsp;`1`  [state-space-search](wiki/tags/state-space-search.md)&nbsp;`1`  [stoer-wagner](wiki/tags/stoer-wagner.md)&nbsp;`1`  [top-k](wiki/tags/top-k.md)&nbsp;`1`  [tree](wiki/tags/tree.md)&nbsp;`1`  [tsp](wiki/tags/tsp.md)&nbsp;`1`  [window](wiki/tags/window.md)&nbsp;`1`
+[graph](wiki/tags/graph.md)&nbsp;`20`  [grid](wiki/tags/grid.md)&nbsp;`7`  [shortest-path](wiki/tags/shortest-path.md)&nbsp;`7`  [bfs](wiki/tags/bfs.md)&nbsp;`6`  [implicit-graph](wiki/tags/implicit-graph.md)&nbsp;`5`  [bitmask](wiki/tags/bitmask.md)&nbsp;`3`  [dfs](wiki/tags/dfs.md)&nbsp;`3`  [dijkstra](wiki/tags/dijkstra.md)&nbsp;`2`  [reduction](wiki/tags/reduction.md)&nbsp;`2`  [scc](wiki/tags/scc.md)&nbsp;`2`  [sort](wiki/tags/sort.md)&nbsp;`2`  [topological-sort](wiki/tags/topological-sort.md)&nbsp;`2`  [arithmetic](wiki/tags/arithmetic.md)&nbsp;`1`  [backtracking](wiki/tags/backtracking.md)&nbsp;`1`  [bron-kerbosch](wiki/tags/bron-kerbosch.md)&nbsp;`1`  [brute-force](wiki/tags/brute-force.md)&nbsp;`1`  [circular-list](wiki/tags/circular-list.md)&nbsp;`1`  [clique](wiki/tags/clique.md)&nbsp;`1`  [floyd-warshall](wiki/tags/floyd-warshall.md)&nbsp;`1`  [geometry](wiki/tags/geometry.md)&nbsp;`1`  [linear-scan](wiki/tags/linear-scan.md)&nbsp;`1`  [linked-list](wiki/tags/linked-list.md)&nbsp;`1`  [longest-path](wiki/tags/longest-path.md)&nbsp;`1`  [min-cut](wiki/tags/min-cut.md)&nbsp;`1`  [modular-algebra](wiki/tags/modular-algebra.md)&nbsp;`1`  [n-sum](wiki/tags/n-sum.md)&nbsp;`1`  [regex](wiki/tags/regex.md)&nbsp;`1`  [set](wiki/tags/set.md)&nbsp;`1`  [state-space-search](wiki/tags/state-space-search.md)&nbsp;`1`  [stoer-wagner](wiki/tags/stoer-wagner.md)&nbsp;`1`  [top-k](wiki/tags/top-k.md)&nbsp;`1`  [tree](wiki/tags/tree.md)&nbsp;`1`  [tsp](wiki/tags/tsp.md)&nbsp;`1`  [window](wiki/tags/window.md)&nbsp;`1`
 <!-- STATS_END -->
 
 

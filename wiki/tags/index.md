@@ -16,7 +16,7 @@
 | [dijkstra](dijkstra.md) | 2 |
 | [floyd-warshall](floyd-warshall.md) | 1 |
 | [geometry](geometry.md) | 1 |
-| [graph](graph.md) | 19 |
+| [graph](graph.md) | 20 |
 | [grid](grid.md) | 7 |
 | [implicit-graph](implicit-graph.md) | 5 |
 | [linear-scan](linear-scan.md) | 1 |
@@ -27,7 +27,7 @@
 | [n-sum](n-sum.md) | 1 |
 | [reduction](reduction.md) | 2 |
 | [regex](regex.md) | 1 |
-| [scc](scc.md) | 1 |
+| [scc](scc.md) | 2 |
 | [set](set.md) | 1 |
 | [shortest-path](shortest-path.md) | 7 |
 | [sort](sort.md) | 2 |
