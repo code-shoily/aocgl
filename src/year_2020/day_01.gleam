@@ -2,13 +2,11 @@
 /// Link: https://adventofcode.com/2020/day/1
 /// Difficulty: xs
 /// Tags: n-sum
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list.{Continue, Stop}
 import gleam/option.{type Option, None, Some}
-import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -56,40 +54,31 @@ fn do_two_sum(xys: List(Int), yxs: List(Int), target: Int) {
   }
 }
 
-type Acc {
-  Acc(List(Int), Option(#(Int, Int, Int)))
-}
-
 fn three_sum(nums: List(Int), target: Int) -> #(Int, Int, Int) {
-  let initial_state = Acc(nums, None)
+  let initial_state = #(nums, None)
 
-  let assert Acc(_, Some(triplet)) =
-    list.fold_until(nums, initial_state, fn(acc, _) {
-      case acc {
-        Acc([head, ..tail], _) -> {
-          case two_sum(tail, target - head) {
-            Some(#(a, b)) -> {
-              let total = a + b + head
-              case total == target {
-                True -> Acc([], Some(#(a, b, head))) |> Stop
-                False -> Acc(tail, None) |> Continue
-              }
-            }
-            None -> Acc(tail, None) |> Continue
-          }
+  let assert #(_, Some(triplet)) = {
+    use sum_acc_state, _ <- list.fold_until(nums, initial_state)
+
+    let assert #([head, ..tail], _) = sum_acc_state
+
+    case two_sum(tail, target - head) {
+      Some(#(a, b)) -> {
+        case a + b + head {
+          sum if sum == target -> Stop(#([], Some(#(a, b, head))))
+          _ -> Continue(#(tail, None))
         }
-        _ -> panic as "This has no solution"
       }
-    })
+      None -> Continue(#(tail, None))
+    }
+  }
 
   triplet
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2020, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> solution.print_solution
+// import common/reader.{InputParams}
 
-  Nil
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2020, 1) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }
