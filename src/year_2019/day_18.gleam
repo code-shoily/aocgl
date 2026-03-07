@@ -289,11 +289,10 @@ fn door_to_key_bit(door: String) -> Int {
     False -> 0
   }
 }
-
 // ------------------------------ Exploration
-import common/reader.{InputParams}
+// import common/reader.{InputParams}
 
-pub fn main() {
-  let assert Ok(input) = InputParams(2019, 18) |> reader.read_input
-  input |> utils.timed(solve) |> echo
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2019, 18) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }
