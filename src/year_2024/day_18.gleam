@@ -2,17 +2,15 @@
 /// Link: https://adventofcode.com/2024/day/18
 /// Difficulty: m
 /// Tags: graph shortest-path grid
-import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
 import gleam/int
 import gleam/list
 import gleam/option.{None, Some}
-import gleam/result
 import gleam/set
 import gleam/string
 import yog/builder/grid
-import yog/model
+import yog/model.{type Graph}
 import yog/pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
@@ -23,18 +21,10 @@ pub fn solve(raw_input: String) -> Solution {
   Solution(part_1, part_2)
 }
 
-fn solve_part_1(coords: List(#(Int, Int))) -> Int {
-  // For sample it would be 7, but let's assume real input is 71
-  let is_sample = list.length(coords) < 100
-  let dim = case is_sample {
-    True -> 7
-    False -> 71
-  }
-  let take_count = case is_sample {
-    True -> 12
-    False -> 1024
-  }
+const dim = 71
 
+fn solve_part_1(coords: List(#(Int, Int))) -> Int {
+  let take_count = 1024
   let corrupted = list.take(coords, take_count) |> set.from_list
 
   let grid_2d =
@@ -60,37 +50,26 @@ fn solve_part_1(coords: List(#(Int, Int))) -> Int {
 }
 
 fn solve_part_2(coords: List(#(Int, Int))) -> String {
-  let is_sample = list.length(coords) < 100
-  let dim = case is_sample {
-    True -> 7
-    False -> 71
-  }
+  let empty_grid =
+    list.map(utils.int_range(0, dim - 1), fn(_) { list.repeat(False, dim) })
 
-  let empty_grid_2d =
-    utils.int_range(0, dim - 1)
-    |> list.map(fn(_) { list.repeat(False, dim) })
+  let builder =
+    grid.from_2d_list(empty_grid, model.Undirected, fn(_, _) { True })
 
-  let grid_builder =
-    grid.from_2d_list(empty_grid_2d, model.Undirected, fn(_from_corr, _to_corr) {
-      True
-    })
-
-  let initial_graph = grid.to_graph(grid_builder)
+  let initial_graph = grid.to_graph(builder)
   let start = grid.coord_to_id(0, 0, dim)
   let end = grid.coord_to_id(dim - 1, dim - 1, dim)
 
-  let assert Ok(bad_coord) =
-    find_blocker(initial_graph, coords, start, end, dim, [])
+  let assert Ok(bad_coord) = find_blocker(initial_graph, coords, start, end, [])
   int.to_string(bad_coord.0) <> "," <> int.to_string(bad_coord.1)
 }
 
 fn find_blocker(
-  graph,
-  remaining_coords,
-  start,
-  end,
-  dim,
-  current_path,
+  graph: Graph(Bool, Int),
+  remaining_coords: List(#(Int, Int)),
+  start: Int,
+  end: Int,
+  current_path: List(Int),
 ) -> Result(#(Int, Int), Nil) {
   case remaining_coords {
     [] -> Error(Nil)
@@ -98,8 +77,6 @@ fn find_blocker(
       let #(x, y) = coord
       let id = grid.coord_to_id(y, x, dim)
       let next_graph = model.remove_node(graph, id)
-
-      // If the node we just removed was on our current path, we need to recalculate
       let path_broken = current_path == [] || list.contains(current_path, id)
 
       case path_broken {
@@ -114,14 +91,12 @@ fn find_blocker(
               int.compare,
             )
           {
-            Some(path) ->
-              find_blocker(next_graph, rest, start, end, dim, path.nodes)
+            Some(path) -> find_blocker(next_graph, rest, start, end, path.nodes)
             None -> Ok(coord)
           }
         }
         False -> {
-          // Path is still intact, no need to recalculate Dijkstra!
-          find_blocker(next_graph, rest, start, end, dim, current_path)
+          find_blocker(next_graph, rest, start, end, current_path)
         }
       }
     }
@@ -139,12 +114,13 @@ fn parse(raw_input: String) -> List(#(Int, Int)) {
     #(x, y)
   })
 }
+// -------------------------------- Explore
+// import common/reader.{InputParams}
 
-// ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2024, 18)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2024, 18) |> reader.read_input
 
-  utils.exit(0)
-}
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

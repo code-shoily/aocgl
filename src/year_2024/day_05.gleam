@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2024/day/5
 /// Difficulty: m
 /// Tags: graph topological-sort
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict
@@ -13,10 +12,6 @@ import gleam/set
 import gleam/string
 import yog/builder/labeled
 import yog/topological_sort
-
-pub type Input {
-  Input(rules: List(#(Int, Int)), updates: List(List(Int)))
-}
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -39,6 +34,10 @@ fn solve_part_2(input: Input) -> Int {
   |> list.map(fn(update) { reorder(update, input.rules) })
   |> list.map(get_middle)
   |> int.sum
+}
+
+type Input {
+  Input(rules: List(#(Int, Int)), updates: List(List(Int)))
 }
 
 fn is_valid(update: List(Int), rules: List(#(Int, Int))) -> Bool {
@@ -104,11 +103,13 @@ fn parse(raw_input: String) -> Input {
 
   Input(rules, updates)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2024, 5)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
-  utils.exit(0)
-}
+// import common/reader.{InputParams}
+
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2024, 5) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

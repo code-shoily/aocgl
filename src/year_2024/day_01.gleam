@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2024/day/1
 /// Difficulty: xs
 /// Tags: sort
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
@@ -59,13 +58,13 @@ fn build_frequency_map(nums: List(Int)) -> Dict(Int, Int) {
   |> list.group(function.identity)
   |> dict.map_values(fn(_, v) { list.length(v) })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2024, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+// import common/reader.{InputParams}
 
-  echo solve(input)
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2024, 1) |> reader.read_input
 
-  utils.exit(0)
-}
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

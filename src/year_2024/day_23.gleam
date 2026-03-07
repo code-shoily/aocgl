@@ -2,21 +2,15 @@
 /// Link: https://adventofcode.com/2024/day/23
 /// Difficulty: m
 /// Tags: graph clique bron-kerbosch
-import common/reader
 import common/solution.{type Solution, OfInt, OfStr, Solution}
 import common/utils
 import gleam/dict
 import gleam/list
-import gleam/result
 import gleam/set.{type Set}
 import gleam/string
 import yog/builder/labeled
 import yog/clique
 import yog/model
-
-pub type Input {
-  Input(graph: model.Graph(String, Nil), builder: labeled.Builder(String, Nil))
-}
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -37,7 +31,6 @@ fn solve_part_1(input: Input) -> Int {
     use v <- list.flat_map(set.to_list(u_neighbors))
     let v_name = get_name(input, v)
 
-    // Optimization: only process if u < v to avoid duplicate pairs
     case v > u {
       False -> []
       True -> {
@@ -47,7 +40,6 @@ fn solve_part_1(input: Input) -> Int {
         use w <- list.filter_map(set.to_list(common_neighbors))
         let w_name = get_name(input, w)
 
-        // Only process if v < w to ensure we only count the triplet (u, v, w) once
         case w > v {
           False -> Error(Nil)
           True -> {
@@ -69,13 +61,16 @@ fn solve_part_1(input: Input) -> Int {
 }
 
 fn solve_part_2(input: Input) -> String {
-  let max_clique_ids = clique.max_clique(input.graph)
-
-  max_clique_ids
+  input.graph
+  |> clique.max_clique
   |> set.to_list
   |> list.map(fn(id) { get_name(input, id) })
   |> list.sort(string.compare)
   |> string.join(",")
+}
+
+type Input {
+  Input(graph: model.Graph(String, Nil), builder: labeled.Builder(String, Nil))
 }
 
 fn get_name(input: Input, id: Int) -> String {
@@ -100,11 +95,13 @@ fn get_neighbor_ids_set(graph: model.Graph(n, e), id: Int) -> Set(Int) {
   |> list.map(fn(neighbor) { neighbor.0 })
   |> set.from_list
 }
-
 // ------------------------------ Explorations
-pub fn main() -> Nil {
-  let param = reader.InputParams(2024, 23)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
-  utils.exit(0)
-}
+// import common/reader.{InputParams}
+
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2024, 23) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
