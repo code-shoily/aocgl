@@ -12,6 +12,7 @@
 | 2018 | [1](https://adventofcode.com/2018/day/1) | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [set](tags/set.md), [circular-list](tags/circular-list.md) | [day_01.gleam](../src/year_2018/day_01.gleam) |
 | 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |
 | 2020 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | [n-sum](tags/n-sum.md) | [day_01.gleam](../src/year_2020/day_01.gleam) |
+| 2021 | [1](https://adventofcode.com/2021/day/1) | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [window](tags/window.md) | [day_01.gleam](../src/year_2021/day_01.gleam) |
 | 2022 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | [sort](tags/sort.md), [top-k](tags/top-k.md) | [day_01.gleam](../src/year_2022/day_01.gleam) |
 | 2024 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [sort](tags/sort.md) | [day_01.gleam](../src/year_2024/day_01.gleam) |
 
@@ -21,6 +22,7 @@
 |------|:---:|-------|------|--------|
 | 2016 | [1](https://adventofcode.com/2016/day/1) | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [grid](tags/grid.md) | [day_01.gleam](../src/year_2016/day_01.gleam) |
 | 2016 | [2](https://adventofcode.com/2016/day/2) | [Bathroom Security](https://adventofcode.com/2016/day/2) | [grid](tags/grid.md) | [day_02.gleam](../src/year_2016/day_02.gleam) |
+| 2017 | [2](https://adventofcode.com/2017/day/2) | [Corruption Checksum](https://adventofcode.com/2017/day/2) | [arithmetic](tags/arithmetic.md) | [day_02.gleam](../src/year_2017/day_02.gleam) |
 | 2017 | [12](https://adventofcode.com/2017/day/12) | [Digital Plumber](https://adventofcode.com/2017/day/12) | [graph](tags/graph.md), [scc](tags/scc.md) | [day_12.gleam](../src/year_2017/day_12.gleam) |
 | 2018 | [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | [brute-force](tags/brute-force.md) | [day_02.gleam](../src/year_2018/day_02.gleam) |
 | 2020 | [7](https://adventofcode.com/2020/day/7) | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [graph](tags/graph.md), [bfs](tags/bfs.md) | [day_07.gleam](../src/year_2020/day_07.gleam) |

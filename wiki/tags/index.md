@@ -4,6 +4,7 @@
 
 | Tag | Problems |
 |-----|--------:|
+| [arithmetic](arithmetic.md) | 1 |
 | [backtracking](backtracking.md) | 1 |
 | [bfs](bfs.md) | 6 |
 | [bitmask](bitmask.md) | 3 |
@@ -36,3 +37,4 @@
 | [topological-sort](topological-sort.md) | 2 |
 | [tree](tree.md) | 1 |
 | [tsp](tsp.md) | 1 |
+| [window](window.md) | 1 |
