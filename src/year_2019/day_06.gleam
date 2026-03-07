@@ -2,13 +2,11 @@
 /// Link: https://adventofcode.com/2019/day/6
 /// Difficulty: l
 /// Tags: graph shortest-path
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
-import gleam/option.{None, Some}
-import gleam/result
+import gleam/option.{Some}
 import gleam/string
 import yog.{type Graph, type NodeId}
 import yog/builder/labeled.{type Builder}
@@ -36,7 +34,7 @@ fn solve_part_2(builder: Builder(String, Int)) -> Int {
   let assert Ok(san_id) = labeled.get_id(builder, "SAN")
   let graph = labeled.to_graph(builder)
 
-  case
+  let assert Some(path) =
     pathfinding.shortest_path(
       in: graph,
       from: you_id,
@@ -45,10 +43,8 @@ fn solve_part_2(builder: Builder(String, Int)) -> Int {
       with_add: int.add,
       with_compare: int.compare,
     )
-  {
-    Some(path) -> path.total_weight - 2
-    None -> -1
-  }
+
+  path.total_weight - 2
 }
 
 fn parse(raw_input: String, init_graph) -> Builder(String, Int) {
@@ -65,20 +61,16 @@ fn count_total_orbits(
   node_id: NodeId,
   depth: Int,
 ) -> Int {
-  let children = yog.successors(graph, node_id)
-
   depth
-  + list.fold(children, 0, fn(total, edge) {
-    let #(child_id, _weight) = edge
+  + {
+    use total, #(child_id, _) <- list.fold(yog.successors(graph, node_id), 0)
     total + count_total_orbits(graph, child_id, depth + 1)
-  })
+  }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2019, 6)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  input |> solve() |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2019, 6) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }

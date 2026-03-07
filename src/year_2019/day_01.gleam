@@ -2,12 +2,10 @@
 /// Link: https://adventofcode.com/2019/day/1
 /// Difficulty: xs
 /// Tags: reduction
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
-import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -48,10 +46,9 @@ fn list_fuels(mass: Int, total_fuel: List(Int)) -> List(Int) {
 }
 
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2019, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+import common/reader.{InputParams}
 
-  Nil
+pub fn main() {
+  let assert Ok(input) = InputParams(2019, 1) |> reader.read_input
+  input |> utils.timed(solve) |> echo
 }

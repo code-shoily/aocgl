@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2019/day/18
 /// Difficulty: xl
 /// Tags: graph dijkstra bfs state-space-search bitmask implicit-graph
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict.{type Dict}
@@ -15,10 +14,10 @@ import yog/pathfinding
 import yog/traversal.{BreadthFirst, Continue, Stop}
 
 pub fn solve(raw_input: String) -> Solution {
-  let input1 = parse(raw_input)
-  let input4 = parse_part2(raw_input)
-  let part_1 = solve_part_1(input1) |> OfInt
-  let part_2 = solve_part_2(input4) |> OfInt
+  let input_1 = parse(raw_input)
+  let input_4 = parse_part_2(raw_input)
+  let part_1 = solve_part_1(input_1) |> OfInt
+  let part_2 = solve_part_2(input_4) |> OfInt
   Solution(part_1, part_2)
 }
 
@@ -122,7 +121,7 @@ fn solve_part_2(input: Input4) -> Int {
 
 // ── Part 2 parsing ────────────────────────────────────────────────────────────
 
-fn parse_part2(raw_input: String) -> Input4 {
+fn parse_part_2(raw_input: String) -> Input4 {
   let grid = raw_input |> utils.to_lines() |> parse_grid()
 
   let start_pos =
@@ -146,7 +145,7 @@ fn parse_part2(raw_input: String) -> Input4 {
     |> dict.insert(#(cx - 1, cy + 1), "3")
     |> dict.insert(#(cx + 1, cy + 1), "4")
 
-  let pois = find_pois_part2(modified)
+  let pois = find_pois_part_2(modified)
   let adj =
     dict.fold(pois, dict.new(), fn(acc, label, pos) {
       dict.insert(acc, label, find_reachable_keys(modified, pos))
@@ -162,7 +161,7 @@ fn parse_part2(raw_input: String) -> Input4 {
   Input4(adj, all_keys_mask, ["1", "2", "3", "4"])
 }
 
-fn find_pois_part2(grid: Dict(Pos, String)) -> Dict(String, Pos) {
+fn find_pois_part_2(grid: Dict(Pos, String)) -> Dict(String, Pos) {
   dict.fold(grid, dict.new(), fn(acc, pos, char) {
     case char {
       "1" | "2" | "3" | "4" -> dict.insert(acc, char, pos)
@@ -292,11 +291,9 @@ fn door_to_key_bit(door: String) -> Int {
 }
 
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2019, 18)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+import common/reader.{InputParams}
 
-  solve(input) |> echo
-
-  utils.exit(0)
+pub fn main() {
+  let assert Ok(input) = InputParams(2019, 18) |> reader.read_input
+  input |> utils.timed(solve) |> echo
 }
