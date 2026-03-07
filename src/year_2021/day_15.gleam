@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2021/day/15
 /// Difficulty: m
 /// Tags: graph shortest-path grid dijkstra
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict
@@ -43,7 +42,6 @@ fn solve_part_1(grid_2d: List(List(Int))) -> Int {
   let start = grid.coord_to_id(0, 0, cols)
   let end = grid.coord_to_id(rows - 1, cols - 1, cols)
 
-  // Just standard Dijkstra on the Grid
   case pathfinding.shortest_path(graph, start, end, 0, int.add, int.compare) {
     Some(path) -> path.total_weight
     None -> -1
@@ -54,25 +52,25 @@ fn solve_part_2(grid_2d: List(List(Int))) -> Int {
   let cols = list.length(result.unwrap(list.first(grid_2d), []))
   let rows = list.length(grid_2d)
 
-  // Expand grid 5x5
-  let expanded_grid =
-    utils.int_range(0, rows * 5 - 1)
-    |> list.map(fn(r) {
-      utils.int_range(0, cols * 5 - 1)
-      |> list.map(fn(c) {
-        let base_r = r % rows
-        let base_c = c % cols
-        let offset = r / rows + c / cols
-        let assert Ok(base_row) = utils.at(grid_2d, base_r)
-        let assert Ok(base_val) = utils.at(base_row, base_c)
+  let expanded_grid = {
+    let rrows = utils.int_range(0, rows * 5 - 1)
+    use row <- list.map(rrows)
 
-        let new_val = base_val + offset
-        case new_val > 9 {
-          True -> new_val - 9
-          False -> new_val
-        }
-      })
-    })
+    let rcols = utils.int_range(0, cols * 5 - 1)
+    use col <- list.map(rcols)
+    let base_r = row % rows
+    let base_c = col % cols
+    let offset = row / rows + col / cols
+
+    let assert Ok(base_row) = utils.at(grid_2d, base_r)
+    let assert Ok(base_val) = utils.at(base_row, base_c)
+
+    let new_val = base_val + offset
+    case new_val > 9 {
+      True -> new_val - 9
+      False -> new_val
+    }
+  }
 
   let big_cols = cols * 5
   let big_rows = rows * 5
@@ -94,7 +92,6 @@ fn solve_part_2(grid_2d: List(List(Int))) -> Int {
   let start = grid.coord_to_id(0, 0, big_cols)
   let end = grid.coord_to_id(big_rows - 1, big_cols - 1, big_cols)
 
-  // We have the Manhattan heuristic so we can use A* to make traversing the 500x500 grid insanely fast!
   let h = fn(node_id, goal_id) {
     let nx = node_id % big_cols
     let ny = node_id / big_cols
@@ -119,12 +116,12 @@ fn parse(raw_input: String) -> List(List(Int)) {
     |> list.filter_map(int.parse)
   })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2021, 15)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2021, 15) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
