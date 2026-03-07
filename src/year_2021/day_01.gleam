@@ -1,13 +1,11 @@
 /// Title: Sonar Sweep
 /// Link: https://adventofcode.com/2021/day/1
 /// Difficulty: xs
-/// Tags:
-import common/reader
+/// Tags: window
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
 import gleam/list
-import gleam/result
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -38,12 +36,10 @@ fn count_depth_increases(depths: List(Int), by: Int) {
   |> list.window_by_2()
   |> list.count(fn(pair) { pair.1 > pair.0 })
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2021, 1)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  Nil
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2021, 1) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
+// }
