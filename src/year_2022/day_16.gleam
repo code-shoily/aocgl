@@ -2,9 +2,7 @@
 /// Link: https://adventofcode.com/2022/day/16
 /// Difficulty: xl
 /// Tags: graph floyd-warshall dfs bitmask
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
-import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
@@ -22,24 +20,19 @@ pub fn solve(raw_input: String) -> Solution {
 }
 
 fn solve_part_1(input: Input) -> Int {
-  let scores = compute_all_path_scores(input, 30)
-  dict.values(scores) |> list.fold(0, int.max)
+  input |> compute_all_path_scores(30) |> dict.values |> list.fold(0, int.max)
 }
 
 fn solve_part_2(input: Input) -> Int {
   let scores = compute_all_path_scores(input, 26)
   let scores_list = dict.to_list(scores)
 
-  list.fold(scores_list, 0, fn(max_acc, entry_a) {
-    let #(mask_a, score_a) = entry_a
-    list.fold(scores_list, max_acc, fn(inner_acc, entry_b) {
-      let #(mask_b, score_b) = entry_b
-      case int.bitwise_and(mask_a, mask_b) == 0 {
-        True -> int.max(inner_acc, score_a + score_b)
-        False -> inner_acc
-      }
-    })
-  })
+  use max_acc, #(mask_a, score_a) <- list.fold(scores_list, 0)
+  use inner_acc, #(mask_b, score_b) <- list.fold(scores_list, max_acc)
+  case int.bitwise_and(mask_a, mask_b) {
+    0 -> int.max(inner_acc, score_a + score_b)
+    _ -> inner_acc
+  }
 }
 
 type Input {
@@ -119,35 +112,33 @@ fn parse(raw_input: String) -> Input {
 
   let builder = labeled.directed()
 
-  let #(builder, flow_map) =
-    list.fold(lines, #(builder, dict.new()), fn(acc, line) {
-      let #(builder, flows) = acc
+  let #(builder, flow_map) = {
+    use #(builder, flows), line <- list.fold(lines, #(builder, dict.new()))
+    let assert Ok(#("Valve " <> valve, _)) =
+      string.split_once(line, " has flow")
 
-      let assert Ok(#("Valve " <> valve, _)) =
-        string.split_once(line, " has flow")
+    let assert Ok(#(_, after_eq)) = string.split_once(line, "=")
+    let assert Ok(#(rate_str, _)) = string.split_once(after_eq, ";")
+    let assert Ok(flow_rate) = int.parse(string.trim(rate_str))
 
-      let assert Ok(#(_, after_eq)) = string.split_once(line, "=")
-      let assert Ok(#(rate_str, _)) = string.split_once(after_eq, ";")
-      let assert Ok(flow_rate) = int.parse(string.trim(rate_str))
-
-      let tunnels = case string.contains(line, "valves") {
-        True -> {
-          let assert Ok(#(_, valves_str)) = string.split_once(line, "valves ")
-          string.split(valves_str, ", ")
-        }
-        False -> {
-          let assert Ok(#(_, valve_str)) = string.split_once(line, "valve ")
-          [valve_str]
-        }
+    let tunnels = case string.contains(line, "valves") {
+      True -> {
+        let assert Ok(#(_, valves_str)) = string.split_once(line, "valves ")
+        string.split(valves_str, ", ")
       }
+      False -> {
+        let assert Ok(#(_, valve_str)) = string.split_once(line, "valve ")
+        [valve_str]
+      }
+    }
 
-      let builder =
-        list.fold(tunnels, builder, fn(b, dest) {
-          labeled.add_edge(b, valve, dest, 1)
-        })
+    let builder =
+      list.fold(tunnels, builder, fn(b, dest) {
+        labeled.add_edge(b, valve, dest, 1)
+      })
 
-      #(builder, dict.insert(flows, valve, flow_rate))
-    })
+    #(builder, dict.insert(flows, valve, flow_rate))
+  }
 
   let graph = labeled.to_graph(builder)
   let label_to_id = builder.label_to_id
@@ -174,12 +165,14 @@ fn parse(raw_input: String) -> Input {
 
   Input(valve_ids, valve_flows, distances, start_id)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2022, 16)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
+// import common/utils
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2022, 16) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

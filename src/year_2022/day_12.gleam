@@ -2,13 +2,12 @@
 /// Link: https://adventofcode.com/2022/day/12
 /// Difficulty: m
 /// Tags: graph bfs shortest-path grid
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/dict
 import gleam/int
 import gleam/list
-import gleam/option
+import gleam/option.{Some}
 import gleam/result
 import gleam/string
 import yog/builder/grid
@@ -27,14 +26,13 @@ pub fn solve(raw_input: String) -> Solution {
 fn solve_part_1(input: Input) -> Int {
   let Input(heightmap, start_id, end_id, _cols) = input
 
-  let grid_result =
+  let graph =
     grid.from_2d_list(heightmap, model.Directed, can_move: fn(from, to) {
       to - from <= 1
     })
+    |> grid.to_graph
 
-  let graph = grid.to_graph(grid_result)
-
-  case
+  let assert Some(path) =
     pathfinding.shortest_path(
       in: graph,
       from: start_id,
@@ -43,22 +41,19 @@ fn solve_part_1(input: Input) -> Int {
       with_add: int.add,
       with_compare: int.compare,
     )
-  {
-    option.Some(path) -> path.total_weight
-    option.None -> 0
-  }
+
+  path.total_weight
 }
 
 fn solve_part_2(input: Input) -> Int {
   let Input(heightmap, _start_id, end_id, _cols) = input
 
-  let grid_result =
+  let builder =
     grid.from_2d_list(heightmap, model.Directed, can_move: fn(from, to) {
       to - from <= 1
     })
 
-  let graph = grid.to_graph(grid_result)
-
+  let graph = grid.to_graph(builder)
   let reversed_graph = transform.transpose(graph)
 
   let distances =
@@ -70,7 +65,7 @@ fn solve_part_2(input: Input) -> Int {
       with_compare: int.compare,
     )
 
-  grid_result.graph.nodes
+  builder.graph.nodes
   |> dict.to_list
   |> list.filter_map(fn(entry) {
     let #(node_id, elevation) = entry
@@ -157,11 +152,13 @@ fn get_char_at(
   use row_data <- result.try(grid |> list.drop(row) |> list.first)
   row_data |> list.drop(col) |> list.first
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2022, 12)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
-  echo utils.exit(0)
-}
+// import common/reader.{InputParams}
+
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2022, 12) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }

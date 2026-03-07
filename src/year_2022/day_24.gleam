@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2022/day/24
 /// Difficulty: l
 /// Tags: graph implicit-graph shortest-path bfs
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
@@ -11,7 +10,69 @@ import gleam/option.{None, Some}
 import gleam/result
 import gleam/set.{type Set}
 import gleam/string
-import yog/traversal
+import yog/pathfinding
+
+pub fn solve(raw_input: String) -> Solution {
+  let #(up_set, down_set, left_set, right_set, width, height) = parse(raw_input)
+
+  let cycle_len = utils.lcm(width - 2, height - 2)
+
+  let start_x = 1
+  let start_y = 0
+  let goal_x = width - 2
+  let goal_y = height - 1
+
+  let p1_time =
+    bfs(
+      start_x,
+      start_y,
+      0,
+      goal_x,
+      goal_y,
+      up_set,
+      down_set,
+      left_set,
+      right_set,
+      width,
+      height,
+      cycle_len,
+    )
+  let part_1 = OfInt(p1_time)
+
+  let p2_time_to_start =
+    bfs(
+      goal_x,
+      goal_y,
+      p1_time,
+      start_x,
+      start_y,
+      up_set,
+      down_set,
+      left_set,
+      right_set,
+      width,
+      height,
+      cycle_len,
+    )
+  let p2_time_to_goal =
+    bfs(
+      start_x,
+      start_y,
+      p2_time_to_start,
+      goal_x,
+      goal_y,
+      up_set,
+      down_set,
+      left_set,
+      right_set,
+      width,
+      height,
+      cycle_len,
+    )
+  let part_2 = OfInt(p2_time_to_goal)
+
+  Solution(part_1, part_2)
+}
 
 type State {
   State(x: Int, y: Int, t: Int)
@@ -99,7 +160,7 @@ fn bfs(
 
     [#(x, y), #(x, y - 1), #(x, y + 1), #(x - 1, y), #(x + 1, y)]
     |> list.filter(fn(pos) { is_valid(pos.0, pos.1, nt) })
-    |> list.map(fn(pos) { State(pos.0, pos.1, nt) })
+    |> list.map(fn(pos) { #(State(pos.0, pos.1, nt), 1) })
   }
 
   let start_state = State(start_x, start_y, start_t)
@@ -109,89 +170,28 @@ fn bfs(
     { { s.x * height + s.y } * cycle_len } + t_mod
   }
 
-  let folder = fn(acc, s: State, _meta) {
-    case s.x == goal_x && s.y == goal_y {
-      True -> #(traversal.Halt, Some(s.t))
-      False -> #(traversal.Continue, acc)
-    }
+  let is_goal = fn(s: State) { s.x == goal_x && s.y == goal_y }
+
+  let heuristic = fn(s: State) {
+    int.absolute_value(goal_x - s.x) + int.absolute_value(goal_y - s.y)
   }
 
   let result =
-    traversal.implicit_fold_by(
+    pathfinding.implicit_a_star_by(
       from: start_state,
-      using: traversal.BreadthFirst,
-      initial: None,
-      successors_of: successors,
+      successors_with_cost: successors,
       visited_by: get_key,
-      with: folder,
+      is_goal: is_goal,
+      heuristic: heuristic,
+      with_zero: 0,
+      with_add: int.add,
+      with_compare: int.compare,
     )
 
   case result {
-    Some(time) -> time
+    Some(cost) -> start_t + cost
     None -> -1
   }
-}
-
-pub fn solve(raw_input: String) -> Solution {
-  let #(up_set, down_set, left_set, right_set, width, height) = parse(raw_input)
-
-  let cycle_len = utils.lcm(width - 2, height - 2)
-
-  let start_x = 1
-  let start_y = 0
-  let goal_x = width - 2
-  let goal_y = height - 1
-
-  let p1_time =
-    bfs(
-      start_x,
-      start_y,
-      0,
-      goal_x,
-      goal_y,
-      up_set,
-      down_set,
-      left_set,
-      right_set,
-      width,
-      height,
-      cycle_len,
-    )
-  let part_1 = OfInt(p1_time)
-
-  let p2_time_to_start =
-    bfs(
-      goal_x,
-      goal_y,
-      p1_time,
-      start_x,
-      start_y,
-      up_set,
-      down_set,
-      left_set,
-      right_set,
-      width,
-      height,
-      cycle_len,
-    )
-  let p2_time_to_goal =
-    bfs(
-      start_x,
-      start_y,
-      p2_time_to_start,
-      goal_x,
-      goal_y,
-      up_set,
-      down_set,
-      left_set,
-      right_set,
-      width,
-      height,
-      cycle_len,
-    )
-  let part_2 = OfInt(p2_time_to_goal)
-
-  Solution(part_1, part_2)
 }
 
 fn parse(
@@ -239,12 +239,13 @@ fn parse(
 
   #(up_set, down_set, left_set, right_set, width, height)
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2022, 24)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
-  solve(input) |> echo
+// import common/reader.{InputParams}
 
-  utils.exit(0)
-}
+// pub fn main() {
+//   let assert Ok(input) = InputParams(2022, 24) |> reader.read_input
+
+//   input |> utils.timed(solve) |> echo
+
+//   utils.exit(0)
+// }
