@@ -7,6 +7,7 @@ import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
+import gleam/result
 import gleam/string
 import yog/builder/grid
 import yog/model.{Graph}
@@ -33,7 +34,6 @@ fn solve_part_1(input: #(Dict(#(Int, Int), Int), Int)) -> Int {
 
 fn solve_part_2(input: #(Dict(#(Int, Int), Int), Int)) -> Int {
   let #(distances, poi_count) = input
-
   let targets = utils.int_range(1, poi_count - 1)
 
   list.permutations(targets)
@@ -49,7 +49,6 @@ fn calculate_path_dist(
   path: List(Int),
 ) -> Int {
   let pairs = list.window_by_2(path)
-
   use dist, #(a, b) <- list.fold(pairs, 0)
 
   let pair = case a < b {
@@ -77,22 +76,20 @@ fn parse(raw_input: String) {
     }
   }
 
+  let assert Ok(distances) =
+    pathfinding.distance_matrix(
+      in: graph,
+      between: dict.values(pois),
+      with_zero: 0,
+      with_add: int.add,
+      with_compare: int.compare,
+    )
+
   let poi_dist = {
-    use acc_1, label_1, id_1 <- dict.fold(pois, dict.new())
-
-    let distances =
-      pathfinding.single_source_distances(
-        in: graph,
-        from: id_1,
-        with_zero: 0,
-        with_add: int.add,
-        with_compare: int.compare,
-      )
-
-    use acc_2, label_2, id_2 <- dict.fold(pois, acc_1)
-
-    let assert Ok(dist) = dict.get(distances, id_2)
-    dict.insert(acc_2, #(label_1, label_2), dist)
+    use acc, label_1, id_1 <- dict.fold(pois, dict.new())
+    use acc, label_2, id_2 <- dict.fold(pois, acc)
+    let dist = dict.get(distances, #(id_1, id_2)) |> result.unwrap(infinity)
+    dict.insert(acc, #(label_1, label_2), dist)
   }
 
   #(poi_dist, dict.size(pois))

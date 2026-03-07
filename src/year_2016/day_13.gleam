@@ -5,10 +5,12 @@
 import common/solution.{type Solution, OfInt, Solution}
 import gleam/int
 import gleam/list
+import gleam/option.{Some}
 import gleam/result
 import gleam/set
 import gleam/string
-import yog/traversal.{BreadthFirst, Continue, Halt, Stop}
+import yog/pathfinding
+import yog/traversal.{BreadthFirst, Continue, Stop}
 
 pub fn solve(raw_input: String) -> Solution {
   let fav = parse(raw_input)
@@ -19,18 +21,24 @@ pub fn solve(raw_input: String) -> Solution {
 
 fn solve_part_1(fav: Int) -> Int {
   let target = #(31, 39)
-  traversal.implicit_fold(
-    from: #(1, 1),
-    using: BreadthFirst,
-    initial: -1,
-    successors_of: fn(pos) { open_neighbours(pos, fav) },
-    with: fn(acc, pos, meta) {
-      case pos == target {
-        True -> #(Halt, meta.depth)
-        False -> #(Continue, acc)
-      }
-    },
-  )
+
+  let assert Some(dist) =
+    pathfinding.implicit_a_star(
+      from: #(1, 1),
+      is_goal: fn(pos) { pos == target },
+      successors_with_cost: fn(pos) {
+        open_neighbours(pos, fav) |> list.map(fn(n) { #(n, 1) })
+      },
+      heuristic: fn(pos) {
+        int.absolute_value(pos.0 - target.0)
+        + int.absolute_value(pos.1 - target.1)
+      },
+      with_zero: 0,
+      with_add: int.add,
+      with_compare: int.compare,
+    )
+
+  dist
 }
 
 fn solve_part_2(fav: Int) -> Int {
@@ -50,7 +58,6 @@ fn solve_part_2(fav: Int) -> Int {
   |> set.size()
 }
 
-// ── Maze helpers ─────────────────────────────────────────────────────────────
 type Pos =
   #(Int, Int)
 
