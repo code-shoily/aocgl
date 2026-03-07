@@ -2,7 +2,6 @@
 /// Link: https://adventofcode.com/2020/day/7
 /// Difficulty: s
 /// Tags: graph bfs
-import common/reader
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
 import gleam/int
@@ -40,30 +39,26 @@ fn solve_part_2(builder: Builder(String, Int)) -> Int {
 }
 
 fn count_bags_inside(graph: yog.Graph(String, Int), node_id: yog.NodeId) -> Int {
-  yog.successors(graph, node_id)
-  |> list.fold(0, fn(total, edge) {
-    let #(child_id, count) = edge
-    // count bags + (count * bags inside those bags)
-    total + count + count * count_bags_inside(graph, child_id)
-  })
+  let nodes = graph |> yog.successors(node_id)
+  use total, #(child_id, count) <- list.fold(nodes, 0)
+  total + count + count * count_bags_inside(graph, child_id)
 }
 
 fn parse(raw_input: String) -> Builder(String, Int) {
-  raw_input
-  |> utils.to_lines()
-  |> list.fold(labeled.directed(), fn(builder, line) {
-    let assert [parent, contents] = string.split(line, " bags contain ")
-    let child_parts = string.split(contents, ", ")
+  let lines = utils.to_lines(raw_input)
 
-    list.fold(child_parts, builder, fn(g, part) {
-      let #(count, child) = parse_content_part(part)
-      labeled.add_edge(g, parent, child, count)
-    })
-  })
+  use builder, line <- list.fold(lines, labeled.directed())
+
+  let assert [parent, contents] = string.split(line, " bags contain ")
+  let child_parts = string.split(contents, ", ")
+
+  use g, part <- list.fold(child_parts, builder)
+
+  let #(count, child) = parse_content_part(part)
+  labeled.add_edge(g, parent, child, count)
 }
 
 fn parse_content_part(part: String) -> #(Int, String) {
-  // Simple parsing logic to extract "1" and "bright white"
   let part = string.replace(part, ".", "")
   case string.split(part, " ") {
     [count_str, adj, color, _bag_suffix] -> {
@@ -73,15 +68,15 @@ fn parse_content_part(part: String) -> #(Int, String) {
     _ -> #(0, "")
   }
 }
-
 // ------------------------------ Exploration
-pub fn main() -> Nil {
-  let param = reader.InputParams(2020, 7)
-  let input = reader.read_input(param) |> result.unwrap(or: "")
+// import common/reader.{InputParams}
 
-  input
-  |> solve()
-  |> echo
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2020, 7) |> reader.read_input
 
-  utils.exit(0)
-}
+//   input
+//   |> utils.timed(solve)
+//   |> echo
+
+//   utils.exit(0)
+// }
