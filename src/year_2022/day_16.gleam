@@ -149,13 +149,7 @@ fn parse(raw_input: String) -> Input {
       dict.insert(acc, id, rate)
     })
 
-  let assert Ok(distances) =
-    pathfinding.floyd_warshall(
-      graph,
-      with_zero: 0,
-      with_add: int.add,
-      with_compare: int.compare,
-    )
+  let assert Ok(distances) = pathfinding.floyd_warshall_int(graph)
 
   let assert Ok(start_id) = dict.get(label_to_id, "AA")
 

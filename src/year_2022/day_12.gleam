@@ -50,13 +50,7 @@ fn solve_part_2(input: Input) -> Int {
   let reversed_graph = transform.transpose(graph)
 
   let distances =
-    dijkstra.single_source_distances(
-      in: reversed_graph,
-      from: end_id,
-      with_zero: 0,
-      with_add: int.add,
-      with_compare: int.compare,
-    )
+    dijkstra.single_source_distances_int(in: reversed_graph, from: end_id)
 
   builder.graph.nodes
   |> dict.to_list
