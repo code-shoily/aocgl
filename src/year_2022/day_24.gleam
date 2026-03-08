@@ -10,7 +10,7 @@ import gleam/option.{None, Some}
 import gleam/result
 import gleam/set.{type Set}
 import gleam/string
-import yog/pathfinding
+import yog/pathfinding/a_star as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let #(up_set, down_set, left_set, right_set, width, height) = parse(raw_input)

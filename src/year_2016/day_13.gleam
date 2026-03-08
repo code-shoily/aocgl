@@ -9,7 +9,7 @@ import gleam/option.{Some}
 import gleam/result
 import gleam/set
 import gleam/string
-import yog/pathfinding
+import yog/pathfinding/a_star as pathfinding
 import yog/traversal.{BreadthFirst, Continue, Stop}
 
 pub fn solve(raw_input: String) -> Solution {

@@ -9,7 +9,7 @@ import gleam/int
 import gleam/list
 import gleam/option.{None, Some}
 import gleam/string
-import yog/pathfinding
+import yog/pathfinding/dijkstra as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let #(grid, width, height) = parse(raw_input)

@@ -10,7 +10,7 @@ import gleam/list
 import gleam/option
 import gleam/result
 import gleam/string
-import yog/pathfinding
+import yog/pathfinding/dijkstra as pathfinding
 import yog/traversal.{BreadthFirst, Continue, Stop}
 
 pub fn solve(raw_input: String) -> Solution {

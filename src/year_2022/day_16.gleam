@@ -9,7 +9,7 @@ import gleam/list
 import gleam/result
 import gleam/string
 import yog/builder/labeled
-import yog/pathfinding
+import yog/pathfinding/floyd_warshall as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)

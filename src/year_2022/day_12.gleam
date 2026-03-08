@@ -12,7 +12,7 @@ import gleam/result
 import gleam/string
 import yog/builder/grid
 import yog/model
-import yog/pathfinding
+import yog/pathfinding/dijkstra
 import yog/transform
 
 pub fn solve(raw_input: String) -> Solution {
@@ -33,7 +33,7 @@ fn solve_part_1(input: Input) -> Int {
     |> grid.to_graph
 
   let assert Some(path) =
-    pathfinding.shortest_path(
+    dijkstra.shortest_path(
       in: graph,
       from: start_id,
       to: end_id,
@@ -57,7 +57,7 @@ fn solve_part_2(input: Input) -> Int {
   let reversed_graph = transform.transpose(graph)
 
   let distances =
-    pathfinding.single_source_distances(
+    dijkstra.single_source_distances(
       in: reversed_graph,
       from: end_id,
       with_zero: 0,

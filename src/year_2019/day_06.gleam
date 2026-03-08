@@ -10,7 +10,7 @@ import gleam/option.{Some}
 import gleam/string
 import yog.{type Graph, type NodeId}
 import yog/builder/labeled.{type Builder}
-import yog/pathfinding
+import yog/pathfinding/dijkstra as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let directed_builder = parse(raw_input, labeled.directed())

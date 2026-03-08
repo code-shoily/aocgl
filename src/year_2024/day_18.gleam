@@ -11,7 +11,7 @@ import gleam/set
 import gleam/string
 import yog/builder/grid
 import yog/model.{type Graph}
-import yog/pathfinding
+import yog/pathfinding/dijkstra as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)

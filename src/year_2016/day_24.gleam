@@ -11,7 +11,7 @@ import gleam/result
 import gleam/string
 import yog/builder/grid
 import yog/model.{Graph}
-import yog/pathfinding
+import yog/pathfinding/matrix as pathfinding
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)

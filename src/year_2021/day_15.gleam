@@ -12,7 +12,8 @@ import gleam/result
 import gleam/string
 import yog/builder/grid
 import yog/model
-import yog/pathfinding
+import yog/pathfinding/a_star
+import yog/pathfinding/dijkstra
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -42,7 +43,7 @@ fn solve_part_1(grid_2d: List(List(Int))) -> Int {
   let start = grid.coord_to_id(0, 0, cols)
   let end = grid.coord_to_id(rows - 1, cols - 1, cols)
 
-  case pathfinding.shortest_path(graph, start, end, 0, int.add, int.compare) {
+  case dijkstra.shortest_path(graph, start, end, 0, int.add, int.compare) {
     Some(path) -> path.total_weight
     None -> -1
   }
@@ -100,9 +101,7 @@ fn solve_part_2(grid_2d: List(List(Int))) -> Int {
     int.absolute_value(nx - gx) + int.absolute_value(ny - gy)
   }
 
-  case
-    pathfinding.a_star(graph, start, end, 0, int.add, int.compare, heuristic: h)
-  {
+  case a_star.a_star(graph, start, end, 0, int.add, int.compare, heuristic: h) {
     Some(path) -> path.total_weight
     None -> -1
   }
