@@ -43,7 +43,7 @@ fn solve_part_1(coords: List(#(Int, Int))) -> Int {
   let start = grid.coord_to_id(0, 0, dim)
   let end = grid.coord_to_id(dim - 1, dim - 1, dim)
 
-  case pathfinding.shortest_path(graph, start, end, 0, int.add, int.compare) {
+  case pathfinding.shortest_path_int(graph, start, end) {
     Some(path) -> path.total_weight
     None -> 0
   }
@@ -81,16 +81,7 @@ fn find_blocker(
 
       case path_broken {
         True -> {
-          case
-            pathfinding.shortest_path(
-              next_graph,
-              start,
-              end,
-              0,
-              int.add,
-              int.compare,
-            )
-          {
+          case pathfinding.shortest_path_int(next_graph, start, end) {
             Some(path) -> find_blocker(next_graph, rest, start, end, path.nodes)
             None -> Ok(coord)
           }

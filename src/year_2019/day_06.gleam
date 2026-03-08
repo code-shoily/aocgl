@@ -4,7 +4,6 @@
 /// Tags: graph shortest-path
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
-import gleam/int
 import gleam/list
 import gleam/option.{Some}
 import gleam/string
@@ -35,14 +34,7 @@ fn solve_part_2(builder: Builder(String, Int)) -> Int {
   let graph = labeled.to_graph(builder)
 
   let assert Some(path) =
-    pathfinding.shortest_path(
-      in: graph,
-      from: you_id,
-      to: san_id,
-      with_zero: 0,
-      with_add: int.add,
-      with_compare: int.compare,
-    )
+    pathfinding.shortest_path_int(in: graph, from: you_id, to: san_id)
 
   path.total_weight - 2
 }

@@ -33,14 +33,7 @@ fn solve_part_1(input: Input) -> Int {
     |> grid.to_graph
 
   let assert Some(path) =
-    dijkstra.shortest_path(
-      in: graph,
-      from: start_id,
-      to: end_id,
-      with_zero: 0,
-      with_add: int.add,
-      with_compare: int.compare,
-    )
+    dijkstra.shortest_path_int(in: graph, from: start_id, to: end_id)
 
   path.total_weight
 }

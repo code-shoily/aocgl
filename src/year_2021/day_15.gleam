@@ -43,7 +43,7 @@ fn solve_part_1(grid_2d: List(List(Int))) -> Int {
   let start = grid.coord_to_id(0, 0, cols)
   let end = grid.coord_to_id(rows - 1, cols - 1, cols)
 
-  case dijkstra.shortest_path(graph, start, end, 0, int.add, int.compare) {
+  case dijkstra.shortest_path_int(graph, start, end) {
     Some(path) -> path.total_weight
     None -> -1
   }
