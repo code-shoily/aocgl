@@ -11,7 +11,7 @@ import gleam/result
 import gleam/set
 import gleam/string
 import yog/builder/labeled
-import yog/topological_sort
+import yog/traversal
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -63,7 +63,7 @@ fn reorder(update: List(Int), rules: List(#(Int, Int))) -> List(Int) {
     })
     |> labeled.to_graph()
 
-  topological_sort.topological_sort(graph)
+  traversal.topological_sort(graph)
   |> result.unwrap([])
   |> list.map(fn(node_id) {
     let assert Ok(label) = dict.get(graph.nodes, node_id)

@@ -9,8 +9,8 @@ import gleam/list
 import gleam/set.{type Set}
 import gleam/string
 import yog/builder/labeled
-import yog/clique
 import yog/model
+import yog/properties
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -62,7 +62,7 @@ fn solve_part_1(input: Input) -> Int {
 
 fn solve_part_2(input: Input) -> String {
   input.graph
-  |> clique.max_clique
+  |> properties.max_clique
   |> set.to_list
   |> list.map(fn(id) { get_name(input, id) })
   |> list.sort(string.compare)

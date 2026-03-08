@@ -10,7 +10,7 @@ import gleam/result
 import gleam/string
 import yog.{type Graph}
 import yog/builder/labeled
-import yog/topological_sort
+import yog/traversal
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -22,7 +22,7 @@ pub fn solve(raw_input: String) -> Solution {
 
 fn solve_part_1(input: Graph(String, Nil)) -> String {
   let assert Ok(order) =
-    topological_sort.lexicographical_topological_sort(input, string.compare)
+    traversal.lexicographical_topological_sort(input, string.compare)
 
   order
   |> list.map(dict.get(input.nodes, _))

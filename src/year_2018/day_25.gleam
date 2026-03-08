@@ -7,7 +7,7 @@ import gleam/int
 import gleam/list
 import gleam/string
 import yog.{type Graph}
-import yog/components
+import yog/connectivity
 
 pub type Point =
   #(Int, Int, Int, Int)
@@ -15,7 +15,7 @@ pub type Point =
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
   let graph = build_graph(input)
-  let components = components.strongly_connected_components(graph)
+  let components = connectivity.strongly_connected_components(graph)
 
   let part_1 = list.length(components) |> OfInt
 

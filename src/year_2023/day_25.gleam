@@ -7,7 +7,7 @@ import common/utils
 import gleam/list
 import gleam/string
 import yog/builder/labeled
-import yog/min_cut
+import yog/flow
 import yog/model.{type Graph}
 
 pub fn solve(raw_input: String) -> Solution {
@@ -18,7 +18,7 @@ pub fn solve(raw_input: String) -> Solution {
 }
 
 fn solve_part_1(graph: Graph(String, Int)) -> Int {
-  let result = min_cut.global_min_cut(graph)
+  let result = flow.global_min_cut(graph)
 
   result.group_a_size * result.group_b_size
 }

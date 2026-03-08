@@ -9,11 +9,11 @@ import gleam/list
 import gleam/result
 import gleam/string
 import yog
-import yog/components
+import yog/connectivity
 
 pub fn solve(raw_input: String) -> Solution {
   let graph = parse(raw_input)
-  let groups = components.strongly_connected_components(graph)
+  let groups = connectivity.strongly_connected_components(graph)
 
   let part_1 = solve_part_1(groups) |> OfInt
   let part_2 = solve_part_2(groups) |> OfInt
