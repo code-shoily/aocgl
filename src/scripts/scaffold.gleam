@@ -67,6 +67,8 @@ fn generate_solution_module(year: Int, day: Int) -> String {
 /// Tags:
 import common/solution.{type Solution, Solution, OfInt}
 import gleam/list
+import gleam/result
+import common/utils
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)
@@ -85,17 +87,14 @@ fn solve_part_2(input: List(Int)) -> Int {
 }
 
 fn parse(raw_input: String) -> List(Int) {
-  let assert Ok(nums) =
-    raw_input 
-    |> utils.to_lines() 
-    |> utils.to_ints()
-
-  nums
+  raw_input 
+  |> utils.to_lines() 
+  |> utils.to_ints()
+  |> result.unwrap(or: -1)
 }
 
 // ------------------------------ Exploration
 import common/reader.{InputParams}
-import common/utils
 
 pub fn main() -> Nil {
   let assert Ok(input) = InputParams({{year}}, {{day}}) |> reader.read_input
@@ -121,6 +120,12 @@ import year_{{year}}/day_{{day_padded}}
 const year = {{year}}
 
 const day = {{day}}
+
+// If you want to run this test only
+// gleam run -m year_{{year}}/day_{{day_padded}}
+pub fn main() {
+  solve_test()
+}
 
 pub fn solve_test() {
   let expected = Solution(OfInt({{day}}), OfInt({{day}}))
