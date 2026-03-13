@@ -7,7 +7,6 @@ import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
-import gleam/option.{type Option}
 import gleam/set
 import gleam/string
 import rectify.{type Validation, invalid, valid}
@@ -17,7 +16,7 @@ pub fn solve(raw_input: String) -> Solution {
   let valid_passports = list.filter(input, contains_required_fields)
 
   let part_1 = list.length(valid_passports) |> OfInt
-  let part_2 = input |> solve_part_2() |> OfInt
+  let part_2 = valid_passports |> solve_part_2() |> OfInt
 
   Solution(part_1, part_2)
 }
@@ -25,8 +24,7 @@ pub fn solve(raw_input: String) -> Solution {
 fn solve_part_2(input: List(Dict(String, String))) -> Int {
   input
   |> list.map(validate_passport)
-  |> list.filter(rectify.is_valid)
-  |> list.length
+  |> list.count(rectify.is_valid)
 }
 
 fn parse(raw_input: String) -> List(Dict(String, String)) {
@@ -65,33 +63,22 @@ type Passport {
     hcl: Int,
     ecl: String,
     pid: String,
-    cid: Option(String),
   )
 }
 
 fn validate_passport(
   passport: Dict(String, String),
 ) -> Validation(Passport, Nil) {
-  let byr = require(passport, "byr", validate_between(_, 1920, 2002))
-  let iyr = require(passport, "iyr", validate_between(_, 2010, 2020))
-  let eyr = require(passport, "eyr", validate_between(_, 2020, 2030))
-  let hgt = require(passport, "hgt", valid_hgt)
-  let hcl = require(passport, "hcl", validate_hcl)
-  let ecl = require(passport, "ecl", validate_ecl)
-  let pid = require(passport, "pid", valid_pid)
-
-  let cid = dict.get(passport, "cid") |> option.from_result
-
-  use byr, iyr, eyr, hgt, hcl, ecl, pid <- map7(
-    byr,
-    iyr,
-    eyr,
-    hgt,
-    hcl,
-    ecl,
-    pid,
+  map7(
+    passport |> field("byr", validate_between(_, 1920, 2002)),
+    passport |> field("iyr", validate_between(_, 2010, 2020)),
+    passport |> field("eyr", validate_between(_, 2020, 2030)),
+    passport |> field("hgt", validate_hgt),
+    passport |> field("hcl", validate_hcl),
+    passport |> field("ecl", validate_ecl),
+    passport |> field("pid", validate_pid),
+    Passport,
   )
-  Passport(byr, iyr, eyr, hgt, hcl, ecl, pid, cid)
 }
 
 fn validate_between(value: String, from: Int, to: Int) -> Validation(Int, Nil) {
@@ -124,14 +111,14 @@ fn validate_ecl(value: String) -> Validation(String, Nil) {
   }
 }
 
-fn valid_pid(value: String) -> Validation(String, Nil) {
+fn validate_pid(value: String) -> Validation(String, Nil) {
   case int.parse(value), string.length(value) {
     Ok(_), 9 -> valid(value)
     _, _ -> invalid(Nil)
   }
 }
 
-fn valid_hgt(value: String) -> Validation(Int, Nil) {
+fn validate_hgt(value: String) -> Validation(Int, Nil) {
   case
     string.drop_end(value, 2),
     string.ends_with(value, "cm"),
@@ -143,14 +130,9 @@ fn valid_hgt(value: String) -> Validation(Int, Nil) {
   }
 }
 
-fn require(
-  passport: Dict(String, String),
-  key: String,
-  validate: fn(String) -> Validation(a, Nil),
-) -> Validation(a, Nil) {
-  case dict.get(passport, key) {
-    Ok(value) -> validate(value)
-    Error(_) -> invalid(Nil)
+fn field(key: String, validate: fn(String) -> Validation(a, Nil)) {
+  fn(dict) {
+    dict.get(dict, key) |> rectify.of_result() |> rectify.bind(validate)
   }
 }
 
@@ -162,12 +144,13 @@ fn map7(v1, v2, v3, v4, v5, v6, v7, combiner) {
   use #(a, b, c, d, e), #(g, h) <- rectify.map2(first5, last2)
   combiner(a, b, c, d, e, g, h)
 }
+
 // ------------------------------ Exploration
-// import common/reader.{InputParams}
+import common/reader.{InputParams}
 
-// pub fn main() -> Nil {
-//   let assert Ok(input) = InputParams(2020, 4) |> reader.read_input
-//   input |> utils.timed(solve) |> echo
+pub fn main() -> Nil {
+  let assert Ok(input) = InputParams(2020, 4) |> reader.read_input
+  input |> utils.timed(solve) |> echo
 
-//   utils.exit(0)
-// }
+  utils.exit(0)
+}
