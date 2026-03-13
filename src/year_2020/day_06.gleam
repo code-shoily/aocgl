@@ -4,7 +4,6 @@
 /// Tags: set
 import common/solution.{type Solution, OfInt, Solution}
 import common/utils
-import gleam/int
 import gleam/list
 import gleam/result
 import gleam/set.{type Set}
