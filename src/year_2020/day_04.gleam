@@ -91,24 +91,16 @@ fn validate_between(value: String, from: Int, to: Int) -> Validation(Int, Nil) {
 fn validate_hcl(value: String) -> Validation(Int, Nil) {
   case value, string.length(value) {
     "#" <> rest, 7 -> {
-      case int.base_parse(rest, 16) {
-        Ok(value) -> valid(value)
-        _ -> invalid(Nil)
-      }
+      int.base_parse(rest, 16) |> rectify.of_result()
     }
     _, _ -> invalid(Nil)
   }
 }
 
 fn validate_ecl(value: String) -> Validation(String, Nil) {
-  let contains =
-    set.from_list(["amb", "blu", "brn", "gry", "grn", "hzl", "oth"])
-    |> set.contains(value)
-
-  case contains {
-    True -> valid(value)
-    _ -> invalid(Nil)
-  }
+  set.from_list(["amb", "blu", "brn", "gry", "grn", "hzl", "oth"])
+  |> set.contains(value)
+  |> rectify.of_bool(value, Nil)
 }
 
 fn validate_pid(value: String) -> Validation(String, Nil) {
@@ -121,12 +113,11 @@ fn validate_pid(value: String) -> Validation(String, Nil) {
 fn validate_hgt(value: String) -> Validation(Int, Nil) {
   case
     string.drop_end(value, 2),
-    string.ends_with(value, "cm"),
-    string.ends_with(value, "in")
+    string.drop_start(value, string.length(value) - 2)
   {
-    value, True, False -> validate_between(value, 150, 193)
-    value, False, True -> validate_between(value, 59, 76)
-    _, _, _ -> invalid(Nil)
+    value, "cm" -> validate_between(value, 150, 193)
+    value, "in" -> validate_between(value, 59, 76)
+    _, _ -> invalid(Nil)
   }
 }
 
