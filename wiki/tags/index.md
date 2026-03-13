@@ -14,6 +14,7 @@
 | [clique](clique.md) | 1 |
 | [dfs](dfs.md) | 3 |
 | [dijkstra](dijkstra.md) | 2 |
+| [encode](encode.md) | 1 |
 | [floyd-warshall](floyd-warshall.md) | 1 |
 | [geometry](geometry.md) | 1 |
 | [graph](graph.md) | 21 |

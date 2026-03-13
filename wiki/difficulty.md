@@ -13,6 +13,7 @@
 | 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |
 | 2020 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | [n-sum](tags/n-sum.md) | [day_01.gleam](../src/year_2020/day_01.gleam) |
 | 2020 | [3](https://adventofcode.com/2020/day/3) | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [over-engineered](tags/over-engineered.md) | [day_03.gleam](../src/year_2020/day_03.gleam) |
+| 2020 | [5](https://adventofcode.com/2020/day/5) | [Binary Boarding](https://adventofcode.com/2020/day/5) | [encode](tags/encode.md) | [day_05.gleam](../src/year_2020/day_05.gleam) |
 | 2021 | [1](https://adventofcode.com/2021/day/1) | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [window](tags/window.md) | [day_01.gleam](../src/year_2021/day_01.gleam) |
 | 2022 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | [sort](tags/sort.md), [top-k](tags/top-k.md) | [day_01.gleam](../src/year_2022/day_01.gleam) |
 | 2024 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [sort](tags/sort.md) | [day_01.gleam](../src/year_2024/day_01.gleam) |
