@@ -90,7 +90,7 @@ fn parse(raw_input: String) -> List(Int) {
   raw_input 
   |> utils.to_lines() 
   |> utils.to_ints()
-  |> result.unwrap(or: -1)
+  |> result.unwrap(or: [])
 }
 
 // ------------------------------ Exploration
