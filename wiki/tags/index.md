@@ -37,4 +37,5 @@
 | [topological-sort](topological-sort.md) | 2 |
 | [tree](tree.md) | 1 |
 | [tsp](tsp.md) | 1 |
+| [validation](validation.md) | 1 |
 | [window](window.md) | 1 |

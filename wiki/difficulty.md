@@ -26,6 +26,7 @@
 | 2017 | [12](https://adventofcode.com/2017/day/12) | [Digital Plumber](https://adventofcode.com/2017/day/12) | [graph](tags/graph.md), [scc](tags/scc.md) | [day_12.gleam](../src/year_2017/day_12.gleam) |
 | 2018 | [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | [brute-force](tags/brute-force.md) | [day_02.gleam](../src/year_2018/day_02.gleam) |
 | 2018 | [25](https://adventofcode.com/2018/day/25) | [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25) | [graph](tags/graph.md), [scc](tags/scc.md) | [day_25.gleam](../src/year_2018/day_25.gleam) |
+| 2020 | [4](https://adventofcode.com/2020/day/4) | [Passport Processing](https://adventofcode.com/2020/day/4) | [validation](tags/validation.md) | [day_04.gleam](../src/year_2020/day_04.gleam) |
 | 2020 | [7](https://adventofcode.com/2020/day/7) | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [graph](tags/graph.md), [bfs](tags/bfs.md) | [day_07.gleam](../src/year_2020/day_07.gleam) |
 | 2023 | [1](https://adventofcode.com/2023/day/1) | [Trebuchet?!](https://adventofcode.com/2023/day/1) | [regex](tags/regex.md) | [day_01.gleam](../src/year_2023/day_01.gleam) |
 
