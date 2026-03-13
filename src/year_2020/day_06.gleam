@@ -19,10 +19,10 @@ pub fn solve(raw_input: String) -> Solution {
 
 fn count_answers_by(
   answers: List(List(Set(a))),
-  set_fun: fn(Set(a), Set(a)) -> Set(a),
+  operation: fn(Set(a), Set(a)) -> Set(a),
 ) -> Int {
   list.map(answers, fn(answers) {
-    list.reduce(answers, fn(acc, x) { set_fun(acc, x) })
+    list.reduce(answers, operation)
     |> result.unwrap(set.new())
   })
   |> list.fold(0, fn(acc, a) { acc + set.size(a) })
