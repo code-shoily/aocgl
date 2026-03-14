@@ -2,13 +2,14 @@
 
 [Home](../../README.md) | [2015](../year_2015/README.md) | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | 2020 | [2021](../year_2021/README.md) | [2022](../year_2022/README.md) | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | [2025](../year_2025/README.md)
 
-## ⭐ 12/50
+## ⭐ 14/50
 
-[graph](../../wiki/tags/graph.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [encode](../../wiki/tags/encode.md)&nbsp;`1`  [implicit-graph](../../wiki/tags/implicit-graph.md)&nbsp;`1`  [n-sum](../../wiki/tags/n-sum.md)&nbsp;`1`  [over-engineered](../../wiki/tags/over-engineered.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`  [validation](../../wiki/tags/validation.md)&nbsp;`1`
+[graph](../../wiki/tags/graph.md)&nbsp;`2`  [bfs](../../wiki/tags/bfs.md)&nbsp;`1`  [encode](../../wiki/tags/encode.md)&nbsp;`1`  [implicit-graph](../../wiki/tags/implicit-graph.md)&nbsp;`1`  [n-sum](../../wiki/tags/n-sum.md)&nbsp;`1`  [over-engineered](../../wiki/tags/over-engineered.md)&nbsp;`1`  [regex](../../wiki/tags/regex.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`  [validation](../../wiki/tags/validation.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | 🟢 | [n-sum](../../wiki/tags/n-sum.md) | [day_01.gleam](day_01.gleam) |
+| [2](https://adventofcode.com/2020/day/2) | [Password Philosophy](https://adventofcode.com/2020/day/2) | 🟢 | [regex](../../wiki/tags/regex.md) | [day_02.gleam](day_02.gleam) |
 | [3](https://adventofcode.com/2020/day/3) | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | 🟢 | [graph](../../wiki/tags/graph.md), [implicit-graph](../../wiki/tags/implicit-graph.md), [over-engineered](../../wiki/tags/over-engineered.md) | [day_03.gleam](day_03.gleam) |
 | [4](https://adventofcode.com/2020/day/4) | [Passport Processing](https://adventofcode.com/2020/day/4) | 🟡 | [validation](../../wiki/tags/validation.md) | [day_04.gleam](day_04.gleam) |
 | [5](https://adventofcode.com/2020/day/5) | [Binary Boarding](https://adventofcode.com/2020/day/5) | 🟢 | [encode](../../wiki/tags/encode.md) | [day_05.gleam](day_05.gleam) |

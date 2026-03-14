@@ -29,7 +29,7 @@
 | [n-sum](n-sum.md) | 1 |
 | [over-engineered](over-engineered.md) | 1 |
 | [reduction](reduction.md) | 2 |
-| [regex](regex.md) | 1 |
+| [regex](regex.md) | 2 |
 | [scc](scc.md) | 2 |
 | [set](set.md) | 3 |
 | [shortest-path](shortest-path.md) | 7 |

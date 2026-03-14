@@ -14,6 +14,7 @@
 | 2018 | [1](https://adventofcode.com/2018/day/1) | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [set](tags/set.md), [circular-list](tags/circular-list.md) | [day_01.gleam](../src/year_2018/day_01.gleam) |
 | 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |
 | 2020 | [1](https://adventofcode.com/2020/day/1) | [Report Repair (2020/1)](https://adventofcode.com/2020/day/1) | [n-sum](tags/n-sum.md) | [day_01.gleam](../src/year_2020/day_01.gleam) |
+| 2020 | [2](https://adventofcode.com/2020/day/2) | [Password Philosophy](https://adventofcode.com/2020/day/2) | [regex](tags/regex.md) | [day_02.gleam](../src/year_2020/day_02.gleam) |
 | 2020 | [3](https://adventofcode.com/2020/day/3) | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [graph](tags/graph.md), [implicit-graph](tags/implicit-graph.md), [over-engineered](tags/over-engineered.md) | [day_03.gleam](../src/year_2020/day_03.gleam) |
 | 2020 | [5](https://adventofcode.com/2020/day/5) | [Binary Boarding](https://adventofcode.com/2020/day/5) | [encode](tags/encode.md) | [day_05.gleam](../src/year_2020/day_05.gleam) |
 | 2020 | [6](https://adventofcode.com/2020/day/6) | [Custom Customs](https://adventofcode.com/2020/day/6) | [set](tags/set.md) | [day_06.gleam](../src/year_2020/day_06.gleam) |
