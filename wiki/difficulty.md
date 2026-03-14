@@ -9,6 +9,7 @@
 | 2015 | [1](https://adventofcode.com/2015/day/1) | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [linear-scan](tags/linear-scan.md), [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2015/day_01.gleam) |
 | 2015 | [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [geometry](tags/geometry.md) | [day_02.gleam](../src/year_2015/day_02.gleam) |
 | 2015 | [3](https://adventofcode.com/2015/day/3) | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [set](tags/set.md) | [day_03.gleam](../src/year_2015/day_03.gleam) |
+| 2016 | [3](https://adventofcode.com/2016/day/3) | [Squares With Three Sides](https://adventofcode.com/2016/day/3) | [transpose](tags/transpose.md), [geometry](tags/geometry.md) | [day_03.gleam](../src/year_2016/day_03.gleam) |
 | 2017 | [1](https://adventofcode.com/2017/day/1) | [Inverse Captcha](https://adventofcode.com/2017/day/1) | [linked-list](tags/linked-list.md) | [day_01.gleam](../src/year_2017/day_01.gleam) |
 | 2018 | [1](https://adventofcode.com/2018/day/1) | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [set](tags/set.md), [circular-list](tags/circular-list.md) | [day_01.gleam](../src/year_2018/day_01.gleam) |
 | 2019 | [1](https://adventofcode.com/2019/day/1) | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [reduction](tags/reduction.md) | [day_01.gleam](../src/year_2019/day_01.gleam) |

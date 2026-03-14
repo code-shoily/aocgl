@@ -16,7 +16,7 @@
 | [dijkstra](dijkstra.md) | 2 |
 | [encode](encode.md) | 1 |
 | [floyd-warshall](floyd-warshall.md) | 1 |
-| [geometry](geometry.md) | 1 |
+| [geometry](geometry.md) | 2 |
 | [graph](graph.md) | 21 |
 | [grid](grid.md) | 7 |
 | [hash](hash.md) | 1 |
@@ -38,6 +38,7 @@
 | [stoer-wagner](stoer-wagner.md) | 1 |
 | [top-k](top-k.md) | 1 |
 | [topological-sort](topological-sort.md) | 2 |
+| [transpose](transpose.md) | 1 |
 | [tree](tree.md) | 1 |
 | [tsp](tsp.md) | 1 |
 | [validation](validation.md) | 1 |
