@@ -33,6 +33,7 @@
 | [scc](scc.md) | 2 |
 | [set](set.md) | 3 |
 | [shortest-path](shortest-path.md) | 7 |
+| [simulation](simulation.md) | 1 |
 | [sort](sort.md) | 2 |
 | [state-space-search](state-space-search.md) | 1 |
 | [stoer-wagner](stoer-wagner.md) | 1 |

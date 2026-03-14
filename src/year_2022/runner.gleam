@@ -1,5 +1,6 @@
 import common/solution.{type Solution, type SolutionError, NotDone}
 import year_2022/day_01
+import year_2022/day_02
 import year_2022/day_12
 import year_2022/day_16
 import year_2022/day_24
@@ -7,6 +8,7 @@ import year_2022/day_24
 pub fn solve_for(raw_input: String, day: Int) -> Result(Solution, SolutionError) {
   case day {
     1 -> day_01.solve(raw_input) |> Ok
+    2 -> day_02.solve(raw_input) |> Ok
     12 -> day_12.solve(raw_input) |> Ok
     16 -> day_16.solve(raw_input) |> Ok
     24 -> day_24.solve(raw_input) |> Ok

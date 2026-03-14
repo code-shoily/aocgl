@@ -2,13 +2,14 @@
 
 [Home](../../README.md) | [2015](../year_2015/README.md) | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | [2020](../year_2020/README.md) | [2021](../year_2021/README.md) | 2022 | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | [2025](../year_2025/README.md)
 
-## ⭐ 8/50
+## ⭐ 10/50
 
-[graph](../../wiki/tags/graph.md)&nbsp;`3`  [bfs](../../wiki/tags/bfs.md)&nbsp;`2`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`2`  [bitmask](../../wiki/tags/bitmask.md)&nbsp;`1`  [dfs](../../wiki/tags/dfs.md)&nbsp;`1`  [floyd-warshall](../../wiki/tags/floyd-warshall.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [implicit-graph](../../wiki/tags/implicit-graph.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`  [top-k](../../wiki/tags/top-k.md)&nbsp;`1`
+[graph](../../wiki/tags/graph.md)&nbsp;`3`  [bfs](../../wiki/tags/bfs.md)&nbsp;`2`  [shortest-path](../../wiki/tags/shortest-path.md)&nbsp;`2`  [bitmask](../../wiki/tags/bitmask.md)&nbsp;`1`  [dfs](../../wiki/tags/dfs.md)&nbsp;`1`  [floyd-warshall](../../wiki/tags/floyd-warshall.md)&nbsp;`1`  [grid](../../wiki/tags/grid.md)&nbsp;`1`  [implicit-graph](../../wiki/tags/implicit-graph.md)&nbsp;`1`  [simulation](../../wiki/tags/simulation.md)&nbsp;`1`  [sort](../../wiki/tags/sort.md)&nbsp;`1`  [top-k](../../wiki/tags/top-k.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | 🟢 | [sort](../../wiki/tags/sort.md), [top-k](../../wiki/tags/top-k.md) | [day_01.gleam](day_01.gleam) |
+| [2](https://adventofcode.com/2022/day/2) | [Rock Paper Scissors](https://adventofcode.com/2022/day/2) | 🟢 | [simulation](../../wiki/tags/simulation.md) | [day_02.gleam](day_02.gleam) |
 | [12](https://adventofcode.com/2022/day/12) | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | 🟠 | [graph](../../wiki/tags/graph.md), [bfs](../../wiki/tags/bfs.md), [shortest-path](../../wiki/tags/shortest-path.md), [grid](../../wiki/tags/grid.md) | [day_12.gleam](day_12.gleam) |
 | [16](https://adventofcode.com/2022/day/16) | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16) | 💀 | [graph](../../wiki/tags/graph.md), [floyd-warshall](../../wiki/tags/floyd-warshall.md), [dfs](../../wiki/tags/dfs.md), [bitmask](../../wiki/tags/bitmask.md) | [day_16.gleam](day_16.gleam) |
 | [24](https://adventofcode.com/2022/day/24) | [Blizzard Basin](https://adventofcode.com/2022/day/24) | 🔴 | [graph](../../wiki/tags/graph.md), [implicit-graph](../../wiki/tags/implicit-graph.md), [shortest-path](../../wiki/tags/shortest-path.md), [bfs](../../wiki/tags/bfs.md) | [day_24.gleam](day_24.gleam) |

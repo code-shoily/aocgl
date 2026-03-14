@@ -20,6 +20,7 @@
 | 2020 | [6](https://adventofcode.com/2020/day/6) | [Custom Customs](https://adventofcode.com/2020/day/6) | [set](tags/set.md) | [day_06.gleam](../src/year_2020/day_06.gleam) |
 | 2021 | [1](https://adventofcode.com/2021/day/1) | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [window](tags/window.md) | [day_01.gleam](../src/year_2021/day_01.gleam) |
 | 2022 | [1](https://adventofcode.com/2022/day/1) | [Calorie Counting](https://adventofcode.com/2022/day/1) | [sort](tags/sort.md), [top-k](tags/top-k.md) | [day_01.gleam](../src/year_2022/day_01.gleam) |
+| 2022 | [2](https://adventofcode.com/2022/day/2) | [Rock Paper Scissors](https://adventofcode.com/2022/day/2) | [simulation](tags/simulation.md) | [day_02.gleam](../src/year_2022/day_02.gleam) |
 | 2024 | [1](https://adventofcode.com/2024/day/1) | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [sort](tags/sort.md) | [day_01.gleam](../src/year_2024/day_01.gleam) |
 
 ## 🟡 S
