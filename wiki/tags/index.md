@@ -9,7 +9,7 @@
 | [bfs](bfs.md) | 6 |
 | [bitmask](bitmask.md) | 3 |
 | [bron-kerbosch](bron-kerbosch.md) | 1 |
-| [brute-force](brute-force.md) | 1 |
+| [brute-force](brute-force.md) | 2 |
 | [circular-list](circular-list.md) | 1 |
 | [clique](clique.md) | 1 |
 | [dfs](dfs.md) | 3 |
@@ -19,6 +19,7 @@
 | [geometry](geometry.md) | 1 |
 | [graph](graph.md) | 21 |
 | [grid](grid.md) | 7 |
+| [hash](hash.md) | 1 |
 | [implicit-graph](implicit-graph.md) | 6 |
 | [linear-scan](linear-scan.md) | 1 |
 | [linked-list](linked-list.md) | 1 |

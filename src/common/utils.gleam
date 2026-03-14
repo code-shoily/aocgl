@@ -112,3 +112,6 @@ pub fn lcm(a: Int, b: Int) -> Int {
     False -> a_abs * b_abs / gcd(a_abs, b_abs)
   }
 }
+
+@external(erlang, "erlang", "md5")
+pub fn md5(data: BitArray) -> BitArray

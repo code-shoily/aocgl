@@ -4,4 +4,5 @@
 
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
+| 2015 | [4](https://adventofcode.com/2015/day/4) | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | 🟡 | [hash](hash.md) | [day_04.gleam](../../src/year_2015/day_04.gleam) |
 | 2018 | [2](https://adventofcode.com/2018/day/2) | [Inventory Management System](https://adventofcode.com/2018/day/2) | 🟡 |  | [day_02.gleam](../../src/year_2018/day_02.gleam) |
