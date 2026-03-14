@@ -135,13 +135,12 @@ fn map7(v1, v2, v3, v4, v5, v6, v7, combiner) {
   use #(a, b, c, d, e), #(g, h) <- rectify.map2(first5, last2)
   combiner(a, b, c, d, e, g, h)
 }
-
 // ------------------------------ Exploration
-import common/reader.{InputParams}
+// import common/reader.{InputParams}
 
-pub fn main() -> Nil {
-  let assert Ok(input) = InputParams(2020, 4) |> reader.read_input
-  input |> utils.timed(solve) |> echo
+// pub fn main() -> Nil {
+//   let assert Ok(input) = InputParams(2020, 4) |> reader.read_input
+//   input |> utils.timed(solve) |> echo
 
-  utils.exit(0)
-}
+//   utils.exit(0)
+// }
