@@ -5,3 +5,4 @@
 | Year | Day | Title | Difficulty | Other Tags | Source |
 |------|:---:|-------|:----------:|------------|--------|
 | 2017 | [2](https://adventofcode.com/2017/day/2) | [Corruption Checksum](https://adventofcode.com/2017/day/2) | 🟡 |  | [day_02.gleam](../../src/year_2017/day_02.gleam) |
+| 2025 | [2](https://adventofcode.com/2025/day/2) | [Gift Shop](https://adventofcode.com/2025/day/2) | 🟠 |  | [day_02.gleam](../../src/year_2025/day_02.gleam) |

@@ -1,15 +1,35 @@
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Gleam: Run Current Day",
-      "type": "shell",
-      "command": "gleam run -m ${fileDirnameBasename}/${fileBasenameNoExtension}",
-      "options": {
-        "cwd": "${workspaceFolder}"
+  {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "gleam: run current file",
+        "type": "shell",
+        "command": "gleam run -m \"$(echo '${relativeFileDirname}/${fileBasenameNoExtension}' | sed 's|^src/||')\"",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "problemMatcher": [],
+        "detail": "Run the current Gleam file as a module"
       },
-      "problemMatcher": [],
-      "group": "test"
-    }
-  ]
-}
+      {
+        "label": "gleam: build",
+        "type": "shell",
+        "command": "gleam build",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": [],
+        "detail": "Build the Gleam project"
+      }
+    ]
+  }

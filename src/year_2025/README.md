@@ -2,10 +2,11 @@
 
 [Home](../../README.md) | [2015](../year_2015/README.md) | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | [2020](../year_2020/README.md) | [2021](../year_2021/README.md) | [2022](../year_2022/README.md) | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | 2025
 
-## ⭐ 2/50
+## ⭐ 4/50
 
-[modular-algebra](../../wiki/tags/modular-algebra.md)&nbsp;`1`
+[arithmetic](../../wiki/tags/arithmetic.md)&nbsp;`1`  [modular-algebra](../../wiki/tags/modular-algebra.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | 🟠 | [modular-algebra](../../wiki/tags/modular-algebra.md) | [day_01.gleam](day_01.gleam) |
+| [2](https://adventofcode.com/2025/day/2) | [Gift Shop](https://adventofcode.com/2025/day/2) | 🟠 | [arithmetic](../../wiki/tags/arithmetic.md) | [day_02.gleam](day_02.gleam) |

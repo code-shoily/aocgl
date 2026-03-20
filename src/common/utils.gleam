@@ -1,4 +1,5 @@
 import gleam/dict.{type Dict}
+import gleam/float
 import gleam/int
 import gleam/list
 import gleam/result
@@ -110,6 +111,39 @@ pub fn lcm(a: Int, b: Int) -> Int {
   case a_abs == 0 || b_abs == 0 {
     True -> 0
     False -> a_abs * b_abs / gcd(a_abs, b_abs)
+  }
+}
+
+/// Counts the number of digits in an integer
+pub fn count_digits(n: Int) -> Int {
+  let abs_n = int.absolute_value(n)
+  case abs_n {
+    0 -> 1
+    _ -> {
+      let ln_n = float.logarithm(int.to_float(abs_n))
+      let ln_10 = float.logarithm(10.0)
+
+      case ln_n, ln_10 {
+        Ok(val), Ok(base) -> {
+          let log10_val = val /. base
+          float.floor(log10_val) |> float.round |> int.add(1)
+        }
+        _, _ -> 1
+      }
+    }
+  }
+}
+
+/// Exponentiation with int args, helps with floating point roundoffs if dealing
+/// with integers only.
+pub fn int_pow(base: Int, exp: Int) -> Int {
+  do_int_pow(base, exp, 1)
+}
+
+fn do_int_pow(base: Int, exp: Int, acc: Int) -> Int {
+  case exp {
+    0 -> acc
+    _ -> do_int_pow(base, exp - 1, acc * base)
   }
 }
 

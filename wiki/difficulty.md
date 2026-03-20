@@ -52,6 +52,7 @@
 | 2024 | [18](https://adventofcode.com/2024/day/18) | [RAM Run](https://adventofcode.com/2024/day/18) | [graph](tags/graph.md), [shortest-path](tags/shortest-path.md), [grid](tags/grid.md) | [day_18.gleam](../src/year_2024/day_18.gleam) |
 | 2024 | [23](https://adventofcode.com/2024/day/23) | [LAN Party](https://adventofcode.com/2024/day/23) | [graph](tags/graph.md), [clique](tags/clique.md), [bron-kerbosch](tags/bron-kerbosch.md) | [day_23.gleam](../src/year_2024/day_23.gleam) |
 | 2025 | [1](https://adventofcode.com/2025/day/1) | [Secret Entrance](https://adventofcode.com/2025/day/1) | [modular-algebra](tags/modular-algebra.md) | [day_01.gleam](../src/year_2025/day_01.gleam) |
+| 2025 | [2](https://adventofcode.com/2025/day/2) | [Gift Shop](https://adventofcode.com/2025/day/2) | [arithmetic](tags/arithmetic.md) | [day_02.gleam](../src/year_2025/day_02.gleam) |
 
 ## 🔴 L
 

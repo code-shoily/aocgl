@@ -4,7 +4,7 @@
 
 | Tag | Problems |
 |-----|--------:|
-| [arithmetic](arithmetic.md) | 1 |
+| [arithmetic](arithmetic.md) | 2 |
 | [backtracking](backtracking.md) | 1 |
 | [bfs](bfs.md) | 6 |
 | [bitmask](bitmask.md) | 3 |
