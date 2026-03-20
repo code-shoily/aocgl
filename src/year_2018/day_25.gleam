@@ -34,7 +34,11 @@ fn build_graph(points: List(Point)) -> Graph(Point, Int) {
   |> list.fold(initial, fn(graph, pair) {
     let #(#(idx1, p1), #(idx2, p2)) = pair
     case manhattan(p1, p2) <= 3 {
-      True -> yog.add_edge(graph, from: idx1, to: idx2, with: 1)
+      True -> {
+        let assert Ok(graph) =
+          yog.add_edge(graph, from: idx1, to: idx2, with: 1)
+        graph
+      }
       False -> graph
     }
   })

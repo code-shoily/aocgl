@@ -47,7 +47,7 @@ fn parse(raw_input: String) -> yog.Graph(Nil, Nil) {
 
   acc_graph
   |> yog.add_node(source, Nil)
-  |> yog.add_edge(from: target, to: source, with: Nil)
+  |> yog.add_edge_ensure(from: target, to: source, with: Nil, default: Nil)
 }
 // ------------------------------ Exploration
 // import common/reader.{InputParams}

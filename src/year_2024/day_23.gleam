@@ -10,7 +10,7 @@ import gleam/set.{type Set}
 import gleam/string
 import yog/builder/labeled
 import yog/model
-import yog/properties/clique as properties
+import yog/property/clique as properties
 
 pub fn solve(raw_input: String) -> Solution {
   let input = parse(raw_input)

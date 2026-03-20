@@ -7,6 +7,7 @@ import common/utils
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
+import gleam/option.{None}
 import gleam/result
 import gleam/string
 import yog/builder/grid
@@ -82,6 +83,7 @@ fn parse(raw_input: String) {
       between: dict.values(pois),
       with_zero: 0,
       with_add: int.add,
+      with_subtract: None,
       with_compare: int.compare,
     )
 
