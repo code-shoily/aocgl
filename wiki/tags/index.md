@@ -23,6 +23,7 @@
 | [implicit-graph](implicit-graph.md) | 6 |
 | [linear-scan](linear-scan.md) | 1 |
 | [linked-list](linked-list.md) | 1 |
+| [list](list.md) | 1 |
 | [longest-path](longest-path.md) | 1 |
 | [min-cut](min-cut.md) | 1 |
 | [modular-algebra](modular-algebra.md) | 1 |
