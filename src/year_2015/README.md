@@ -2,9 +2,9 @@
 
 [Home](../../README.md) | 2015 | [2016](../year_2016/README.md) | [2017](../year_2017/README.md) | [2018](../year_2018/README.md) | [2019](../year_2019/README.md) | [2020](../year_2020/README.md) | [2021](../year_2021/README.md) | [2022](../year_2022/README.md) | [2023](../year_2023/README.md) | [2024](../year_2024/README.md) | [2025](../year_2025/README.md)
 
-## ⭐ 8/50
+## ⭐ 10/50
 
-[brute-force](../../wiki/tags/brute-force.md)&nbsp;`1`  [geometry](../../wiki/tags/geometry.md)&nbsp;`1`  [hash](../../wiki/tags/hash.md)&nbsp;`1`  [linear-scan](../../wiki/tags/linear-scan.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`
+[brute-force](../../wiki/tags/brute-force.md)&nbsp;`1`  [geometry](../../wiki/tags/geometry.md)&nbsp;`1`  [hash](../../wiki/tags/hash.md)&nbsp;`1`  [linear-scan](../../wiki/tags/linear-scan.md)&nbsp;`1`  [list](../../wiki/tags/list.md)&nbsp;`1`  [reduction](../../wiki/tags/reduction.md)&nbsp;`1`  [set](../../wiki/tags/set.md)&nbsp;`1`
 
 | Day | Title | Difficulty | Tags | Source |
 |:---:|-------|:----------:|------|--------|
@@ -12,3 +12,4 @@
 | [2](https://adventofcode.com/2015/day/2) | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | 🟢 | [geometry](../../wiki/tags/geometry.md) | [day_02.gleam](day_02.gleam) |
 | [3](https://adventofcode.com/2015/day/3) | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | 🟢 | [set](../../wiki/tags/set.md) | [day_03.gleam](day_03.gleam) |
 | [4](https://adventofcode.com/2015/day/4) | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | 🟡 | [hash](../../wiki/tags/hash.md), [brute-force](../../wiki/tags/brute-force.md) | [day_04.gleam](day_04.gleam) |
+| [5](https://adventofcode.com/2015/day/5) | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | 🟡 | [list](../../wiki/tags/list.md) | [day_05.gleam](day_05.gleam) |

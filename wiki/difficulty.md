@@ -29,6 +29,7 @@
 | Year | Day | Title | Tags | Source |
 |------|:---:|-------|------|--------|
 | 2015 | [4](https://adventofcode.com/2015/day/4) | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | [hash](tags/hash.md), [brute-force](tags/brute-force.md) | [day_04.gleam](../src/year_2015/day_04.gleam) |
+| 2015 | [5](https://adventofcode.com/2015/day/5) | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | [list](tags/list.md) | [day_05.gleam](../src/year_2015/day_05.gleam) |
 | 2016 | [1](https://adventofcode.com/2016/day/1) | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [grid](tags/grid.md) | [day_01.gleam](../src/year_2016/day_01.gleam) |
 | 2016 | [2](https://adventofcode.com/2016/day/2) | [Bathroom Security](https://adventofcode.com/2016/day/2) | [grid](tags/grid.md) | [day_02.gleam](../src/year_2016/day_02.gleam) |
 | 2017 | [2](https://adventofcode.com/2017/day/2) | [Corruption Checksum](https://adventofcode.com/2017/day/2) | [arithmetic](tags/arithmetic.md) | [day_02.gleam](../src/year_2017/day_02.gleam) |
