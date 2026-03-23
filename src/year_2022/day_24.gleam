@@ -182,7 +182,7 @@ fn bfs(
       successors_with_cost: successors,
       visited_by: get_key,
       is_goal: is_goal,
-      heuristic: heuristic,
+      with_heuristic: heuristic,
       with_zero: 0,
       with_add: int.add,
       with_compare: int.compare,

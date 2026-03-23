@@ -29,7 +29,7 @@ fn solve_part_1(fav: Int) -> Int {
       successors_with_cost: fn(pos) {
         open_neighbours(pos, fav) |> list.map(fn(n) { #(n, 1) })
       },
-      heuristic: fn(pos) {
+      with_heuristic: fn(pos) {
         int.absolute_value(pos.0 - target.0)
         + int.absolute_value(pos.1 - target.1)
       },

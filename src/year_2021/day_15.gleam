@@ -101,7 +101,7 @@ fn solve_part_2(grid_2d: List(List(Int))) -> Int {
     int.absolute_value(nx - gx) + int.absolute_value(ny - gy)
   }
 
-  case a_star.a_star_int(graph, start, end, heuristic: h) {
+  case a_star.a_star_int(graph, start, end, with_heuristic: h) {
     Some(path) -> path.total_weight
     None -> -1
   }
