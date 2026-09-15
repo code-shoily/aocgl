@@ -70,13 +70,13 @@ fn validate_passport(
   passport: Dict(String, String),
 ) -> Validation(Passport, Nil) {
   map7(
-    passport |> field("byr", validate_between(_, 1920, 2002)),
-    passport |> field("iyr", validate_between(_, 2010, 2020)),
-    passport |> field("eyr", validate_between(_, 2020, 2030)),
-    passport |> field("hgt", validate_hgt),
-    passport |> field("hcl", validate_hcl),
-    passport |> field("ecl", validate_ecl),
-    passport |> field("pid", validate_pid),
+    field("byr", validate_between(_, 1920, 2002))(passport),
+    field("iyr", validate_between(_, 2010, 2020))(passport),
+    field("eyr", validate_between(_, 2020, 2030))(passport),
+    field("hgt", validate_hgt)(passport),
+    field("hcl", validate_hcl)(passport),
+    field("ecl", validate_ecl)(passport),
+    field("pid", validate_pid)(passport),
     Passport,
   )
 }
