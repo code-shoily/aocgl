@@ -17,7 +17,10 @@ pub fn solve(raw_input: String) -> Solution {
   Solution(part_1, part_2)
 }
 
-fn total_invalid_ids_by(input: List(#(Int, Int)), check: fn(Int) -> Bool) -> Int {
+fn total_invalid_ids_by(
+  input: List(#(Int, Int)),
+  check: fn(Int) -> Bool,
+) -> Int {
   use acc, #(start, end) <- list.fold(input, 0)
   acc + sum_range(start, end, check, 0)
 }

@@ -55,8 +55,7 @@ fn matches_next(digits: List(Int)) -> List(Int) {
 fn do_matches_next(digits: List(Int), result: List(Int)) -> List(Int) {
   case digits {
     [] -> result
-    [h1, h2, ..rest] if h1 == h2 ->
-      do_matches_next([h2, ..rest], [h1, ..result])
+    [h1, h2, ..rest] if h1 == h2 -> do_matches_next([h2, ..rest], [h1, ..result])
     [_, ..rest] -> do_matches_next(rest, result)
   }
 }

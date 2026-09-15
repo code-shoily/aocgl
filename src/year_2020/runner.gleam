@@ -7,7 +7,10 @@ import year_2020/day_05
 import year_2020/day_06
 import year_2020/day_07
 
-pub fn solve_for(raw_input: String, day: Int) -> Result(Solution, SolutionError) {
+pub fn solve_for(
+  raw_input: String,
+  day: Int,
+) -> Result(Solution, SolutionError) {
   case day {
     1 -> day_01.solve(raw_input) |> Ok
     2 -> day_02.solve(raw_input) |> Ok

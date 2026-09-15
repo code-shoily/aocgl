@@ -4,7 +4,10 @@ import year_2017/day_02
 import year_2017/day_04
 import year_2017/day_12
 
-pub fn solve_for(raw_input: String, day: Int) -> Result(Solution, SolutionError) {
+pub fn solve_for(
+  raw_input: String,
+  day: Int,
+) -> Result(Solution, SolutionError) {
   case day {
     1 -> day_01.solve(raw_input) |> Ok
     2 -> day_02.solve(raw_input) |> Ok
