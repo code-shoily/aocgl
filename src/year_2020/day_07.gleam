@@ -38,7 +38,10 @@ fn solve_part_2(builder: Builder(String, Int)) -> Int {
   count_bags_inside(graph, shiny_gold_id)
 }
 
-fn count_bags_inside(graph: yog.Graph(String, Int), node_id: yog.NodeId) -> Int {
+fn count_bags_inside(
+  graph: yog.Graph(String, Int),
+  node_id: yog.NodeId,
+) -> Int {
   let nodes = graph |> yog.successors(node_id)
   use total, #(child_id, count) <- list.fold(nodes, 0)
   total + count + count * count_bags_inside(graph, child_id)

@@ -66,7 +66,10 @@ fn calibration(calibrator: DigitPair) -> Option(Int) {
   }
 }
 
-fn index_to_num(init: Dict(String, Int), str: List(String)) -> Dict(String, Int) {
+fn index_to_num(
+  init: Dict(String, Int),
+  str: List(String),
+) -> Dict(String, Int) {
   str
   |> list.index_fold(init, fn(mapping, num_word, idx) {
     dict.insert(mapping, num_word, idx + 1)
